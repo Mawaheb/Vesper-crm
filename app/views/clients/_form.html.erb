@@ -25,7 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :sex %><br />
-    <%= f.number_field :sex %>
+    <%= f.select :sex, Client::SEX, default: 1, :include_blank => true %>
+  </div>
+  <div class="field">
+  	<%= f.label :status%><br />
+  	<%= f.select :status, Client::STATUS_TYPES  %>
   </div>
   <div class="actions">
     <%= f.submit %>

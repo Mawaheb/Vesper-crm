@@ -41,6 +41,8 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
+    config.include Mongoid::Matchers
   end
 end
 Spork.each_run do

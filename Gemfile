@@ -25,6 +25,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'spork-rails'
+  gem 'mongoid-rspec'
 end
 
 gem 'jquery-rails'
