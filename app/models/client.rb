@@ -1,7 +1,7 @@
 class Client
   include Mongoid::Document
 
-  has_many :contacts
+  has_many :contacts, dependent: :delete
 
   STATUS_TYPES = [:not_contacted, :cold_called_not_interrested, :cold_called_req_callback,
                   :cold_called_meeting_get, :gave_demo, :verbal_sign_up_agreement, :sign_up_form_given,
