@@ -21,9 +21,21 @@
 </p>
 
 <p>
-	<b>Status:</b>
-	<%= @client.status%>
+  <b>Status:</b>
+  <%= @client.status%>
 </p>
+
+<ul>
+<% for contact in @client.contacts %>
+  <b>Phone:</b>
+  <%=h contact.phone %> <br />
+  <b>Email:</b>
+  <%=h contact.email %> <br />
+  <b>Address:</b>
+  <%=h contact.address %> <br />
+  <br />
+<% end %>
+</ul>
 
 
 <%= link_to 'Edit', edit_client_path(@client) %> |

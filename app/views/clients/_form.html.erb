@@ -31,6 +31,20 @@
   	<%= f.label :status%><br />
   	<%= f.select :status, Client::STATUS_TYPES  %>
   </div>
+  <br />
+  <h2> Clients Contact Information: </h2>
+  <%= f.fields_for :contacts do |builder| %>
+    <fieldset>
+      <%= builder.label :phone, "Phone num" %> <br />
+      <%= builder.text_field :phone%> <br/>
+
+      <%= builder.label :email, "Email Address" %> <br />
+      <%= builder.text_field :email%> <br />
+
+      <%= builder.label :address, "Address" %> <br />
+      <%= builder.text_area :address, :rows => 3 %>
+    </fieldset>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
