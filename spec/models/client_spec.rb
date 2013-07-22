@@ -2,16 +2,17 @@ require 'spec_helper'
 
 describe Client do
   before do
-    @client = Client.new(first_name: "John", last_name:"Smith", email: "user@ex.com")
+    @client = FactoryGirl.build(:client)
   end
 
   subject { @client }
 
-  it { should have_field(:first_name) }
-  it { should have_field(:last_name) }
-  it { should have_field(:company_name) }
-  it { should have_field(:sex) }
-  it { should have_field(:status) }
+  it { should have_field(:n).with_alias(:name).of_type(String) }
+  it { should have_field(:ph).with_alias(:phone).of_type(Integer) }
+  it { should have_field(:url).of_type(String) }
+  it { should have_field(:sts).with_alias(:status).of_type(Symbol) }
+
+  it { should validate_presence_of(:name) }
 
 
   it { should have_many(:contacts) }

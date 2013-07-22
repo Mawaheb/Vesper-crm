@@ -12,37 +12,45 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :company_name %><br />
-    <%= f.text_field :company_name %>
-  </div>
-  <div class="field">
-    <%= f.label :sex %><br />
-    <%= f.select :sex, Client::SEX, default: 1, :include_blank => true %>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
   </div>
   <div class="field">
   	<%= f.label :status%><br />
   	<%= f.select :status, Client::STATUS_TYPES  %>
   </div>
   <br />
-  <h2> Clients Contact Information: </h2>
+  <h2> Client Contacts: </h2>
   <%= f.fields_for :contacts do |builder| %>
     <fieldset>
-      <%= builder.label :phone, "Phone num" %> <br />
-      <%= builder.text_field :phone%> <br/>
+      <%= builder.label :first_name, "First Name" %> <br />
+      <%= builder.text_field :first_name %> <br/>
 
-      <%= builder.label :email, "Email Address" %> <br />
-      <%= builder.text_field :email%> <br />
+      <%= builder.label :last_name, "Last Name" %> <br />
+      <%= builder.text_field :last_name %> <br />
 
-      <%= builder.label :address, "Address" %> <br />
-      <%= builder.text_area :address, :rows => 3 %>
+      <%= builder.label :title, "Title" %> <br />
+      <%= builder.text_field :title %> <br />
+
+      <%= builder.label :email, "Email" %> <br />
+      <%= builder.text_field :email %> <br />
+
+      <%= builder.label :phone_num, "Phone Number" %> <br />
+      <%= builder.text_field :phone_num %> <br />
+
+      <%= builder.label :position, "Position" %> <br />
+      <%= builder.text_field :position %> <br />
+
+      <%= builder.label :sex, "Sex" %> <br />
+      <%= builder.text_field :sex %> <br />
     </fieldset>
   <% end %>
   <div class="actions">

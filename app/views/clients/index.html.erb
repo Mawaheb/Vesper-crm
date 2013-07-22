@@ -2,11 +2,11 @@
 
 <table>
   <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Company name</th>
-    <th>Sex</th>
+    <th>name</th>
+    <th>Phone Number</th>
+    <th>URL</th>
     <th>Status</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,10 +14,9 @@
 
 <% @clients.each do |client| %>
   <tr>
-    <td><%= client.first_name %></td>
-    <td><%= client.last_name %></td>
-    <td><%= client.company_name %></td>
-    <td><%= client.sex %></td>
+    <td><%= client.name %></td>
+    <td><%= client.phone %></td>
+    <td><%= client.url %></td>
     <td><%= client.status %></td>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
