@@ -15,6 +15,8 @@ describe Contact do
    it { should have_field(:psn).with_alias(:position).of_type(String) }
    it { should have_field(:sex).of_type(Integer) }
 
+   it { should belong_to(:client)}
+
    its(:client) { should == client }
 
    # describe "accessible attributes" do
