@@ -2,7 +2,9 @@ class Client
   include Mongoid::Document
 
   has_many :contacts , dependent: :delete #Should i use Destroy instead? association spec was fialing with destory.
+  has_many :meetings , dependent: :delete
   accepts_nested_attributes_for :contacts
+  accepts_nested_attributes_for :meetings
 
 
   STATUS_TYPES = [:not_contacted, :cold_called_not_interrested, :cold_called_req_callback,
@@ -12,8 +14,10 @@ class Client
   field :n,   as: :name,          type: String
   field :ph,  as: :phone,         type: Integer
   field :sts, as: :status,        type: Symbol,  default: STATUS_TYPES.first
-  field :url, type: String
+  field :url,                     type: String
+
 #TODO add address
+#TODO May be Add daytime_phone nighttime_phone ?
 
   validates_presence_of :name
   attr_accessible :name, :phone, :status, :url, :contacts_attributes

@@ -16,6 +16,10 @@ describe Client do
 
 
   it { should have_many(:contacts) }
+  it { should have_many(:meetings) }
+
+  it { should accept_nested_attributes_for(:contacts) }
+  pending 'It should accept nested attributes for meetings'
 
   describe "contact associations" do
     before { @client.save }
@@ -28,6 +32,10 @@ describe Client do
       contacts.each do |contact|
         Contact.find_by(id: contact.id).should be_nil
       end
+    end
+
+    describe "Meeting associations" do
+      pending 'Meeting assosiation test'
     end
 
   end
