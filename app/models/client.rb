@@ -3,8 +3,8 @@ class Client
 
   has_many :contacts , dependent: :delete #Should i use Destroy instead? association spec was fialing with destory.
   has_many :meetings , dependent: :delete
-  accepts_nested_attributes_for :contacts
-  accepts_nested_attributes_for :meetings
+  accepts_nested_attributes_for :contacts, allow_destroy: true
+  accepts_nested_attributes_for :meetings, allow_destroy: true
 
 
   STATUS_TYPES = [:not_contacted, :cold_called_not_interrested, :cold_called_req_callback,
@@ -20,6 +20,6 @@ class Client
 #TODO May be Add daytime_phone nighttime_phone ?
 
   validates_presence_of :name
-  attr_accessible :name, :phone, :status, :url, :contacts_attributes
+  attr_accessible :name, :phone, :status, :url, :contacts_attributes, :meetings_attributes
 
 end

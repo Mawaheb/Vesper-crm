@@ -26,6 +26,7 @@ class ClientsController < ApplicationController
   def new
     @client = Client.new
     @client.contacts.build
+    @client.meetings.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @client }

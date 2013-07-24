@@ -20,32 +20,33 @@
   <%= @client.status%>
 </p>
 
-<ul>
-<h3>Contact info:</h3>
+</br>
+
+<u><h3>Contact info:</h3></u>
+
+<table cellpadding="8">
+  <tr>
+  	<th>First Name</th>
+  	<th>Last Name</th>
+  	<th>Title</th>
+  	<th>Email</th>
+  	<th>Phone Number</th>
+  	<th>Position</th>
+  	<th>Sex</th>
+  </tr>
+
 <% for contact in @client.contacts %>
-  <b>Phone:</b>
-  <%=h contact.first_name %> <br />
-  <br />
-  <b>Email:</b>
-  <%=h contact.last_name %> <br />
-  <br />
-  <b>Title:</b>
-  <%=h contact.title %> <br />
-  <br />
-  <b>Email:</b>
-  <%=h contact.email %> <br />
-  <br />
-  <b>Phone Number:</b>
-  <%=h contact.phone_num %> <br />
-  <br />
-  <b>Position:</b>
-  <%=h contact.position %> <br />
-  <br />
-  <b>Sex:</b>
-  <%=h contact.sex %> <br />
-  <br />
+  <tr>
+    <td><%=h contact.first_name %></td>
+    <td><%=h contact.last_name %></td>
+    <td><%=h contact.title %></td>
+    <td><%=h contact.email %></td>
+    <td><%=h contact.phone_num %></td>
+    <td><%=h contact.position %></td>
+    <td><%=h contact.sex %></td>
+  </tr>
 <% end %>
-</ul>
+</table>
 
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
