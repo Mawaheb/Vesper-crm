@@ -1,0 +1,23 @@
+<table cellpadding="8">
+  <tr>
+  	<th>First Name</th>
+  	<th>Last Name</th>
+  	<th>Title</th>
+  	<th>Email</th>
+  	<th>Phone Number</th>
+  	<th>Position</th>
+  	<th>Sex</th>
+  </tr>
+
+<% for contact in @client.contacts %>
+  <tr>
+    <td><%=h contact.first_name %></td>
+    <td><%=h contact.last_name %></td>
+    <td><%=h contact.title %></td>
+    <td><%=h contact.email %></td>
+    <td><%=h contact.phone_num %></td>
+    <td><%=h contact.position %></td>
+    <td><%=h contact.sex %></td>
+  </tr>
+<% end %>
+</table>

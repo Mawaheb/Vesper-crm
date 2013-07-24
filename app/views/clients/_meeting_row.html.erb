@@ -1,0 +1,15 @@
+<table cellpadding="8">
+  <tr>
+  	<th>duration</th>
+  	<th>Notes</th>
+
+  </tr>
+
+<% for meeting in @client.meetings %>
+  <tr>
+    <td><%=h distance_of_time_in_words(meeting.duration) %></td>
+    <td><%=h meeting.memo %></td>
+  </tr>
+<% end %>
+</table>
+<!--Fix the Duration view-->
