@@ -1,4 +1,7 @@
 CrmSolution::Application.routes.draw do
+  resources :sales_reps
+
+
   resources :clients
 
 

@@ -3,7 +3,7 @@ class Meeting
   include Mongoid::MultiParameterAttributes
   belongs_to :client
   has_many :contacts
-  #has_many :sales_reps
+  has_many :sales_reps
   #has_many :follow_ups
 
   DEFAULT_DURATION = 2.hours.to_i

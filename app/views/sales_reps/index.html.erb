@@ -1,0 +1,30 @@
+<h1>Listing sales_reps</h1>
+
+<table cellpadding="8">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Title</th>
+    <th>Phone Number</th>
+    <th>Email</th>
+    <th>Sex</th>
+  </tr>
+
+<% @sales_reps.each do |sales_rep| %>
+  <tr>
+  	<td><%= sales_rep.first_name %></td>
+  	<td><%= sales_rep.last_name %></td>
+  	<td><%= sales_rep.title %></td>
+  	<td><%= sales_rep.phone_num %></td>
+  	<td><%= sales_rep.email %></td>
+  	<td><%= sales_rep.sex %></td>
+    <td><%= link_to 'Show', sales_rep %></td>
+    <td><%= link_to 'Edit', edit_sales_rep_path(sales_rep) %></td>
+    <td><%= link_to 'Destroy', sales_rep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sales rep', new_sales_rep_path %>
