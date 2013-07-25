@@ -14,6 +14,9 @@ class Meeting
 
 #TODO:
   # check if the time should be UTC/Local
+  # prevent user from selecting date in the past or allow this, and consider it
+  # as archving ?
+
   # may be add a meeting objective?
   # Add a method to give a note on Meeting time.
 end
