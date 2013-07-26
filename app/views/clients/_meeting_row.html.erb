@@ -11,6 +11,12 @@
     <td><%=h distance_of_time_in_words(meeting.duration) %></td>
     <td><%=h meeting.memo %></td>
   </tr>
+
+<% if meeting.sales_reps.blank? %>
+  <h4>No any Sales Reps attending this meeting</h4>
+<% end %>
+
 <% end %>
 </table>
+
 <!--Fix the Duration view-->
