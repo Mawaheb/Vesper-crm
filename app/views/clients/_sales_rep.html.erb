@@ -1,0 +1,11 @@
+<%= form_tag assign_sales_rep_clients_path, :method => :put do %>
+
+  <% for sales in SalesRep.all %>
+    <li>
+      <%= check_box_tag "sales_rep_id", sales.id %>
+      <%= sales.first_name %>
+    </li>
+  <% end %>
+
+<% end %>
+<%= submit_tag "Assign selected sales reps to this meeting."%>

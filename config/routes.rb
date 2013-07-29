@@ -2,7 +2,11 @@ CrmSolution::Application.routes.draw do
   resources :sales_reps
 
 
-  resources :clients
+  resources :clients do
+    collection do
+      put 'assign_sales_rep'
+    end
+  end
 
 
   # The priority is based upon order of creation:

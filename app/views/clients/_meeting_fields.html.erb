@@ -9,6 +9,25 @@
   <%= f.label :memo, "Notes" %> <br />
   <%= f.text_area :memo, rows:"3" %> <br/>
   <br/>
+
+  <% if SalesRep.all.any? %>
+    <%= form_tag assign_sales_rep_clients_path, :method => :put do %>
+      <% for sales in SalesRep.all %>
+        <li>
+          <%= check_box_tag "sales_rep_id", sales.id %>
+          <%= sales.first_name %>
+       </li>
+      <% end %>
+    <% end %>
+   <%= submit_tag "Assign selected sales reps to this meeting."%>
+  <% end %>
+
+  <br/>
   <%= f.hidden_field :_destroy %>
   <%= link_to "Remove Meeting", '#', class: "remove_fields" %>
 </fieldset>
+
+<!-- nested forms is illegal in html, after adding the form_tag that
+	contains the checkboxes, the update button stopped working,
+	and there are some minor issues with the js that adds the fields
+	dynamically, this should be fixed, moved to doing other things -->

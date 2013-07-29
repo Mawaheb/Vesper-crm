@@ -36,6 +36,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
+    @sales_reps = SalesRep.all
   end
 
   # POST /clients
@@ -80,5 +81,10 @@ class ClientsController < ApplicationController
       format.html { redirect_to clients_url }
       format.json { head :no_content }
     end
+  end
+
+  def assign_sales_rep
+    # TODO Assign sales_reps to meetings.(mark them as attending).
+    redirect_to clients_path
   end
 end
