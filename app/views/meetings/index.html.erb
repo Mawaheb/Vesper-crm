@@ -1,0 +1,20 @@
+<h1>Listing Meetings</h1>
+  <% if @meetings.blank? %>
+    <h2>There are no any meetings</h2>
+  <% else %>
+	<table cellpadding="8">
+		<p>Meetings Infromations</p>
+		<tr>
+		  <th>Date</th>
+		  <th>Duration</th>
+		  <th>Memo</th>
+		</tr>
+		<% @meetings.each do |meeting| %>
+		  <tr>
+		  	<td><%= meeting.start_date.to_s(:short) %></td>
+		  	<td><%= meeting.duration %></td>
+		  	<td><%= meeting.memo %></td>
+		  </tr>
+		<% end %>
+	</table>
+  <% end %>
