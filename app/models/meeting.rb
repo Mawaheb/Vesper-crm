@@ -2,7 +2,8 @@ class Meeting
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes
   belongs_to :client
-  has_many :contacts
+  has_and_belongs_to_many :contacts
+  accepts_nested_attributes_for :contacts
   has_many :sales_reps
   #has_many :follow_ups
 

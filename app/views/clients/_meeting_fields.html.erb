@@ -9,17 +9,17 @@
   <%= f.label :memo, "Notes" %> <br />
   <%= f.text_area :memo, rows:"3" %> <br/>
   <br/>
+  <% unless @contacts.blank? %>
+  	<h3>Select contacts to attend this meeting:</h3>
+    <% for contact in @contacts %>
+      <%= check_box_tag "meeting[contact_ids][]", contact.id ,
+       f.object.contacts.include?(contact) %>
+      <%= contact.first_name%><br/>
+    <% end %>
+  <% end %>
 
   <% if SalesRep.all.any? %>
-    <%= form_tag assign_sales_rep_clients_path, :method => :put do %>
-      <% for sales in SalesRep.all %>
-        <li>
-          <%= check_box_tag "sales_rep_id", sales.id %>
-          <%= sales.first_name %>
-       </li>
-      <% end %>
-    <% end %>
-   <%= submit_tag "Assign selected sales reps to this meeting."%>
+    <!-- render sales rep -->
   <% end %>
 
   <br/>

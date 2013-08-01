@@ -13,7 +13,7 @@ class Client
                   :signed_contract, :pending_acct_setup_in_TS, :went_live  ]
 
   field :n,   as: :name,          type: String
-  field :ph,  as: :phone,         type: Integer
+  field :ph,  as: :phone,         type: String
   field :sts, as: :status,        type: Symbol,  default: STATUS_TYPES.first
   field :url,                     type: String
 

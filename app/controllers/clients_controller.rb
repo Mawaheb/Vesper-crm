@@ -37,6 +37,7 @@ class ClientsController < ApplicationController
   def edit
     @client = Client.find(params[:id])
     @sales_reps = SalesRep.all
+    @contacts = @client.contacts
   end
 
   # POST /clients
@@ -58,6 +59,7 @@ class ClientsController < ApplicationController
   # PUT /clients/1
   # PUT /clients/1.json
   def update
+    params[:client][:contact_ids] ||= []
     @client = Client.find(params[:id])
 
     respond_to do |format|

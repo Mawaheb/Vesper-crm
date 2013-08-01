@@ -13,4 +13,10 @@ FactoryGirl.define do
 
     client
   end
+
+  factory :meeting do
+    memo 'This is a Memo'
+
+    client
+  end
 end

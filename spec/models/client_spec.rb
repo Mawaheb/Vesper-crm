@@ -8,7 +8,7 @@ describe Client do
   subject { @client }
 
   it { should have_field(:n).with_alias(:name).of_type(String) }
-  it { should have_field(:ph).with_alias(:phone).of_type(Integer) }
+  it { should have_field(:ph).with_alias(:phone).of_type(String) }
   it { should have_field(:url).of_type(String) }
   it { should have_field(:sts).with_alias(:status).of_type(Symbol) }
 
