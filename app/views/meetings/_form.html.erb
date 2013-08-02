@@ -1,0 +1,13 @@
+<%= simple_form_for @meeting do |f| %>
+
+  <%= f.input :start_date, as: :datetime %>
+  <%= f.input :duration, as: :time %>
+  <%= f.input :memo, as: :text %>
+  <% for sr in @sales_reps %>
+   <%= check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr) %>
+   <%= sr.first_name %><br/>
+  <% end%>
+
+  <%= f.button :submit%>
+<% end %>
+<%#= f.collection_select :client_id, Client.all, :id, :name %>

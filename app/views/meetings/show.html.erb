@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+<table cellpadding="8">
+  <tr>
+  	<th>Date</th>
+  	<th>duration</th>
+  	<th>Notes</th>
+  </tr>
+  <tr>
+  	<td><%=h @meeting.start_date.to_s(:short) %>
+    <td><%=h distance_of_time_in_words(@meeting.duration) %></td>
+    <td><%=h @meeting.memo %></td>
+  </tr>
+</table>
+<% if @meeting.sales_reps.any? %>
+  <h2>Sales represntators attending this meting:</h2>
+  <% for sr in @meeting.sales_reps %>
+    <ul>
+       <li><%=h sr.first_name %></li><br/>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', meetings_url %>

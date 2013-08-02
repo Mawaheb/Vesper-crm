@@ -1,6 +1,6 @@
 class SalesRep < Person
   include Mongoid::Document
-  belongs_to :meeting
+  has_and_belongs_to_many :meetings
 
 
 end

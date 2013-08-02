@@ -1,20 +1,29 @@
 <h1>Listing Meetings</h1>
-  <% if @meetings.blank? %>
-    <h2>There are no any meetings</h2>
-  <% else %>
-	<table cellpadding="8">
-		<p>Meetings Infromations</p>
-		<tr>
-		  <th>Date</th>
-		  <th>Duration</th>
-		  <th>Memo</th>
-		</tr>
-		<% @meetings.each do |meeting| %>
-		  <tr>
-		  	<td><%= meeting.start_date.to_s(:short) %></td>
-		  	<td><%= meeting.duration %></td>
-		  	<td><%= meeting.memo %></td>
-		  </tr>
-		<% end %>
-	</table>
-  <% end %>
+<% if @meetings.blank? %>
+<h2>There are no any meetings</h2>
+<% else %>
+<table cellpadding="8">
+	<p>
+		Meetings Infromations
+	</p>
+	<tr>
+		<th>Date</th>
+		<th>Duration</th>
+		<th>Memo</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% for meeting in @meetings %>
+	<tr>
+		<td><%=h meeting.start_date %></td>
+		<td><%=h meeting.duration %></td>
+		<td><%=h meeting.memo %></td>
+		<td><%= link_to 'Show', meeting %></td>
+		<td><%= link_to 'Edit', edit_meeting_path(meeting) %> </td>
+		<td><%= link_to 'Delete', meeting, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>
+<%= link_to 'New Meeting', new_meeting_path %>

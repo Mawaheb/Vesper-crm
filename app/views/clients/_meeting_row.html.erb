@@ -8,7 +8,7 @@
 
 <% for meeting in @client.meetings %>
   <tr>
-  	<td><%=h meeting.start_date.to_s(:short) %>
+  	<td><%=h meeting.start_date.to_s(:short) %></td>
     <td><%=h distance_of_time_in_words(meeting.duration) %></td>
     <td><%=h meeting.memo %></td>
     <td colspan="3">

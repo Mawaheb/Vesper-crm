@@ -85,8 +85,4 @@ class ClientsController < ApplicationController
     end
   end
 
-  def assign_sales_rep
-    # TODO Assign sales_reps to meetings.(mark them as attending).
-    redirect_to clients_path
-  end
 end
