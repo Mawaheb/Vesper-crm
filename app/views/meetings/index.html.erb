@@ -3,13 +3,12 @@
 <h2>There are no any meetings</h2>
 <% else %>
 <table cellpadding="8">
-	<p>
-		Meetings Infromations
-	</p>
+	<p>Meetings Infromations</p>
 	<tr>
 		<th>Date</th>
 		<th>Duration</th>
 		<th>Memo</th>
+		<th>Any Sales reps Attending?</th>
 		<th></th>
 		<th></th>
 		<th></th>
@@ -19,6 +18,11 @@
 		<td><%=h meeting.start_date %></td>
 		<td><%=h meeting.duration %></td>
 		<td><%=h meeting.memo %></td>
+		<% if meeting.sales_reps.any?%>
+         <td>Yes</td>
+        <% else %>
+    	  <td>No</td>
+     	<% end%>
 		<td><%= link_to 'Show', meeting %></td>
 		<td><%= link_to 'Edit', edit_meeting_path(meeting) %> </td>
 		<td><%= link_to 'Delete', meeting, method: :delete, data: { confirm: 'Are you sure?'} %></td>

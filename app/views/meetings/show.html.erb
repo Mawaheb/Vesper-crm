@@ -4,6 +4,7 @@
   	<th>Date</th>
   	<th>duration</th>
   	<th>Notes</th>
+  	<th>Any sales reps attending?</th>
   </tr>
   <tr>
   	<td><%=h @meeting.start_date.to_s(:short) %>
@@ -20,4 +21,6 @@
   <% end %>
 <% end %>
 
+<%= link_to 'Edit', edit_meeting_path(@meeting) %>
+|
 <%= link_to 'Back', meetings_url %>
