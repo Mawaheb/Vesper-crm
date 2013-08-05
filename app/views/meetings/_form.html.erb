@@ -1,7 +1,7 @@
 <%= simple_form_for @meeting do |f| %>
 
   <%= f.input :start_date, as: :datetime %>
-  <%= f.input :duration, as: :time %>
+  <%= f.input :duration, :collection => (Meeting::DURATION) %>
   <%= f.input :memo, as: :text %>
   <% for sr in @sales_reps %>
    <%= check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr) %>
