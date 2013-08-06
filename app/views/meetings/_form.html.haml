@@ -6,9 +6,13 @@
   - for sr in @sales_reps
     = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
     = sr.first_name
-    %br/
+    %br
+
+  %h4 Please select the client that this meeting is made for
   = f.input :client_id, collection:(Client.all)
-  %br/
+  %br
+
+  %h4 Please select contacts to attend this meeting
 
   = f.button :submit
 

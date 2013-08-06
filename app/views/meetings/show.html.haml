@@ -1,0 +1,30 @@
+%p#notice= notice
+%table{cellpadding: "8"}
+  %tr
+    %th Date
+    %th duration
+    %th Notes
+  %tr
+    %td
+      = h @meeting.start_date.to_s(:short)
+    %td
+      = h @meeting.duration
+      Minutes
+    %td= h @meeting.memo
+%br/
+%u
+  %h4 This meeting is scheduled for:
+= render 'client_row'
+
+%br
+- if @meeting.sales_reps.any?
+  %u
+    %h4 Sales represntators attending this meting:
+  - for sr in @meeting.sales_reps
+    %ul
+      %li= h sr.first_name
+      %br/
+
+= link_to 'Edit', edit_meeting_path(@meeting)
+|
+\#{link_to 'Back', meetings_url}

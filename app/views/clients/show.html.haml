@@ -12,6 +12,16 @@
   %b Status:
   = @client.status
 
+%u
+  %h3 Contacts info:
+- if @client.contacts.any?
+  = render 'contact_row'
+%br/
+%u
+  %h3 Meetings Info:
+- if @client.meetings.any?
+  = render 'meeting_row'
+
 = link_to 'Edit', edit_client_path(@client)
 |
 \#{link_to 'Back', clients_path}

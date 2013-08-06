@@ -1,27 +1,18 @@
-<table cellpadding="8">
+<table cellpadding="10">
   <tr>
   	<th>Date</th>
   	<th>duration</th>
   	<th>Notes</th>
   	<th>Sales rep Attending this meeting</th>
+  	<th>Contacts Attending this meeting</th>
   </tr>
 
 <% for meeting in @client.meetings %>
   <tr>
   	<td><%=h meeting.start_date.to_s(:short) %></td>
-    <td><%=h distance_of_time_in_words(meeting.duration) %></td>
+    <td><%=h meeting.duration %> Minutes</td>
     <td><%=h meeting.memo %></td>
-    <td colspan="3">
-	  <% if meeting.sales_reps.blank? %>
-        <p>No any Sales Reps attending this meeting</p>
-      <% end %>
-    </td>
-    <% if meeting.contacts.blank?%>
-     <p>No Any contacts attending this meeing</p>
-    <% end %>
-    <% for contact in meeting.contacts %>
-      <p>contact.first_name</p>
-    <% end %>
+
   </tr>
 <% end %>
 

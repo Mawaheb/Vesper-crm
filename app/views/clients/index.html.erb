@@ -1,11 +1,12 @@
 <h1>Listing clients</h1>
 
-<table cellpadding="8">
+<table cellpadding="10">
   <tr>
     <th>name</th>
     <th>Phone Number</th>
     <th>URL</th>
     <th>Status</th>
+    <th>Has a scheduled meeting?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,6 +19,11 @@
     <td><%= client.phone %></td>
     <td><%= client.url %></td>
     <td><%= client.status %></td>
+    <% if client.meetings.any? %>
+      <td align="center"> Yes </td>
+    <% else %>
+      <td align="center"> No </td>
+    <% end %>
     <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
     <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
