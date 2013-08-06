@@ -19,17 +19,11 @@
 %br
   %u
     %h4 Sales represntators attending this meeting:
-  - for sr in @meeting.sales_reps
-    %ul
-      %li= h sr.first_name
-      %br/
+  = render 'sales_rep_row'
 
   %u
     %h4 Contacts attending this meeting:
-  - for c in @meeting.contacts
-    %ul
-      %li= h c.first_name
-      %br
+= render 'contact_row'
 
 = link_to 'Edit', edit_meeting_path(@meeting)
 |

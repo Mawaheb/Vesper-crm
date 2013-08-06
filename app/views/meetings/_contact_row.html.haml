@@ -1,0 +1,18 @@
+%table{:cellpadding => "8"}
+  %tr
+    %th First Name
+    %th Last Name
+    %th Title
+    %th Email
+    %th Phone Number
+    %th Position
+    %th Sex
+  - for contact in @meeting.contacts
+    %tr
+      %td= h contact.first_name
+      %td= h contact.last_name
+      %td= h contact.title
+      %td= h contact.email
+      %td= h contact.phone_num
+      %td= h contact.position
+      %td= h contact.sex
