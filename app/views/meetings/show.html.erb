@@ -11,7 +11,15 @@
     <td><%=h @meeting.memo %></td>
   </tr>
 </table>
-
+<br/>
+<% if @meeting.sales_reps.any? %>
+  <h4>Sales represntators attending this meting:</h4>
+  <% for sr in @meeting.sales_reps %>
+    <ul>
+       <li><%=h sr.first_name %></li><br/>
+    </ul>
+  <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %>
 |

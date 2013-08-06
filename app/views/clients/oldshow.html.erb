@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Client name:</b>
+  <%= @client.name %>
+</p>
+
+<p>
+  <b>Phone Number:</b>
+  <%= @client.phone %>
+</p>
+
+<p>
+  <b>URL:</b>
+  <%= @client.url %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @client.status%>
+</p>
+
+</br>
+
+<u><h3>Contacts info:</h3></u>
+
+<% if @client.contacts.any? %>
+  <%= render 'contact_row' %>
+<% end %>
+
+<u><h3>Meetings:</h3></u>
+
+<% if @client.meetings.any? %>
+  <%= render 'meeting_row' %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

@@ -1,0 +1,7 @@
+= simple_form_for @client do |f|
+  = f.input :name
+  = f.input :phone
+  = f.input :url
+  = f.input :status , collection: (Client::STATUS_TYPES)
+
+  = f.button :submit

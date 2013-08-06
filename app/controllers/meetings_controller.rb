@@ -19,7 +19,7 @@ class MeetingsController < ApplicationController
     sales_ids   = params[:sales_reps_ids]
     sales_rps   = SalesRep.any_in(id: sales_ids)
     @meeting    = Meeting.new(params[:meeting])
-    @meeting.sales_reps << sales_rps
+    @meeting.sales_reps << sales_rps  # Assigning Sales_reps to the meeting.
     if @meeting.save
       redirect_to @meeting , notice: 'Meeting was successfully created.'
     else

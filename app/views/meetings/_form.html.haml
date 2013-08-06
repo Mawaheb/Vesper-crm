@@ -1,0 +1,15 @@
+= simple_form_for @meeting do |f|
+  = f.input :start_date, as: :datetime
+  = f.input :duration, :collection => (Meeting::DURATION)
+  = f.input :memo, as: :text
+  %h4 Please Select Sales Resp to attend this meeting.
+  - for sr in @sales_reps
+    = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
+    = sr.first_name
+    %br/
+  = f.input :client_id, collection:(Client.all)
+  %br/
+
+  = f.button :submit
+
+<!-- <%= f.collection_select :client_id, Client.all, :id, :name %> -->
