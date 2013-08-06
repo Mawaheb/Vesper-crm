@@ -1,9 +1,18 @@
 = simple_form_for @meeting do |f|
+  - if @meeting.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@meeting.errors.count, "error")
+        prohibited this sales_rep from being saved:
+      %ul
+        - @meeting.errors.full_messages.each do |msg|
+          %li= msg
+
   = f.input :start_date, as: :datetime
   = f.input :duration, :collection => (Meeting::DURATION)
   = f.input :memo, as: :text
   %h4 Please Select Sales Resp to attend this meeting.
-  - for sr in @sales_reps
+  - for sr in SalesRep.all
     = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
     = sr.first_name
     %br
@@ -16,6 +25,7 @@
   - for c in Contact.all
     = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
     = c.first_name
+    %br
   %br
 
 

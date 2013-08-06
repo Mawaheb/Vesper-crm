@@ -6,6 +6,11 @@ class Meeting
   has_and_belongs_to_many :sales_reps
   #has_many :follow_ups
 
+  validates_presence_of :client_id
+  validates_presence_of :sales_rep_ids
+  # may be validates the presence of contacts?
+  # or the user might intintially leave it blank to decide later?
+
   DURATION = { :"00:15" => 15, :"00:30"=> 30, :"00:45"=> 45, :"01:00" =>60, :"01:15" =>75,
                        :"01:30" =>90, :"01:45"=>105, :"02:00" =>120, :"02:15"=>135,
                        :"02:30" =>150, :"02:45" =>165, :"03:00"=>180 }
