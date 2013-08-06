@@ -1,25 +1,12 @@
 <fieldset>
-  <%= f.label :first_name, "First Name" %> <br />
-  <%= f.text_field :first_name %> <br/>
-
-  <%= f.label :last_name, "Last Name" %> <br />
-  <%= f.text_field :last_name %> <br />
-
-  <%= f.label :title, "Title" %> <br />
-  <%= f.text_field :title %> <br />
-
-  <%= f.label :email, "Email" %> <br />
-  <%= f.text_field :email %> <br />
-
-  <%= f.label :phone_num, "Phone Number" %> <br />
-  <%= f.text_field :phone_num %> <br />
-
-  <%= f.label :position, "Position" %> <br />
-  <%= f.text_field :position %> <br />
-
-  <%= f.label :sex, "Sex" %> <br />
-  <%= f.select :sex, Contact::SEX %> <br />
-  <br/>
+  <h3>Please fill in the new contact information:</h3>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :title %>
+  <%= f.input :email %>
+  <%= f.input :phone_num %>
+  <%= f.input :position %>
+  <%= f.input :sex, collection: (Contact::SEX) %>
   <%= f.hidden_field :_destroy %>
   <%= link_to "Remove Contact", '#', class: "remove_fields" %>
 </fieldset>

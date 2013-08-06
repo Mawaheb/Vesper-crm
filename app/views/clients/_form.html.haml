@@ -3,5 +3,12 @@
   = f.input :phone
   = f.input :url
   = f.input :status , collection: (Client::STATUS_TYPES)
+  %br
+  = f.fields_for :contacts do |builder|
+    = render 'contact_fields', f: builder
+  = link_to_add_fields "Add Contact", f, :contacts
+  %br
+  %br
+
 
   = f.button :submit

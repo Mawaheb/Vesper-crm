@@ -17,13 +17,19 @@
 = render 'client_row'
 
 %br
-- if @meeting.sales_reps.any?
   %u
-    %h4 Sales represntators attending this meting:
+    %h4 Sales represntators attending this meeting:
   - for sr in @meeting.sales_reps
     %ul
       %li= h sr.first_name
       %br/
+
+  %u
+    %h4 Contacts attending this meeting:
+  - for c in @meeting.contacts
+    %ul
+      %li= h c.first_name
+      %br
 
 = link_to 'Edit', edit_meeting_path(@meeting)
 |

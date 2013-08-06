@@ -13,6 +13,11 @@
   %br
 
   %h4 Please select contacts to attend this meeting
+  - for c in Contact.all
+    = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
+    = c.first_name
+  %br
+
 
   = f.button :submit
 
