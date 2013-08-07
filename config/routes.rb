@@ -8,6 +8,7 @@ CrmSolution::Application.routes.draw do
       put 'assign_sales_rep'
     end
   end
+  root :to => 'meetings#index'
 
 
   # The priority is based upon order of creation:
