@@ -11,13 +11,13 @@ class Meeting
   # may be validates the presence of contacts?
   # or the user might intintially leave it blank to decide later?
 
-  DURATION = { :"00:15" => 15, :"00:30"=> 30, :"00:45"=> 45, :"01:00" =>60, :"01:15" =>75,
-                       :"01:30" =>90, :"01:45"=>105, :"02:00" =>120, :"02:15"=>135,
-                       :"02:30" =>150, :"02:45" =>165, :"03:00"=>180 }
+  DURATION = { "00:15" => 15, "00:30"=> 30, "00:45"=> 45, "01:00" =>60, "01:15" =>75,
+                       "01:30" =>90, "01:45"=>105, "02:00" =>120, "02:15"=>135,
+                       "02:30" =>150, "02:45" =>165, "03:00"=>180 }
 
   field :memo,                 type: String
   field :sd,  as: :start_date, type: DateTime
-  field :du,  as: :duration,   type: Integer  , default: DURATION[:"00:30"]
+  field :du,  as: :duration,   type: Integer  , default: DURATION["00:30"]
 
 #TODO:
   # Fix the Duration field, one suggestion is to store the HH MM in a Separated string fields, and list

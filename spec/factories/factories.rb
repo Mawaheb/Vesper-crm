@@ -5,14 +5,7 @@ FactoryGirl.define do
     status :not_contacted
   end
 
-  factory :contact do
-    first_name 'John'
-    last_name 'Smith'
-    email 'JS@example.com'
-    phone_num '111222111222'
 
-    client
-  end
 
   factory :meeting do
     memo 'This is a Memo'
