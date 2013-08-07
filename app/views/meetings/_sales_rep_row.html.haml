@@ -1,13 +1,11 @@
 %table{cellpadding: "10"}
   %tr
-    %th First name
-    %th Last name
+    %th Name
     %th Phone
     %th Email
   - for sr in @meeting.sales_reps
     %tr
-      %td= h sr.first_name
-      %td= h sr.last_name
+      %td= h sr.name
       %td= h sr.phone_num
       %td= h sr.email
 
