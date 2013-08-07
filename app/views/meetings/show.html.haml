@@ -17,14 +17,19 @@
 = render 'client_row'
 
 %br
-  %u
-    %h4 Sales represntators attending this meeting:
-  = render 'sales_rep_row'
+.row
+  .col-lg-6
+    %u
+      %h4 Sales represntators attending this meeting:
+    = render 'sales_rep_row'
 
-  %u
-    %h4 Contacts attending this meeting:
-= render 'contact_row'
+  .col-lg-6
+    %u
+      %h4 Contacts attending this meeting:
+    = render 'contact_row'
+%br
+.btn-group
 
-= link_to 'Edit', edit_meeting_path(@meeting)
-|
-\#{link_to 'Back', meetings_url}
+  = link_to 'Edit', edit_meeting_path(@meeting)
+  |
+  \#{link_to 'Back', meetings_url}
