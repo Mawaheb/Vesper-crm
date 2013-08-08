@@ -7,6 +7,7 @@
 		<th>Date</th>
 		<th>Duration</th>
 		<th>Memo</th>
+		<th>Any follow-ups?</th>
 		<th></th>
 		<th></th>
 		<th></th>
@@ -16,6 +17,11 @@
 		<td><%=h meeting.start_date.to_s(:short) %></td>
 		<td><%=h meeting.duration %> Minutes</td>
 		<td><%=h meeting.memo %></td>
+		<% if meeting.follow_ups.any?%>
+		  <td>Yes</td>
+		<%else%>
+		  <td>No</td>
+		<% end %>
 		<td><%= link_to 'Show', meeting %></td>
 		<td><%= link_to 'Edit', edit_meeting_path(meeting) %> </td>
 		<td><%= link_to 'Delete', meeting, method: :delete, data: { confirm: 'Are you sure?'} %></td>

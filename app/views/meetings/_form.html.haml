@@ -10,16 +10,21 @@
 
   = f.input :start_date, as: :datetime
   = f.input :duration, :collection => (Meeting::DURATION)
-  = f.input :memo, as: :text
+  = f.input :memo, as: :text ,:input_html => { :rows => 4 }
+  %br
+  %hr
+
   %h4 Please Select Sales Resp to attend this meeting.
   - for sr in SalesRep.all
     = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
     = sr.first_name
     %br
+  %hr
 
   %h4 Please select the client that this meeting is made for
   = f.input :client_id, collection:(Client.all)
   %br
+  %hr
 
   %h4 Please select contacts to attend this meeting
   - for c in Contact.all
@@ -27,6 +32,18 @@
     = c.first_name
     %br
   %br
+  %hr
+
+  %h4 Any follow Ups ?
+  = f.simple_fields_for :follow_ups do |ff|
+    = ff.input :type, collection: (FollowUp::TYPES), required: false
+    = ff.input :done, as: :select , required: false
+    = ff.input :status , required: false
+    = ff.input :due , as: :date , required: false
+    = ff.input :complete_date, as: :date , required: false
+    = ff.input :memo, as: :text ,:input_html => { :rows => 4 } , required: false
+    = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all)
+
 
 
   = f.button :submit

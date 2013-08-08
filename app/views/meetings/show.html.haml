@@ -28,7 +28,13 @@
       %h4 Contacts attending this meeting:
     = render 'contact_row'
 %br
-.btn-group
+
+  - if @meeting.follow_ups.any?
+    %table{cellpadding: "8"}
+
+  - else
+    %h4 there are no follow ups
+
 
   = link_to 'Edit', edit_meeting_path(@meeting)
   |

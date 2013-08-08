@@ -4,7 +4,9 @@ class Meeting
   belongs_to :client
   has_and_belongs_to_many :contacts
   has_and_belongs_to_many :sales_reps
-  #has_many :follow_ups
+  has_many :follow_ups
+
+  accepts_nested_attributes_for :follow_ups, allow_destroy: true
 
   validates_presence_of :client_id
   validates_presence_of :sales_rep_ids
@@ -18,6 +20,10 @@ class Meeting
   field :memo,                 type: String
   field :sd,  as: :start_date, type: DateTime
   field :du,  as: :duration,   type: Integer  , default: DURATION["00:30"]
+
+
+   # attr_accessible :memo, :start_date, :duration, :follow_ups_attributes, :contacts_attributes, :sales_reps_attributes,
+                   # :client_id
 
 #TODO:
   # Fix the Duration field, one suggestion is to store the HH MM in a Separated string fields, and list
