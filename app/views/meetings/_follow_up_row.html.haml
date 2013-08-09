@@ -1,0 +1,19 @@
+%u
+  %h4 This meeting has the following Follow ups:
+%table{cellpadding: "10"}
+  %tr
+    %th Type
+    %th Assigned to
+    %th Status
+    %th Due date
+    %th Complete date
+  - for fl in @meeting.follow_ups
+    %tr
+      %td= h fl.type
+      %td= h get_sales_rep_name(fl.sales_rep_id)
+      %td= h fl.status
+      - if fl.due_date.blank?
+        %td Not set by the assigned User yet.
+      - else
+        %td= h fl.due_date.to_s(:short)
+      %td= h fl.complete_date.to_s(:short)

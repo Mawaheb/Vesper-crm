@@ -39,7 +39,8 @@
     = ff.input :type, collection: (FollowUp::TYPES), required: false
     = ff.input :done, as: :select , required: false
     = ff.input :status , required: false
-    = ff.input :due , as: :date , required: false
+    = ff.input :due_date , as: :date , required: false, disabled: true,
+      hint: 'Only the assigned user can estimate the Due date.'
     = ff.input :complete_date, as: :date , required: false
     = ff.input :memo, as: :text ,:input_html => { :rows => 4 } , required: false
     = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all)

@@ -30,7 +30,7 @@
 %br
 
   - if @meeting.follow_ups.any?
-    %table{cellpadding: "8"}
+    = render 'follow_up_row'
 
   - else
     %h4 there are no follow ups

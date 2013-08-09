@@ -32,6 +32,26 @@
   %b Sex:
   = @sales_rep.sex
 
+
+  - if @sales_rep.follow_ups.any?
+    %u
+      %h4 Assigned Follow Ups :
+
+    %table{cellpadding: "10"}
+      %tr
+        %th Type
+        %th Status
+        %th Complete Date
+
+      - for fl in @sales_rep.follow_ups
+        %tr
+          %td= h fl.type
+          %td= h fl.status
+          %td= h fl.complete_date
+          %td= link_to "See assignment details", meeting_path(fl.meeting_id)
+  - else
+    %h4 There are no follow-ups assigned.
+
 = link_to 'Edit', edit_sales_rep_path(@sales_rep)
 |
 \#{link_to 'Back', sales_reps_path}

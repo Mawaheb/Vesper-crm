@@ -7,6 +7,7 @@
     <th>Phone Number</th>
     <th>Email</th>
     <th>Sex</th>
+    <th>Has follow-ups?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,11 @@
   	<td><%= sales_rep.phone_num %></td>
   	<td><%= sales_rep.email %></td>
   	<td><%= sales_rep.sex %></td>
+  	<% if sales_rep.follow_ups.any? %>
+  	  <td>Yes</td>
+  	<% else %>
+  	  <td>No</td>
+  	<% end %>
     <td><%= link_to 'Show', sales_rep %></td>
     <td><%= link_to 'Edit', edit_sales_rep_path(sales_rep) %></td>
     <td><%= link_to 'Destroy', sales_rep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
