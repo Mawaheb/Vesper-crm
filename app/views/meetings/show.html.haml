@@ -17,23 +17,23 @@
 = render 'client_row'
 
 %br
-.row
-  .col-lg-6
-    %u
-      %h4 Sales represntators attending this meeting:
-    = render 'sales_rep_row'
+  .row
+    .col-lg-6
+      %u
+        %h4 Sales represntators attending this meeting:
+      = render 'sales_rep_row'
 
-  .col-lg-6
-    %u
-      %h4 Contacts attending this meeting:
-    = render 'contact_row'
+    .col-lg-6
+      %u
+        %h4 Contacts attending this meeting:
+      = render 'contact_row'
 %br
 
-  - if @meeting.follow_ups.any?
-    = render 'follow_up_row'
+- if @meeting.follow_ups.any?
+  = render 'follow_up_row'
 
-  - else
-    %h4 there are no follow ups
+- else
+  %h4 there are no follow ups
 
 
   = link_to 'Edit', edit_meeting_path(@meeting)
