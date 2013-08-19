@@ -34,6 +34,10 @@
   %br
   %hr
 
+  %script{:type => "text/x-handlebars"}
+    %div
+      %h1 EMBER GOES HERE {{controller}}
+  %br
   %h4 Any follow Ups ?
   = f.simple_fields_for :follow_ups do |ff|
     = ff.input :type, collection: (FollowUp::TYPES), required: false
