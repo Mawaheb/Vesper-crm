@@ -39,7 +39,9 @@ end
 gem 'jquery-rails'
 gem 'ember-rails'
 gem 'ember-source', '1.0.0.rc.7'
+gem 'emblem-rails'
 
+gem "active_model_serializers"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

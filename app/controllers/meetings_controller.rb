@@ -13,6 +13,10 @@ class MeetingsController < ApplicationController
     @sales_reps = SalesRep.all
     @meeting    = Meeting.new
     @meeting.follow_ups.build
+    respond_to do |format|
+      format.html
+      # format.json { render :json => @sales_reps , root: false }
+    end
   end
 
 

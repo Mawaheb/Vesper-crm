@@ -8,4 +8,15 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields", data: { id: id, fields: fields.gsub("\n", "")})
 
   end
+
+  def json_for(target, options = {})
+    target ||= []
+    options[:scope] ||= self
+    options[:url_options] ||= url_options
+    target.active_model_serializer.new(target, options).to_json
+  end
+
+  # def sales_json
+    # return  SalesRep.all.to_json
+  # end
 end

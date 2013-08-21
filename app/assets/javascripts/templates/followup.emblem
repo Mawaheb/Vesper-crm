@@ -1,0 +1,12 @@
+h2 Hello!
+if isAdding  
+  label Adding Mode
+  p Follow-Up Typ:
+  p = view Ember.Select
+  p Assign to SalesRep:  
+  p = view Ember.Select
+  
+  button{action "doneAdding"} Save
+else
+  p isNotAdding!
+  button{action "add"} Add

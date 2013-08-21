@@ -35,6 +35,9 @@ GEM
       ember-source
       execjs
       handlebars-source
+    barber-emblem (0.1.1)
+      barber (>= 0.4.1)
+      emblem-source
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -62,6 +65,10 @@ GEM
       railties (>= 3.1)
     ember-source (1.0.0.rc7)
       handlebars-source (= 1.0.12)
+    emblem-rails (0.1.1)
+      barber-emblem (~> 0.1.1)
+      ember-rails (>= 0.11.1)
+    emblem-source (0.3.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -174,11 +181,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   better_errors
   binding_of_caller
   capybara
   ember-rails
   ember-source (= 1.0.0.rc.7)
+  emblem-rails
   factory_girl_rails
   haml
   jquery-rails

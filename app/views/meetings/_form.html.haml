@@ -1,3 +1,4 @@
+
 = simple_form_for @meeting do |f|
   - if @meeting.errors.any?
     #error_explanation
@@ -13,6 +14,8 @@
   = f.input :memo, as: :text ,:input_html => { :rows => 4 }
   %br
   %hr
+
+
 
   %h4 Please Select Sales Resp to attend this meeting.
   - for sr in SalesRep.all
@@ -34,9 +37,10 @@
   %br
   %hr
 
-  %script{:type => "text/x-handlebars"}
-    %div
-      %h1 EMBER GOES HERE {{controller}}
+  %script#application{:type => "text/x-emblem"}
+
+
+
   %br
   %h4 Any follow Ups ?
   = f.simple_fields_for :follow_ups do |ff|
@@ -50,7 +54,14 @@
     = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all)
 
 
-
+    %select#s1
   = f.button :submit
+:javascript
+  window.sales_reps = #{ json_for @sales_reps, each_serializer: SalesRepSerializer }
+  console.log(sales_reps);
+  $.each(sales_reps,function(index, value){
+    $('#s1').append('<option value="'+value.id+ '">'+value.first_name+'</option>');
+  });
+
 
 <!-- <%= f.collection_select :client_id, Client.all, :id, :name %> -->
