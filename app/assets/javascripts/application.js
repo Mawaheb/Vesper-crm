@@ -19,6 +19,12 @@
 //= require crm_solution
 
 // for more details see: http://emberjs.com/guides/application/
-App = Ember.Application.create({ LOG_TRANSTIONS: true});
+App = Ember.Application.create({
+	ready: function() {
+		setInterval(function(){
+			App.SalesRepsController.refresh();
+		}, 2000);
+	}
+});
 
 //= require_tree .

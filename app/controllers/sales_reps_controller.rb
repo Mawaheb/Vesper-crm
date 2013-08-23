@@ -6,7 +6,7 @@ class SalesRepsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @sales_reps }
+      format.json { render json: @sales_reps, root: false }
     end
   end
 

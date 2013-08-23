@@ -41,6 +41,7 @@
 
 
 
+
   %br
   %h4 Any follow Ups ?
   = f.simple_fields_for :follow_ups do |ff|
@@ -59,9 +60,12 @@
 :javascript
   window.sales_reps = #{ json_for @sales_reps, each_serializer: SalesRepSerializer }
   console.log(sales_reps);
-  $.each(sales_reps,function(index, value){
-    $('#s1').append('<option value="'+value.id+ '">'+value.first_name+'</option>');
-  });
 
+  App.salesReps  = new Array();
+  $.each(sales_reps,function(index, value){
+  myObject = Ember.Object.create({name: value.first_name +' '+ value.last_name , id: value.id});
+  App.salesReps.pushObject(myObject);
+
+  });
 
 <!-- <%= f.collection_select :client_id, Client.all, :id, :name %> -->

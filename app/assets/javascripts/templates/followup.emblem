@@ -1,10 +1,7 @@
 h2 Hello!
 if isAdding  
   label Adding Mode
-  p Follow-Up Typ:
-  p = view Ember.Select
-  p Assign to SalesRep:  
-  p = view Ember.Select
+     p  #{view Ember.Select  contentBinding="App.salesReps"  optionValuePath="content.id"   optionLabelPath="content.name"}
   
   button{action "doneAdding"} Save
 else
