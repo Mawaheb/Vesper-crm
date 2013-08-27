@@ -21,6 +21,7 @@
 // for more details see: http://emberjs.com/guides/application/
 App = Ember.Application.create({
 	ready: function() {
+		App.SalesRepsController.set('content',App.SalesRep.find());
 		setInterval(function(){
 			App.SalesRepsController.refresh();
 		}, 2000);
