@@ -56,3 +56,7 @@ gem "active_model_serializers"
 
 # To use debugger
 # gem 'debugger'
+gem 'ember-konacha-rails', github: 'kristianmandrup/ember-konacha-rails'
+gem "konacha", :group => [:development, :test]
+gem "poltergeist", :group => [:development, :test]
+gem "coffee-rails"
