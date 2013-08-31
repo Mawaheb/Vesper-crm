@@ -4,10 +4,13 @@
 
   <a class="navbar-brand" href="#">Vesper CRM</a>
     <ul class="nav navbar-nav">
-      <li class="active"><a  href="#">Meetings</a></li>
-      <li><a href="#">Clients</a></li> 
-      <li><a href="#">Sales Reps</a></li> 
-   
+      <li>{{#linkTo 'meetings'}}Meetings{{/linkTo}}</li>
+      <li>{{#linkTo 'clients'}}Clients{{/linkTo}}</li> 
+      <li>{{#linkTo 'sales_reps'}}Sales Reps{{/linkTo}}</li>    
     </ul>
 
 </nav>
+
+<div class="container">
+  {{outlet}}
+</div>
