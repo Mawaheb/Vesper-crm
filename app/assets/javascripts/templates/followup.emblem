@@ -1,9 +1,0 @@
-h2 Hello!
-if isAdding  
-  label Adding Mode
-     p  #{view Ember.Select  contentBinding="App.SalesRepsController.content"  optionValuePath="content.id"   optionLabelPath="content.firstName"}
-  
-  button{action "doneAdding"} Save
-else
-  p isNotAdding!
-  button{action "add"} Add

@@ -6,11 +6,6 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %header
-    .navbar.navbar-fixed-top
-      %ul.nav.nav-pills
-        %li= link_to "Meetings",   meetings_url
-        %li= link_to "Sales reps", sales_reps_url
-        %li= link_to "Clients",    clients_url
+    
   .container
     = yield

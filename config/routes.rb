@@ -1,14 +1,14 @@
 CrmSolution::Application.routes.draw do
-  resources :sales_reps
+  # resources :sales_reps
 
-  resources :meetings
+  # resources :meetings
 
-  resources :clients do
-    collection do
-      put 'assign_sales_rep'
-    end
-  end
-  root :to => 'meetings#index'
+  # resources :clients do
+  #   collection do
+  #     put 'assign_sales_rep'
+  #   end
+  # end
+  root :to => 'application#index'
 
 
   # The priority is based upon order of creation:
