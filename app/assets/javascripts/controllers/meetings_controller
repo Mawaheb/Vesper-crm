@@ -1,0 +1,3 @@
+App.MeetingsController = Ember.ArrayController.extend({
+  needs: ['application']
+});

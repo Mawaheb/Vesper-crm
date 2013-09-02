@@ -1,2 +1,11 @@
 <h1>THIS IS MEETINGS TEMPlATE</h1>
-{{controller}}
+
+{{view Ember.Select
+  contentBinding="controller.clientsForSelect"
+  optionValuePath="content.id"
+  optionLabelPath="content.name"
+
+  }}
+  
+  <hr />
+
