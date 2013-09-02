@@ -1,5 +1,10 @@
 <h1>Clients Template</h1>
 {{controller}}
+
 {{#each controller}}
+  
   <li>{{name}}</li>
+ 
 {{/each}}
+{{#linkTo 'clients.new'}}Add New Client{{/linkTo}}
+{{outlet}}
