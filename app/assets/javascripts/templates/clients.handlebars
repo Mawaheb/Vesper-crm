@@ -1,10 +1,11 @@
 <h1>Clients Template</h1>
 {{controller}}
 
-{{#each controller}}
-  
-  <li>{{name}}</li>
- 
+{{#each controller}}  
+  <li>{{name}}</li> 
+  {{else}}
+   <li>You have no Clients.</li>
 {{/each}}
+
 {{#linkTo 'clients.new'}}Add New Client{{/linkTo}}
 {{outlet}}

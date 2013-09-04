@@ -1,5 +1,5 @@
 App.Client = DS.Model.extend({
-	name: DS.attr('string'),
+	name: DS.attr("string")
 });
 
 App.Client.FIXTURES = [{
