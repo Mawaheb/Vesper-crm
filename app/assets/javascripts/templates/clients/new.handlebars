@@ -1,8 +1,8 @@
-<form {{action "save" on="submit"}} >
+<form {{action "save" on="submit" }} >
   <div class="row">
     <div class="col-lg-3">
       <p>
-        {{view Ember.TextField valueBinding='name' type="text" class="form-control"}}
+        {{view Ember.TextField valueBinding='content.name' type="text" class="form-control"}}
       </p>
     </div>
   </div>
