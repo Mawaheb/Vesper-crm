@@ -85,4 +85,16 @@ class ClientsController < ApplicationController
     end
   end
 
+  def client_contacts
+    client = (params[:id])
+    cou = Contact.where(client_id: client)
+     @msg = { "success" => "true", "message" => "hello", "count" => cou}
+     
+ 
+    respond_to do |format|
+      format.html
+      format.json { render json: @msg }
+    end
+  end
+
 end
