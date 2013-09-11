@@ -39,7 +39,8 @@ class MeetingsController < ApplicationController
   def edit    
     @sales_reps = SalesRep.all
     @meeting = Meeting.find(params[:id])
-    @contacts = @meeting.contacts
+    @contacts = Contact.where(client_id: @meeting.client_id)
+    
   end
 
   def update
