@@ -29,12 +29,19 @@
    
     .col-lg-6
       %h4 Assign Contacts:
-      - for c in Contact.where(client_id: "51ffc45bd7037eb0fa000011")
-        = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
-        = c.first_name
-        %br
+      #checkboxes
+        -if @contacts.nil?
+          %p Please Select a Client.
+        -else
+          - for c in @contacts
+            = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
+            = c.first_name
+            %br
+        / %p No Any contacts for the selected client  
   %hr      
-      
+  
+  #sub
+
 
   %h4 Any follow Ups ?
 
@@ -55,11 +62,27 @@
   :javascript
     $(document).ready(function (){
       $('#meeting_client_id').change(function(){
-        var state = $('#meeting_client_id :selected').val();
-        if(state == "") state="0";
-        $.getJSON('/clients/client_contacts/' + state, function(data){
-          console.log(data);
-        })
+        var state = this.value;
+        if(state != "") 
+          {
+            $.getJSON('/clients/client_contacts/' + state, function(data){
+              //console.log(data);
+              $('#checkboxes').empty();              
+              if( data["contacts"].length == [] ) 
+              {              
+                $('#checkboxes').text("No Any contacts for the selected client");                
+              }
+              else {
+                $.each(data.contacts, function () {
+                var name = this.nf + " " + this.nl ;
+                $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'">'+name+'</option><br />').appendTo('#checkboxes');               
+                })
+              }
+              
+              //$('#sub').html(data);              
+            })  
+          }
+        else { $('#checkboxes').text("Please select a client"); }          
         // console.log($('#meeting_client_id :selected').val())
         return false;
       })
