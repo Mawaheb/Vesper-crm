@@ -30,32 +30,29 @@
 
 #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
-  = simple_form_for @sales_rep, remote: true, html: {"data-type" => :json} do |f|
-    .modal-content
-
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-        %h4.modal-title New Sales Rep
-
-      .modal-body
-
-       
-        = render 'form' , f: f
-        /   -if @sales_rep.errors.any?
-        /     %ul.errors
-        /       %li
-        /   .field            
-        /     = f.input :first_name        
-        /     = f.input :last_name
-        /     = f.input :title
-        /     = f.input :email
-        /     = f.input :phone_num
-        /   .actions
-        /     = f.submit 'Save'
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-        %button.btn.btn-primary{:action => "submit" , :type => "button"} Save changes
-        =f.button :submit, class: "btn-primary"
+    = simple_form_for @sales_rep, remote: true, html: {"data-type" => :json} do |f|
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title New Sales Rep
+        .modal-body
+         
+          = render 'form_fields' , f: f
+          /   -if @sales_rep.errors.any?
+          /     %ul.errors
+          /       %li
+          /   .field            
+          /     = f.input :first_name        
+          /     = f.input :last_name
+          /     = f.input :title
+          /     = f.input :email
+          /     = f.input :phone_num
+          /   .actions
+          /     = f.submit 'Save'
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+          / %button.btn.btn-primary{:action => "submit" , :type => "button"} Save changes
+          =f.button :submit, class: "btn-primary"
 
 / #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
 /   .modal-dialog
