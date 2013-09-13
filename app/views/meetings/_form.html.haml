@@ -10,6 +10,18 @@
 
   %h4 This meeting is made for :
   = f.input :client_id, collection:(Client.all)
+  / %a.btn{"data-toggle" => "modal", :href => "#new_client_modal"} Launch Modal
+
+  / #new_client_modal.modal.hide.fade
+  / .modal-header
+  /   %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+  /   %h3#clientAddModalLabel Add Client
+  / .modal-body
+  /   = form_for Client.new, remote: true do |f|
+  /     Last Name
+  /     \#{f.text_field :last_name}
+  /     / more form fields
+  /     = f.submit "Add Client", class: "btn btn-large btn-primary"
   %br
   %hr
 
@@ -39,8 +51,7 @@
             %br
         
   %hr      
-  
-  #sub
+ 
 
 
   %h4 Any follow Ups ?
@@ -58,6 +69,8 @@
 
 
   = f.button :submit
+
+
 
   :javascript
     $(document).ready(function (){
@@ -77,8 +90,7 @@
                 var name = this.nf + " " + this.nl ;
                 $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'">'+name+'</option><br />').appendTo('#checkboxes');               
                 })
-              }
-              
+              }              
               //$('#sub').html(data);              
             })  
           }

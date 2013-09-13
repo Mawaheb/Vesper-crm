@@ -3,10 +3,12 @@ class SalesRepsController < ApplicationController
   # GET /sales_reps.json
   def index
     @sales_reps = SalesRep.all
+    @sales_rep = SalesRep.new
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @sales_reps }
+
     end
   end
 
