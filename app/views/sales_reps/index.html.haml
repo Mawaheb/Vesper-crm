@@ -25,43 +25,32 @@
       %td= link_to 'Edit', edit_sales_rep_path(sales_rep)
       %td= link_to 'Destroy', sales_rep, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-/ = link_to 'New Sales rep', new_sales_rep_path, {class:"btn btn-primary btn-lg"}
-%a.btn.btn-primary.btn-lg{"data-toggle" => "modal", :href => "#myModal"} Add new Sales Rep
+-# = link_to 'New Sales rep', 
+-#           new_sales_rep_path, {class:"btn btn-primary btn-lg", 
+-#                               "data-toggle" => "modal", :href => "#myModal"}
+= render ('form_modal')
+= link_to 'New Sales rep', 
+          new_sales_rep_path, {class: "btn btn-primary btn-lg", 
+                              "data-toggle" => "modal", :'data-remote'=>true,
+                               }
 
-#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog
-    = simple_form_for @sales_rep, remote: true, html: {"data-type" => :json} do |f|
-      .modal-content
-        .modal-header
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-          %h4.modal-title New Sales Rep
-        .modal-body
-         
-          = render 'form_fields' , f: f
-          /   -if @sales_rep.errors.any?
-          /     %ul.errors
-          /       %li
-          /   .field            
-          /     = f.input :first_name        
-          /     = f.input :last_name
-          /     = f.input :title
-          /     = f.input :email
-          /     = f.input :phone_num
-          /   .actions
-          /     = f.submit 'Save'
-        .modal-footer
-          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-          / %button.btn.btn-primary{:action => "submit" , :type => "button"} Save changes
-          =f.button :submit, class: "btn-primary"
+                              
 
-/ #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-/   .modal-dialog
-/     .modal-content
-/       .modal-header
-/         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-/         %h4.modal-title Modal title
-/       .modal-body
-/         \...
-/       .modal-footer
-/         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-/         %button.btn.btn-primary{:type => "button"} Save changes
+-# %a.btn.btn-primary.btn-lg{"data-toggle" => "modal", :href => "#myModal"} Add new Sales Rep
+
+-# #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  -# .modal-dialog
+  -#   = simple_form_for @sales_rep, remote: true, html: {"data-type" => :json} do |f|
+  -#     .modal-content
+  -#       .modal-header
+  -#         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+  -#         %h4.modal-title New Sales Rep
+
+  -#       .modal-body         
+  -#         = render 'form_fields' , f: f   
+
+  -#       .modal-footer
+  -#         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+  -#         / %button.btn.btn-primary{:action => "submit" , :type => "button"} Save changes
+  -#         =f.button :submit, class: "btn-primary"
+
