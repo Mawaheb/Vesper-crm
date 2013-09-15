@@ -49,6 +49,7 @@ class SalesRepsController < ApplicationController
       if @sales_rep.save
         format.html { redirect_to @sales_rep, notice: 'Sales rep was successfully created.' }
         format.json { render json: @sales_rep, status: :created, location: @sales_rep }
+        format.js {}
       else
         format.html { render action: "new" }
         format.json { render json: @sales_rep.errors, status: :unprocessable_entity }

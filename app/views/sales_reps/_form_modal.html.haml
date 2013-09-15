@@ -1,15 +1,28 @@
 #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
     = simple_form_for @sales_rep, remote: true, html: {"data-type" => :json} do |f|
-      .modal-content
+      .modal-content        
         .modal-header
           %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
           %h4.modal-title New Sales Rep
 
-        .modal-body         
+        .modal-body 
+          #new_post        
           = render 'form_fields' , f: f   
 
         .modal-footer
           %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
           / %button.btn.btn-primary{:action => "submit" , :type => "button"} Save changes
           =f.button :submit, class: "btn-primary"
+
+:javascript          
+
+$(document).ready(function() {
+   $("#myModal").on("ajax:success", function(e, data, status, xhr) {
+     //$("#new_post").append(xhr.responseText);
+
+  }).bind("ajax:error", function(e, xhr, status, error) {
+    alert(xhr.responseText);
+    //$("#new_post").append("<p>ERROR</p>");
+  });
+});

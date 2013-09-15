@@ -4,7 +4,7 @@
 
 $ ()->
   $("form.new_sales_rep").on "ajax:success", (event, data, status, xhr) ->
-    $('#myModal').modal('hide')
-    console.log(data);
+    $('#myModal').modal('hide');
+    
     $('table tbody').append('<tr><td>' + data.nf + " " + data.nl + '</td><td>' + data.ttl + '</td><td>' + 
                              data.ph + '</td><td>' + data.em + '</td><td>' + data.sex + '</td></tr>')
