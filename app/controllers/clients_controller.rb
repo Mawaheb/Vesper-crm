@@ -30,6 +30,7 @@ class ClientsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @client }
+      format.js
     end
   end
 
@@ -49,9 +50,11 @@ class ClientsController < ApplicationController
       if @client.save
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @client.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

@@ -1,0 +1,18 @@
+#new_client.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    = simple_form_for @client, html: {"data-type" => :json }, :remote => true do |f|
+    
+      .modal-content        
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title New Client
+
+        .modal-body 
+          #new_post        
+          = render 'clients/form_fields' , f: f   
+
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+          -# %button.btn.btn-primary{:action => "submit" , :type => "button"} Save changes
+          =f.button :submit, class: "btn-primary"
+

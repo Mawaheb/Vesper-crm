@@ -1,8 +1,5 @@
 = simple_form_for @client do |f|
-  = f.input :name
-  = f.input :phone
-  = f.input :url
-  = f.input :status , collection: (Client::STATUS_TYPES)
+  = render 'form_fields' , f: f
   %br
   = f.fields_for :contacts do |builder|
     = render 'contact_fields', f: builder

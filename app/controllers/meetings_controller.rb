@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   def index
-    @meetings = Meeting.all
+    @meetings = Meeting.all   
   end
 
 
@@ -11,6 +11,7 @@ class MeetingsController < ApplicationController
 
   def new
     @sales_reps = SalesRep.all
+    @client = Client.new
     @meeting    = Meeting.new
     @meeting.follow_ups.build
   end
