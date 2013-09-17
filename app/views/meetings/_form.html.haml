@@ -1,5 +1,6 @@
 = render 'new_client_modal'
 = simple_form_for @meeting do |f|
+
   - if @meeting.errors.any?
     #error_explanation
       %h2
@@ -9,14 +10,15 @@
         - @meeting.errors.full_messages.each do |msg|
           %li= msg
 
-  %h4 This meeting is made for :
-  = f.input :client_id, collection:(Client.all)
-
-  
-
-  = link_to 'New Client', 
-            new_client_path, {class:"btn btn-primary btn-lg", 
-                              :'data-remote'=>true }
+  .row
+    %h4 This meeting is made for :
+    %br
+    .col-lg-3          
+      = f.input :client_id, collection:(Client.all), input_html: { class: 'form-control' }
+    .col-lg-6
+      = link_to 'New Client', 
+                new_client_path, {class:"btn btn-primary btn-lg", 
+                                  :'data-remote'=>true }
   
   
   %br

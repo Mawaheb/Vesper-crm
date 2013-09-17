@@ -16,3 +16,15 @@
           -# %button.btn.btn-primary{:action => "submit" , :type => "button"} Save changes
           =f.button :submit, class: "btn-primary"
 
+:javascript          
+
+$(document).ready(function() {
+   $("#new_client").on("ajax:success", function() {
+     //$("#new_post").append(xhr.responseText);
+     alert("success!");
+     $("#new_client").modal('hide');
+  }).bind("ajax:error", function(e, xhr, status, error) {
+    alert(xhr.responseText);
+    //$("#new_post").append("<p>ERROR</p>");
+  });
+});

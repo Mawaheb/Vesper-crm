@@ -1,4 +1,4 @@
-= simple_form_for @client do |f|
+= simple_form_for @client  do |f|
   = render 'form_fields' , f: f
   %br
   = f.fields_for :contacts do |builder|
@@ -9,3 +9,4 @@
 
 
   = f.button :submit, class: "btn btn-primary btn-lg"
+-# = simple_form_for(@client, :defaults => { :wrapper_html => {:class => 'form-group'}, :input_html => { :class => 'form-control' } }) do |f|
