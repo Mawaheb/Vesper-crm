@@ -40,6 +40,8 @@
    
     .col-lg-6
       %h4 Assign Contacts:
+      #container.hide        
+        =link_to image_tag("ajax-loader.gif")
       #checkboxes
         -if @contacts.nil?
           %p Please Select a Client.
@@ -74,28 +76,34 @@
 
   :javascript
     $(document).ready(function (){
+      var loading    = $('#container');
+      var checkboxes = $('#checkboxes') ;
+
       $('#meeting_client_id').change(function(){
+        loading.removeClass("hide"); 
+        checkboxes.empty();         
         var state = this.value;
         if(state != "") 
-          {
-            $.getJSON('/clients/client_contacts/' + state, function(data){
-              //console.log(data);
-              $('#checkboxes').empty();              
+          {            
+            $.getJSON('/clients/client_contacts/' + state, function(data){              
               if( data["contacts"].length == [] ) 
-              {              
-                $('#checkboxes').text("No Any contacts for the selected client");                
+              {  
+                loading.addClass("hide");            
+                checkboxes.text("No Any contacts for the selected client");                
               }
               else {
+                loading.addClass("hide");
                 $.each(data.contacts, function () {
                 var name = this.nf + " " + this.nl ;
-                $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'">'+name+'</option><br />').appendTo('#checkboxes');               
+                $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'">'+name+'</option><br />').appendTo(checkboxes);               
                 })
-              }              
-              //$('#sub').html(data);              
-            })  
+              }          
+            })
           }
-        else { $('#checkboxes').text("Please select a client"); }          
-        // console.log($('#meeting_client_id :selected').val())
+        else {
+          loading.addClass("hide"); 
+          checkboxes.text("Please select a client");
+        }
         return false;
       })
     });
