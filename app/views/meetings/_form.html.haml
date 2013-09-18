@@ -53,7 +53,8 @@
             = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
             = c.first_name
             %br
-      %button#addContact.btn.hide{type: "button"} new
+      %button#addContact.btn{type: "button"} Add contact
+      %br
       = render 'contact_fields'
              
   %hr      
@@ -81,19 +82,27 @@
 
   :javascript
     $(document).ready(function (){
-      var loading    = $('#container');
-      var checkboxes = $('#checkboxes') ;
-      var add_btn    = $('#addContact'); 
+      var loading         = $('#container');
+      var checkboxes      = $('#checkboxes') ;
+      var add_btn         = $('#addContact'); 
+      var contacts_fields = $('#fields');
+      var submit          = $('#submit');
 
-      add_btn.click(function() {
-        alert("Button was clicked!");
-        $('#fields').slideDown();
-        
+      contacts_fields.hide();
+      add_btn.hide();
+
+      add_btn.click(function() {        
+        contacts_fields.slideDown();        
+      });
+
+      $('#cancel').click(function() {
+        contacts_fields.slideUp();
       });
 
       $('#meeting_client_id').change(function(){
         loading.removeClass("hide"); 
-        checkboxes.empty();         
+        checkboxes.empty();
+        contacts_fields.hide();         
         var state = this.value;
         if(state != "") 
           {            
@@ -102,10 +111,11 @@
               {  
                 loading.addClass("hide");            
                 checkboxes.text("No Any contacts for the selected client");
-                add_btn.removeClass('hide');                
+                add_btn.show();                
               }
               else {
                 loading.addClass("hide");
+                add_btn.hide();
                 $.each(data.contacts, function () {
                 var name = this.nf + " " + this.nl ;
                 $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'">'+name+'</option><br />').appendTo(checkboxes);               
@@ -116,6 +126,7 @@
         else {
           loading.addClass("hide"); 
           checkboxes.text("Please select a client");
+          add_btn.hide();
         }
         return false;
       })
