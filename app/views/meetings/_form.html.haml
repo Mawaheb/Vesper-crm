@@ -37,12 +37,15 @@
         = sr.first_name
         %br 
 
-   
+    
     .col-lg-6
+       
       %h4 Assign Contacts:
       #container.hide        
         =link_to image_tag("ajax-loader.gif")
+
       #checkboxes
+                
         -if @contacts.nil?
           %p Please Select a Client.
         -else
@@ -50,7 +53,9 @@
             = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
             = c.first_name
             %br
-        
+      %button#addContact.btn.hide{type: "button"} new
+      = render 'contact_fields'
+             
   %hr      
  
 
@@ -68,7 +73,7 @@
     = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all)
 
 
-
+  
   = f.button :submit
 
 
@@ -78,6 +83,13 @@
     $(document).ready(function (){
       var loading    = $('#container');
       var checkboxes = $('#checkboxes') ;
+      var add_btn    = $('#addContact'); 
+
+      add_btn.click(function() {
+        alert("Button was clicked!");
+        $('#fields').slideDown();
+        
+      });
 
       $('#meeting_client_id').change(function(){
         loading.removeClass("hide"); 
@@ -89,7 +101,8 @@
               if( data["contacts"].length == [] ) 
               {  
                 loading.addClass("hide");            
-                checkboxes.text("No Any contacts for the selected client");                
+                checkboxes.text("No Any contacts for the selected client");
+                add_btn.removeClass('hide');                
               }
               else {
                 loading.addClass("hide");
