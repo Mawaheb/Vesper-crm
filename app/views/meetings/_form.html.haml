@@ -82,6 +82,7 @@
 
   :javascript
     $(document).ready(function (){
+    // Caching the Variables .
       var loading         = $('#container');
       var checkboxes      = $('#checkboxes') ;
       var add_btn         = $('#addContact'); 
@@ -91,19 +92,45 @@
       contacts_fields.hide();
       add_btn.hide();
 
+    // This button will Show the new Contact fields.
       add_btn.click(function() {        
         contacts_fields.slideDown();        
       });
 
+    // This button will hide the new Contact fileds (cancel).
       $('#cancel').click(function() {
         contacts_fields.slideUp();
       });
 
+    // This button will handle adding new contact submesion.
+      submit.click(function() {
+        var client_id    = $('#meeting_client_id').val();
+        var first_name  = $('#first_name').val();
+        var last_name   = $('#last_name').val();
+        var dataString  =   client_id + first_name + " " + last_name  
+        var jsonObject = { contact: { fn: first_name , ln: last_name }, c_id: client_id }
+
+                      
+
+        //alert(  first_name + " " + last_name + client_id ); 
+        $.ajax({
+          type: "PUT",
+          url: '/clients/add_contacts/' + client_id ,
+          data:   jsonObject  ,
+          dataType: 'script' ,
+         })
+            //.done(function( msg ){
+            //  alert( "Data Saved: " + msg.client );
+              // contacts_fields.slideUp();
+            // });
+
+      });
+
       $('#meeting_client_id').change(function(){
-        loading.removeClass("hide"); 
-        checkboxes.empty();
-        contacts_fields.hide();         
-        var state = this.value;
+        loading.removeClass("hide"); // The Ajax loader gif .
+        checkboxes.empty();          // The div that contains the contacts.
+        contacts_fields.hide();      // The div for adding new cotacts.         
+        var state = this.value;      // The currently selected Client ID .
         if(state != "") 
           {            
             $.getJSON('/clients/client_contacts/' + state, function(data){              

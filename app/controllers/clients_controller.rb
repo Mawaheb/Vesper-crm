@@ -62,6 +62,7 @@ class ClientsController < ApplicationController
   # PUT /clients/1
   # PUT /clients/1.json
   def update
+
     params[:client][:contact_ids] ||= []
     @client = Client.find(params[:id])
 
@@ -98,6 +99,29 @@ class ClientsController < ApplicationController
       format.html
       format.json { render json: @msg }
     end
+  end
+
+  def add_contacts
+    # create a new Contact and give it the name/last name (to have a specific ID for it).
+    # update attributes of the giving client and asgin the newly created contact to it.
+
+
+    cl = (params[:c_id])
+    fn = (params[:contact][:fn])
+    ln = (params[:contact][:ln])
+    client = Client.find(cl);
+    contact = Contact.new(first_name: fn, last_name: ln)
+    client.contacts << contact
+
+    @msg = { "client" => client.name , "fn" => fn , "ln" => ln}
+
+    # contact = params[:id][:contact]    
+    # client.update_attributes :contacts, client.contacts << contact
+    respond_to do |format|
+      format.html
+      format.json { render json: @msg }
+      format.js
+    end  
   end
 
 end
