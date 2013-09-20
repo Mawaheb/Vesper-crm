@@ -13,4 +13,8 @@
         %li= link_to "Sales reps", sales_reps_url
         %li= link_to "Clients",    clients_url
   .container
+    - flash.each do |name, msg|
+      %div{ class: "alert alert-#{name == :notice ? "success" : "error"}" }
+        %button.close{"data-dismiss" => "alert", type: "button"} ×
+        = msg
     = yield

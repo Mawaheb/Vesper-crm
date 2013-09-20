@@ -112,11 +112,7 @@ class ClientsController < ApplicationController
     client = Client.find(cl);
     contact = Contact.new(first_name: fn, last_name: ln)
     client.contacts << contact
-
     @msg = { "client" => client.name , "fn" => fn , "ln" => ln}
-
-    # contact = params[:id][:contact]    
-    # client.update_attributes :contacts, client.contacts << contact
     respond_to do |format|
       format.html
       format.json { render json: @msg }
