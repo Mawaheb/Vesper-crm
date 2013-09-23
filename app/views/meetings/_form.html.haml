@@ -24,12 +24,12 @@
   %hr
 
   .row
-    .col-lg-5
-      = f.input :start_date, as: :datetime
-    .col-lg-3  
-      = f.input :duration, :collection => (Meeting::DURATION)
+    .col-lg-3
+      = f.input :start_date,:input_html =>{ class: 'form-control'}
+    .col-lg-2  
+      = f.input :duration, :collection => (Meeting::DURATION),:input_html =>{ class: 'form-control'}
     .col-lg-4 
-      = f.input :memo, as: :text ,:input_html => { :rows => 4 , class: 'form-control'}
+      = f.input :memo, as: :text ,:input_html => { :rows => 2 , class: 'form-control'}
   %hr
 
   .row
@@ -38,11 +38,8 @@
       - for sr in SalesRep.all
         = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
         = sr.first_name
-        %br 
-
-    
-    .col-lg-6
-       
+        %br     
+    .col-lg-6       
       %h4 Assign Contacts:
       #container.hide        
         =link_to image_tag("ajax-loader.gif")

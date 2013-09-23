@@ -41,6 +41,7 @@ class MeetingsController < ApplicationController
     @sales_reps = SalesRep.all
     @meeting = Meeting.find(params[:id])
     @contacts = Contact.where(client_id: @meeting.client_id)
+    @client   = Client.find_by(id: @meeting.client_id)
     
   end
 
