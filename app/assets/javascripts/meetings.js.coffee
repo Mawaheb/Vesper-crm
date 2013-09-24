@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $('#meeting_start_date').datepicker
+  $("#meeting_start_date, #meeting_follow_ups_attributes_0_complete_date").datepicker
     dateFormat: 'yy-mm-dd'
