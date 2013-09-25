@@ -1,0 +1,19 @@
+.followups_div
+  %fieldset
+    .followup
+      .row
+        .col-lg-2
+          = ff.input :type, collection: (FollowUp::TYPES), required: false ,:input_html =>{ class: 'form-control'} 
+       
+        .col-lg-2
+          = ff.input :due_date , required: false, disabled: true,:input_html =>{ class: 'form-control'} ,
+            hint: 'Only the assigned user can estimate the Due date.'
+        .col-lg-2
+          = ff.input :complete_date, required: false ,:input_html =>{ class: 'form-control cmplDate'} 
+        
+        .col-lg-2
+          = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all),:input_html =>{ class: 'form-control'}   
+        .col-lg-3
+          = ff.input :memo, as: :text ,:input_html => {class: 'form-control', :rows => 3 } , required: false
+    %br
+    %hr
