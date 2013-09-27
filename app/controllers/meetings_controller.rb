@@ -28,11 +28,15 @@ class MeetingsController < ApplicationController
     @meeting    = Meeting.new(params[:meeting])
     @meeting.sales_reps << sales_rps  # Assigning Sales_reps to the meeting.
     @meeting.contacts   << contacts
-
+    @client = params[:meeting][:client_id]
     if @meeting.save
       redirect_to @meeting , notice: 'Meeting was successfully created.'
     else
-      render action: "new"
+      respond_to do |format|
+        format.html { render action: "new" }
+        format.json { render json: @meeting.errors, status: :unprocessable_entity }
+        format.js
+      end  
     end
   end
 

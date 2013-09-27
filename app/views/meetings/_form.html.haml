@@ -5,7 +5,7 @@
     #error_explanation
       %h2
         = pluralize(@meeting.errors.count, "error")
-        prohibited this sales_rep from being saved:
+        prohibited this meeting from being saved:
       %ul
         - @meeting.errors.full_messages.each do |msg|
           %li= msg
@@ -25,9 +25,15 @@
 
   .row
     .col-lg-3
-      = f.input :start_date,:input_html =>{ class: 'form-control'}
+      %label{for: "meeting_start_date"} Meeting Date
+      .input-group
+        %span.input-group-addon
+          %i.glyphicon.glyphicon-calendar        
+        = f.input_field :start_date, class: 'form-control', placeholder: "date"
+
     .col-lg-2  
       = f.input :duration, :collection => (Meeting::DURATION),:input_html =>{ class: 'form-control'}
+
     .col-lg-4 
       = f.input :memo, as: :text ,:input_html => { :rows => 2 , class: 'form-control'}
   %hr
@@ -61,17 +67,17 @@
  
 
 
-  %h4 Any follow Ups ?
+  
   
   = f.simple_fields_for :follow_ups do |ff|
     = render 'followup_fields', ff: ff
-  
-  %button#addFollowup.btn.btn-primary{type: "button"} Add more 
+  %button#addFollowup.btn.btn-primary.glyphicon.glyphicon-plus-sign{type: "button"}
+  %br
   %br
   %br  
 
-  
-  = f.button :submit
+   
+  = f.button :submit , class: "btn-success"
 
 
 
@@ -114,12 +120,22 @@
          if ($(this).is('input'))
           { 
             $(this).removeClass('hasDatepicker');
+            $(this).val("");
             $(this).datepicker({ dateFormat: 'dd-mm-yy' });
           }
         })
         num++ ;
-        cloned.appendTo('.followups_div');
-       
+        cloned.prepend("<hr />")
+        cloned.find('#rmvFields').removeClass('hidden');
+        cloned.appendTo('.followups_div').hide();
+        cloned.slideDown(); 
+
+      });
+      // This button removes the followup fields.
+      $('#rmvFields').click(function() { 
+        $(this).closest('fieldset').slideUp("normal",function(){
+          $(this).closest('fieldset').remove();
+        });
       });
 
     // This button will handle adding new contact submesion.
