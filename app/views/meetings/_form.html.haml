@@ -96,6 +96,15 @@
       contacts_fields.hide();
       add_btn.hide();
 
+    // This was added to capture the Enter key press on the add contact field, and triger the submit button,
+    // without it, the meeting form is submited instead.  
+    $('#last_name').keypress(function(e){
+      if (e.which == 13 ){
+        e.preventDefault();
+        submit.click();        
+      };
+    });
+
     // This button will Show the new Contact fields.
       add_btn.click(function() {        
         contacts_fields.slideDown();        

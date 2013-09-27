@@ -41,7 +41,8 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
-
+    config.color_enabled = true
+    config.tty = true
     config.include Mongoid::Matchers
   end
 end
