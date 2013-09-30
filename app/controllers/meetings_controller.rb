@@ -18,7 +18,7 @@ class MeetingsController < ApplicationController
 
 
   def create
-
+    dee
     sales_ids   = params[:sales_reps_ids]
     sales_rps   = SalesRep.any_in(id: sales_ids)
 
@@ -41,11 +41,17 @@ class MeetingsController < ApplicationController
   end
 
 
-  def edit    
+  def edit
     @sales_reps = SalesRep.all
     @meeting = Meeting.find(params[:id])
     @contacts = Contact.where(client_id: @meeting.client_id)
     @client   = Client.find_by(id: @meeting.client_id)
+    # @meeting.follow_ups.build
+
+    if @meeting.follow_ups.blank?
+      @meeting.follow_ups.build
+      @followup_is_empty = true      
+    end
     
   end
 

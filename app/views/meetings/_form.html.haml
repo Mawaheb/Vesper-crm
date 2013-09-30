@@ -67,11 +67,16 @@
  
 
 
-  
-  
-  = f.simple_fields_for :follow_ups do |ff|
-    = render 'followup_fields', ff: ff
+  .followups_div
+    %h4 Any follow Ups ?
+    = f.simple_fields_for :follow_ups do |ff|
+      = render 'followup_fields', ff: ff
+
+
+
   %button#addFollowup.btn.btn-primary.glyphicon.glyphicon-plus-sign{type: "button"}
+  -if @followup_is_empty
+    %button#edit_addBtn.btn{type: "button"} Add Followup
   %br
   %br
   %br  
@@ -90,7 +95,8 @@
       var add_btn         = $('#addContact'); 
       var contacts_fields = $('#fields');
       var submit          = $('#submit');
-      var num = 1 ;
+      var num             = $('.followup').length ;
+
       $('.alert').hide();
 
       contacts_fields.hide();
@@ -115,7 +121,7 @@
         contacts_fields.slideUp();
       });
 
-      $('#addFollowup').click(function(){
+      $('#addFollowup').click(function(){        
         var cloned = $('fieldset:first').clone(true);
 
         cloned.find('input,select,textarea').each(function() {
@@ -135,13 +141,13 @@
         })
         num++ ;
         cloned.prepend("<hr />")
-        cloned.find('#rmvFields').removeClass('hidden');
+        cloned.find('.rmvFields').removeClass('hidden');
         cloned.appendTo('.followups_div').hide();
         cloned.slideDown(); 
 
       });
       // This button removes the followup fields.
-      $('#rmvFields').click(function() { 
+      $('.rmvFields').on("click",function() { 
         $(this).closest('fieldset').slideUp("normal",function(){
           $(this).closest('fieldset').remove();
         });

@@ -1,0 +1,32 @@
+%h1 Edit Meeting
+= render 'form'
+
+= link_to 'Show', @meeting
+= link_to 'Back', meetings_path
+
+-if @followup_is_empty
+  :javascript
+    $(document).ready(function(){
+      var flupDiv     = $('.followups_div')
+      var addFlupBtn  = $('#edit_addBtn');
+
+      flupDiv.hide();
+      flupDiv.find('.rmvFields').removeClass('hidden');
+
+      addFlupBtn.click(function(){
+        flupDiv.slideDown();
+        $(this).hide();
+
+      });
+    });
+- else
+  :javascript
+    $(document).ready(function(){
+      $('.followup').find('.rmvFields').removeClass('hidden');
+    });
+
+    $('.rmvFields').click(function() { 
+        $(this).closest('fieldset').slideUp("normal",function(){
+          $(this).closest('fieldset').remove();
+        });
+      }) 
