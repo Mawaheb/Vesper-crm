@@ -185,12 +185,14 @@
 
       $('#meeting_client_id').change(function(){
         loading.removeClass("hide"); // The Ajax loader gif .
+        add_btn.hide();              // The add contacts button.   
         checkboxes.empty();          // The div that contains the contacts.
         contacts_fields.hide();      // The div for adding new cotacts.         
-        var state = this.value;      // The currently selected Client ID .
-        if(state != "") 
-          {            
-            $.getJSON('/clients/client_contacts/' + state, function(data){              
+        var id = this.value;      // The currently selected Client ID .
+        if(id != "") 
+          {  
+
+            $.getJSON('/clients/client_contacts/' + id, function(data){              
               if( data["contacts"].length == [] ) 
               {  
                 loading.addClass("hide");            
@@ -199,7 +201,7 @@
               }
               else {
                 loading.addClass("hide");
-                add_btn.hide();
+                add_btn.show();
                 $.each(data.contacts, function () {
                 var name = this.nf + " " + this.nl ;
                 $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'">'+name+'</option><br />').appendTo(checkboxes);               
