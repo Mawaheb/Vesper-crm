@@ -1,27 +1,28 @@
 %fieldset  
   .followup
     .row
-      .col-lg-2
+      .col-lg-3
         = ff.input :type, collection: (FollowUp::TYPES), required: false ,:input_html =>{ class: 'form-control'} 
      
-      .col-lg-2
+      .col-lg-3
         %label{for: "due_date"} Due Date
         .input-group
           %span.input-group-addon
             %i.glyphicon.glyphicon-calendar        
           = ff.input_field :due_date, class: 'form-control', placeholder: "due date",disabled: true, required: false,
               hint: 'Only the assigned user can estimate the Due date.'
-      .col-lg-2
+      .col-lg-3
         %label{for: "complete_date"} Complete Date
         .input-group
           %span.input-group-addon
             %i.glyphicon.glyphicon-calendar        
           = ff.input_field :complete_date, class: 'form-control cmplDate', placeholder: "Complete date", required: false
       
-      .col-lg-2
-        = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all),:input_html =>{ class: 'form-control'}   
-      .col-lg-4
-        = ff.input :memo, as: :text ,:input_html => {class: 'form-control', :rows => 2 } , required: false
+      .col-lg-3
+        = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all),:input_html =>{ class: 'form-control'}
+           
+      .col-lg-12
+        = ff.input :memo, as: :text ,:input_html => {class: 'form-control', :rows => 3 } , required: false
         = ff.hidden_field :_destroy , :value => false
     %button.rmvFields.btn.btn-danger.pull-right.hidden.glyphicon.glyphicon-remove-circle{type: "button"}
     

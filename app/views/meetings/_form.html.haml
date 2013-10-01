@@ -9,78 +9,84 @@
       %ul
         - @meeting.errors.full_messages.each do |msg|
           %li= msg
-
   .row
-    .col-lg-6
+    .col-lg-9            
       .row
-        .col-lg-5          
-          %h4 This meeting is made for :         
-        .col-lg-7
+        .col-lg-4
+          %label{for: "meeting_start_date"} Meeting Date
+          .input-group
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-calendar        
+            = f.input_field :start_date, class: 'form-control', placeholder: "date"
+        
+        .col-lg-3
+          = f.input :duration, :collection => (Meeting::DURATION),:input_html =>{ class: 'form-control'}
+          
+        .col-lg-5
+          %label{for: "meeting_client_id"} Select a Client
           = f.input :client_id, collection:(Client.all),label: false ,input_html: { class: 'form-control' }
-    .col-lg-6     
-      = link_to 'New Client', 
-                new_client_path, {class:"btn btn-primary btn-lg", 
-                                  :'data-remote'=>true }
-  %hr
+                 
+          
+          = link_to 'New Client', 
+                    new_client_path, {class:"btn btn-primary btn-lg pull-right ", 
+                                      :'data-remote'=>true }
+      .row
+        .col-lg-12
+          = f.input :memo, as: :text ,:input_html => { :rows => 5 , class: 'form-control'}
+      %br    
+      %hr
 
-  .row
-    .col-lg-3
-      %label{for: "meeting_start_date"} Meeting Date
-      .input-group
-        %span.input-group-addon
-          %i.glyphicon.glyphicon-calendar        
-        = f.input_field :start_date, class: 'form-control', placeholder: "date"
+    
 
-    .col-lg-2  
-      = f.input :duration, :collection => (Meeting::DURATION),:input_html =>{ class: 'form-control'}
-
-    .col-lg-4 
-      = f.input :memo, as: :text ,:input_html => { :rows => 2 , class: 'form-control'}
-  %hr
-
-  .row
-    .col-lg-6
-      %h4 Assign Sales Reps:
-      - for sr in SalesRep.all
-        = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
-        = sr.first_name
-        %br     
-    .col-lg-6       
-      %h4 Assign Contacts:
-      #container.hide        
-        =link_to image_tag("ajax-loader.gif")
-
-      #checkboxes
-                
-        -if @contacts.nil?
-          %p Please Select a Client.
-        -else
-          - for c in @contacts
-            = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
-            = c.first_name
+      .row
+        .col-lg-12
+          .followups_div
+            %h3 Follow Ups:
             %br
-      %button#addContact.btn{type: "button"} Add contact
-      %br
-      = render 'contact_fields'
+            = f.simple_fields_for :follow_ups do |ff|
+              = render 'followup_fields', ff: ff
+
+
+
+          %button#addFollowup.btn.btn-primary.glyphicon.glyphicon-plus-sign{type: "button"}
+          -if @followup_is_empty
+            %button#edit_addBtn.btn{type: "button"} Add Followup
+          %br
+          %br
+          %br 
+
+    .col-lg-3
+      .panel.panel-default.myPanel
+        
+        .panel-body
+          .row        
+            %h4 Assign Sales Reps:
+            - for sr in SalesRep.all
+              = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
+              = sr.first_name
+              %br
+          
+          %hr
+
+          .row       
+            %h4 Assign Contacts:
+            #container.hide        
+              =link_to image_tag("ajax-loader.gif")
+
+            #checkboxes
+                      
+              -if @contacts.nil?
+                %p Please Select a Client.
+              -else
+                - for c in @contacts
+                  = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
+                  = c.first_name
+                  %br
+            %button#addContact.btn{type: "button"} Add contact
+            %br
+            = render 'contact_fields'
+                 
              
-  %hr      
- 
-
-
-  .followups_div
-    %h4 Any follow Ups ?
-    = f.simple_fields_for :follow_ups do |ff|
-      = render 'followup_fields', ff: ff
-
-
-
-  %button#addFollowup.btn.btn-primary.glyphicon.glyphicon-plus-sign{type: "button"}
-  -if @followup_is_empty
-    %button#edit_addBtn.btn{type: "button"} Add Followup
-  %br
-  %br
-  %br  
-
   
   = f.button :submit , class: "btn-success"
 
