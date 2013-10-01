@@ -81,7 +81,7 @@
   %br
   %br  
 
-   
+  
   = f.button :submit , class: "btn-success"
 
 
@@ -101,6 +101,7 @@
 
       contacts_fields.hide();
       add_btn.hide();
+
 
     // This was added to capture the Enter key press on the add contact field, and triger the submit button,
     // without it, the meeting form is submited instead.  
@@ -148,11 +149,14 @@
       });
       // This button removes the followup fields.
       $('.rmvFields').on("click",function() {
-        var fieldset = $(this).closest('fieldset'); 
-        fieldset.slideUp("normal",function(){
-          fieldset.find(':input:hidden').val("true");
-         // $(this).closest('fieldset').remove();
-        });
+        if(confirm("Are you sure you want to delete this followup?"))
+        {
+          var fieldset = $(this).closest('fieldset'); 
+          fieldset.slideUp("normal",function(){
+            fieldset.find(':input:hidden').val("true");
+           // $(this).closest('fieldset').remove();
+          });
+        }
       });
 
     // This button will handle adding new contact submesion.
