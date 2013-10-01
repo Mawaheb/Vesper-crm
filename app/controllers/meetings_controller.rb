@@ -18,7 +18,6 @@ class MeetingsController < ApplicationController
 
 
   def create
-    dee
     sales_ids   = params[:sales_reps_ids]
     sales_rps   = SalesRep.any_in(id: sales_ids)
 
@@ -79,4 +78,6 @@ class MeetingsController < ApplicationController
     Meeting.find(params[:id]).destroy
     redirect_to meetings_url
   end
+
+
 end

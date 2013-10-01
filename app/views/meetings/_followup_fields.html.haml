@@ -22,7 +22,7 @@
         = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all),:input_html =>{ class: 'form-control'}   
       .col-lg-4
         = ff.input :memo, as: :text ,:input_html => {class: 'form-control', :rows => 2 } , required: false
-
+        = ff.hidden_field :_destroy , :value => false
     %button.rmvFields.btn.btn-danger.pull-right.hidden.glyphicon.glyphicon-remove-circle{type: "button"}
     
  

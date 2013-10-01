@@ -147,9 +147,11 @@
 
       });
       // This button removes the followup fields.
-      $('.rmvFields').on("click",function() { 
-        $(this).closest('fieldset').slideUp("normal",function(){
-          $(this).closest('fieldset').remove();
+      $('.rmvFields').on("click",function() {
+        var fieldset = $(this).closest('fieldset'); 
+        fieldset.slideUp("normal",function(){
+          fieldset.find(':input:hidden').val("true");
+         // $(this).closest('fieldset').remove();
         });
       });
 
