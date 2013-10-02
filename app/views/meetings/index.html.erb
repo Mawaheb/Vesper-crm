@@ -7,7 +7,9 @@
 		<th>Date</th>
 		<th>Duration</th>
 		<th>Memo</th>
-		<th>Any follow-ups?</th>
+		<th>Has followups</th>
+		<th>Client Name</th>
+		<th>Sales reps</th>
 		<th></th>
 		<th></th>
 		<th></th>
@@ -22,6 +24,13 @@
 		<%else%>
 		  <td>No</td>
 		<% end %>
+		<td><%=h Client.find_by(id: meeting.client_id).name %></td>
+		<td>
+			<% meeting.sales_rep_ids.each do |i|%>
+				<%=h SalesRep.find_by(id: i).name + "," %>
+			<% end %>
+ 		</td>
+ 
 		<td><%= link_to 'Show', meeting %></td>
 		<td><%= link_to 'Edit', edit_meeting_path(meeting) %> </td>
 		<td><%= link_to 'Delete', meeting, method: :delete, data: { confirm: 'Are you sure?'} %></td>
