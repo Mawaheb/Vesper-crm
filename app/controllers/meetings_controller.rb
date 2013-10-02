@@ -6,6 +6,7 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
+
   end
 
 
@@ -28,6 +29,7 @@ class MeetingsController < ApplicationController
     @meeting.sales_reps << sales_rps  # Assigning Sales_reps to the meeting.
     @meeting.contacts   << contacts
     @client = params[:meeting][:client_id]
+    
     if @meeting.save
       redirect_to @meeting , notice: 'Meeting was successfully created.'
     else
@@ -67,11 +69,20 @@ class MeetingsController < ApplicationController
     @meeting.contacts = []
     @meeting.contacts << contacts
 
+    @client = params[:meeting][:client_id]
+
+    if @meeting.follow_ups.blank?
+      params[:meeting].delete :follow_ups_attributes
+    end
+
     if @meeting.update_attributes(params[:meeting])
       redirect_to @meeting, notice: 'Meeting was successfully updated.'
-    else
-      render action: "edit"
-    end
+   else
+      respond_to do |format|
+        format.html { render action: "edit" }
+
+      end  
+    end  
   end
 
   def destroy

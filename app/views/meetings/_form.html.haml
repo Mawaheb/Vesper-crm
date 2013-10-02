@@ -40,17 +40,17 @@
 
       .row
         .col-lg-12
+          %h3 Follow Ups:
           .followups_div
-            %h3 Follow Ups:
+            
             %br
             = f.simple_fields_for :follow_ups do |ff|
               = render 'followup_fields', ff: ff
 
-
-
-          %button#addFollowup.btn.btn-primary.glyphicon.glyphicon-plus-sign{type: "button"}
+          %button#addFollowup.btn.btn-primary.glyphicon.glyphicon-plus-sign{type: "button", title: "Add Follow Ups!"}
           -if @followup_is_empty
-            %button#edit_addBtn.btn{type: "button"} Add Followup
+            %button#edit_addBtn.btn.btn-primary.glyphicon.glyphicon-plus-sign{type: "button", title: "Add Follow Ups!"}
+
           %br
           %br
           %br 
@@ -158,7 +158,7 @@
         {
           var fieldset = $(this).closest('fieldset'); 
           fieldset.slideUp("normal",function(){
-            fieldset.find(':input:hidden').val("true");
+            fieldset.find(':input:hidden').val("true"); // the hidden _destroy field. 
            // $(this).closest('fieldset').remove();
           });
         }
