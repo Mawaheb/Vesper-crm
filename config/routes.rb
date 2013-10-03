@@ -1,7 +1,7 @@
 CrmSolution::Application.routes.draw do
   resources :sales_reps
 
-  resources :meetings
+  resources :meetings  , except: :show
 
   resources :clients do
     collection do

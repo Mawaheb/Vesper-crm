@@ -6,8 +6,7 @@
 
 -if @followup_is_empty
   :javascript
-    $(document).ready(function(){
-      $('#meeting_client_id').trigger('change');
+    $(document).ready(function(){      
       var flupDiv     = $('.followups_div');
       var addFlupBtn  = $('#edit_addBtn');
       var addPlsBtn   = $('#addFollowup');
@@ -29,7 +28,7 @@
 - else
   :javascript
     $(document).ready(function(){
-      $('#meeting_client_id').trigger('change');
+      
       $('.followup').find('.rmvFields').removeClass('hidden');
     });
 

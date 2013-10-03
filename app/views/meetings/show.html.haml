@@ -1,39 +1,42 @@
 %p#notice= notice
-%table{cellpadding: "8"}
-  %tr
-    %th Date
-    %th duration
-    %th Notes
-  %tr
-    %td
-      = h @meeting.start_date.to_s(:short)
-    %td
-      = h @meeting.duration
-      Minutes
-    %td= h @meeting.memo
-%br/
-%u
-  %h4 This meeting is scheduled for:
-= render 'client_row'
+%h1 Meeting Details (Show view)
+= render 'form'
 
-%br
-  .row
-    .col-lg-6
-      %u
-        %h4 Sales represntators attending this meeting:
-      = render 'sales_rep_row'
+-# %table{cellpadding: "8"}
+-#   %tr
+-#     %th Date
+-#     %th duration
+-#     %th Notes
+-#   %tr
+-#     %td
+-#       = h @meeting.start_date.to_s(:short)
+-#     %td
+-#       = h @meeting.duration
+-#       Minutes
+-#     %td= h @meeting.memo
+-# %br/
+-# %u
+-#   %h4 This meeting is scheduled for:
+-# = render 'client_row'
 
-    .col-lg-6
-      %u
-        %h4 Contacts attending this meeting:
-      = render 'contact_row'
-%br
+-# %br
+-#   .row
+-#     .col-lg-6
+-#       %u
+-#         %h4 Sales represntators attending this meeting:
+-#       = render 'sales_rep_row'
 
-- if @meeting.follow_ups.any?
-  = render 'follow_up_row'
+-#     .col-lg-6
+-#       %u
+-#         %h4 Contacts attending this meeting:
+-#       = render 'contact_row'
+-# %br
 
-- else
-  %h4 there are no follow ups
+-# - if @meeting.follow_ups.any?
+-#   = render 'follow_up_row'
+
+-# - else
+-#   %h4 there are no follow ups
 
 
 = link_to 'Edit', edit_meeting_path(@meeting)

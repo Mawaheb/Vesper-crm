@@ -1,3 +1,4 @@
+%p#notice= notice
 = render 'new_client_modal'
 = simple_form_for @meeting do |f|
 
@@ -94,6 +95,8 @@
 
   :javascript
     $(document).ready(function (){
+    
+      
     // Caching the Variables .
       var loading         = $('#container');
       var checkboxes      = $('#checkboxes') ;
@@ -101,6 +104,7 @@
       var contacts_fields = $('#fields');
       var submit          = $('#submit');
       var num             = $('.followup').length ;
+      var select_client   = $('#meeting_client_id');
 
       $('.alert').hide();
 
@@ -146,7 +150,7 @@
           }
         })
         num++ ;
-        cloned.prepend("<hr />")
+        
         cloned.find('.rmvFields').removeClass('hidden');
         cloned.appendTo('.followups_div').hide();
         cloned.slideDown(); 
@@ -188,7 +192,7 @@
 
       });
 
-      $('#meeting_client_id').change(function(){
+      select_client.on("change",function(){
         loading.removeClass("hide"); // The Ajax loader gif .
         add_btn.hide();              // The add contacts button.   
         checkboxes.empty();          // The div that contains the contacts.
@@ -221,6 +225,7 @@
         }
         return false;
       })
+      select_client.trigger('change');
     });
 
 <!-- <%= f.collection_select :client_id, Client.all, :id, :name %> -->

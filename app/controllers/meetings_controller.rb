@@ -4,10 +4,12 @@ class MeetingsController < ApplicationController
   end
 
 
-  def show
-    @meeting = Meeting.find(params[:id])
+  # def show
+  #   @meeting = Meeting.find(params[:id])
+  #   @client  = Client.find_by(id: @meeting.client_id)
+  #   # render :edit
 
-  end
+  # end
 
 
   def new
@@ -31,7 +33,7 @@ class MeetingsController < ApplicationController
     @client = params[:meeting][:client_id]
     
     if @meeting.save
-      redirect_to @meeting , notice: 'Meeting was successfully created.'
+      redirect_to edit_meeting_path(@meeting) , notice: 'Meeting was successfully created.'
     else
       respond_to do |format|
         format.html { render action: "new" }
@@ -76,7 +78,7 @@ class MeetingsController < ApplicationController
     end
 
     if @meeting.update_attributes(params[:meeting])
-      redirect_to @meeting, notice: 'Meeting was successfully updated.'
+      redirect_to edit_meeting_path(@meeting), notice: 'Meeting was successfully updated.'
    else
       respond_to do |format|
         format.html { render action: "edit" }
