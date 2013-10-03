@@ -136,11 +136,11 @@
 
         cloned.find('input,select,textarea').each(function() {
           //var num = $('.followup').length;
-          var s = $(this).attr("id").replace(/\d+/, num);
-          var z = $(this).attr("name").replace(/\d+/, num);
+          var i = $(this).attr("id").replace(/\d+/, num);
+          var n = $(this).attr("name").replace(/\d+/, num);
           $(this).attr({
-            name: z,
-            id: s
+            name: n,
+            id: i
           });
          if ($(this).is('input'))
           { 

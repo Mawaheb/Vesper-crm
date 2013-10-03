@@ -35,4 +35,5 @@ class Meeting
 
   # may be add a meeting objective?
   # Add a method to give a note on Meeting time.
+  # Should the Meeting/FollowUp dependency be :Delete? i think no!
 end

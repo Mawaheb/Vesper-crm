@@ -2,6 +2,7 @@ CrmSolution::Application.routes.draw do
   resources :sales_reps
 
   resources :meetings  , except: :show
+  get 'meetings/:id', to: 'meetings#edit'
 
   resources :clients do
     collection do
