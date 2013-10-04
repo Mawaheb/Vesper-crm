@@ -20,7 +20,7 @@
 		<td><%=h meeting.duration %> Minutes</td>
 		<td><%=h meeting.memo %></td>
 		<% if meeting.follow_ups.any?%>
-		  <td><%=h "Yes " + "(#{meeting.follow_ups.count})"%></td>
+		  <td><%=h "Yes "%><span class="badge badge-success"><%=h "#{meeting.follow_ups.count}" %></span></td>
 		<%else%>
 		  <td>No</td>
 		<% end %>
