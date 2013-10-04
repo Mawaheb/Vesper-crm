@@ -1,6 +1,9 @@
 class Meeting
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes
+
+  
+
   belongs_to :client
   has_and_belongs_to_many :contacts
   has_and_belongs_to_many :sales_reps
@@ -21,7 +24,17 @@ class Meeting
   field :sd,  as: :start_date, type: DateTime
   field :du,  as: :duration,   type: Integer  , default: DURATION["00:30"]
 
+  before_destroy :check_followups
 
+  protected
+
+  def check_followups
+    if self.follow_ups.any?
+      errors.add(:base,"This meeting has followUps and cannot be destroyed.")
+      return false
+    end
+  end
+    
    # attr_accessible :memo, :start_date, :duration, :follow_ups_attributes, :contacts_attributes, :sales_reps_attributes,
                    # :client_id
 
