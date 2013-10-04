@@ -4,7 +4,7 @@ class Meeting
   belongs_to :client
   has_and_belongs_to_many :contacts
   has_and_belongs_to_many :sales_reps
-  has_many :follow_ups
+  has_many :follow_ups, dependent: :restrict
 
   accepts_nested_attributes_for :follow_ups, allow_destroy: true
 
