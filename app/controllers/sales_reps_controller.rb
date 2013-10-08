@@ -16,6 +16,9 @@ class SalesRepsController < ApplicationController
   # GET /sales_reps/1.json
   def show
     @sales_rep = SalesRep.find(params[:id])
+    # @follow_up = FollowUp.new
+    # @meeting = Meeting.new
+    # @client = Client.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -61,7 +64,7 @@ class SalesRepsController < ApplicationController
   # PUT /sales_reps/1.json
   def update
     @sales_rep = SalesRep.find(params[:id])
-
+    
     respond_to do |format|
       if @sales_rep.update_attributes(params[:sales_rep])
         format.html { redirect_to @sales_rep, notice: 'Sales rep was successfully updated.' }

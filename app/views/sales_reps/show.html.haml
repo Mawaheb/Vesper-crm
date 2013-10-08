@@ -1,56 +1,65 @@
-%p
-  #notice= notice
-
-  %h2 Sales Rep Information :
-  %br
-
-  %b First Name:
-  = @sales_rep.first_name
-
-  %br
-
-  %b Last Name:
-  = @sales_rep.last_name
-
-  %br
-
-  %b Title:
-  = @sales_rep.title
-
-  %br
-
-  %b Phone Number:
-  = @sales_rep.phone_num
-
-  %br
-
-  %b Email:
-  = @sales_rep.email
-
-  %br
-
-  %b Sex:
-  = @sales_rep.sex
 
 
-  - if @sales_rep.follow_ups.any?
-    %u
-      %h4 Assigned Follow Ups :
+%h2 Sales Rep Information :
+%br
 
-    %table{cellpadding: "10"}
+%b First Name:
+= @sales_rep.first_name
+
+%br
+
+%b Last Name:
+= @sales_rep.last_name
+
+%br
+
+%b Title:
+= @sales_rep.title
+
+%br
+
+%b Phone Number:
+= @sales_rep.phone_num
+
+%br
+
+%b Email:
+= @sales_rep.email
+
+%br
+
+%b Sex:
+= @sales_rep.sex
+
+
+- if @sales_rep.follow_ups.any?
+  %u
+    %h4 Assigned Follow Ups :
+
+  %table{cellpadding: "10"}
+    %tr
+      %th Type
+      %th Status
+      %th Complete Date
+
+    - for fl in @sales_rep.follow_ups
       %tr
-        %th Type
-        %th Status
-        %th Complete Date
+        %td= h fl.type
+        %td= h fl.status
+        %td= h fl.complete_date
+        %td= link_to "See assignment details", meeting_path(fl.meeting_id)
 
-      - for fl in @sales_rep.follow_ups
-        %tr
-          %td= h fl.type
-          %td= h fl.status
-          %td= h fl.complete_date
-          %td= link_to "See assignment details", meeting_path(fl.meeting_id)
-  - else
-    %h4 There are no follow-ups assigned.
+- else
+  %h4 There are no follow-ups assigned.
+
+= simple_form_for @sales_rep do |f|
+  - @sales_rep.follow_ups.each do |follow_up|
+    = f.simple_fields_for :follow_ups, follow_up do |ff|
+      = render 'meetings/followup_fields', :ff => ff
+
+  = f.button :submit
+    
+
 
 = link_to 'Edit', edit_sales_rep_path(@sales_rep)
 |

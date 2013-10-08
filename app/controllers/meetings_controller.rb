@@ -49,7 +49,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @contacts = Contact.where(client_id: @meeting.client_id)
     @client   = Client.find_by(id: @meeting.client_id)
-    # @meeting.follow_ups.build
+  
 
     if @meeting.follow_ups.blank?
       @meeting.follow_ups.build
@@ -73,9 +73,9 @@ class MeetingsController < ApplicationController
 
     @client = params[:meeting][:client_id]
 
-    if @meeting.follow_ups.blank?
-      params[:meeting].delete :follow_ups_attributes
-    end
+    # if @meeting.follow_ups.blank?
+    #   params[:meeting].delete :follow_ups_attributes
+    # end
 
     if @meeting.update_attributes(params[:meeting])
       redirect_to edit_meeting_path(@meeting), notice: 'Meeting was successfully updated.'
