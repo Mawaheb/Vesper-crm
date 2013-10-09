@@ -164,7 +164,7 @@
         {
           var fieldset = $(this).closest('fieldset'); 
           fieldset.slideUp("normal",function(){
-            fieldset.find(':input:hidden').val("true"); // the hidden _destroy field. 
+            fieldset.find("input[id$='_destroy']").val("true"); // the hidden _destroy field. 
            // $(this).closest('fieldset').remove();
           });
         }
@@ -177,10 +177,7 @@
         var last_name   = $('#last_name').val();
         var dataString  =   client_id + first_name + " " + last_name  
         var jsonObject = { contact: { fn: first_name , ln: last_name }, c_id: client_id }
-
-                      
-
-        //alert(  first_name + " " + last_name + client_id ); 
+ 
         $.ajax({
           type: "PUT",
           url: '/clients/add_contacts/' + client_id ,
