@@ -77,8 +77,15 @@
           var fieldset = $(this).closest('fieldset'); 
           fieldset.slideUp("normal",function(){
             fieldset.find("input[id$='_destroy']").val("true"); // the hidden _destroy field. 
-           // $(this).closest('fieldset').remove();
-          });
+            var followup = fieldset.next().val();
+            var jsonObject = { followup_id:  followup  }
+            $.ajax({
+              type: "POST",
+              url: '/meetings/delete_followup/' ,
+              data: jsonObject,
+              dataType: 'script'
+            }); 
+          })
         }
       });
 

@@ -96,5 +96,16 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def delete_followup
+    # @meeting = params[:id]
+    
+    followup_id = params[:followup_id]
+
+    if FollowUp.find_by(id: followup_id).destroy
+      console.log("done");
+    else
+      console.log("none");
+    end  
+  end
 
 end
