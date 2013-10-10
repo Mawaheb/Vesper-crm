@@ -63,7 +63,7 @@
             %h4 Assign Sales Reps:
             - for sr in SalesRep.all
               = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
-              = sr.first_name
+              = sr.name
               %br
           
           %hr
@@ -80,7 +80,7 @@
               -else
                 - for c in @contacts
                   = check_box_tag "contact_ids[]", c.id, @meeting.contacts.include?(c)
-                  = c.first_name
+                  = c.name
                   %br
             %button#addContact.btn{type: "button"} Add contact
             %br
@@ -95,11 +95,9 @@
 
   :javascript
     $(document).ready(function (){
-    
-      
     // Caching the Variables .
       var loading         = $('#container');
-      var checkboxes      = $('#checkboxes') ;
+      var checkboxes      = $('#checkboxes');
       var add_btn         = $('#addContact'); 
       var contacts_fields = $('#fields');
       var submit          = $('#submit');
@@ -110,7 +108,7 @@
 
       contacts_fields.hide();
       add_btn.hide();
-
+      //select_client.trigger('change');
 
     // This was added to capture the Enter key press on the add contact field, and triger the submit button,
     // without it, the meeting form is submited instead.  
@@ -233,7 +231,7 @@
         }
         return false;
       })
-      select_client.trigger('change');
+      
     });
 
 <!-- <%= f.collection_select :client_id, Client.all, :id, :name %> -->

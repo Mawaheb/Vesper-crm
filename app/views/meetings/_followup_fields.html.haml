@@ -1,35 +1,30 @@
 
 %fieldset  
   .followup
-    .panel.panel-default        
-      .panel-body
-        .row
-          .col-lg-3
-            = ff.input :type, collection: (FollowUp::TYPES), required: false ,:input_html =>{ class: 'form-control'} 
-         
-          .col-lg-3
-            %label{for: "due_date"} Due Date
-            .input-group
-              %span.input-group-addon
-                %i.glyphicon.glyphicon-calendar        
-              = ff.input_field :due_date, class: 'form-control', placeholder: "due date",disabled: true, required: false,
-                  hint: 'Only the assigned user can estimate the Due date.'
-          .col-lg-3
-            %label{for: "complete_date"} Complete Date
-            .input-group
-              %span.input-group-addon
-                %i.glyphicon.glyphicon-calendar        
-              = ff.input_field :complete_date, class: 'form-control date-picker', placeholder: "Complete date", required: false
-          
-          .col-lg-3
-            = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all),:input_html =>{ class: 'form-control'}
-               
-          .col-lg-12
-            = ff.input :memo, as: :text ,:input_html => {class: 'form-control', :rows => 3 } , required: false
-            = ff.hidden_field :_destroy , :value => false
+   
+    .row
+      .col-lg-2
+        = ff.input :type, collection: (FollowUp::TYPES), required: false ,:input_html =>{ class: 'form-control'} 
+     
+      .col-lg-3
+        %label{for: "due_date"} Due Date        
+        = ff.input_field :due_date, class: 'form-control', placeholder: "due date",disabled: true, required: false,
+            hint: 'Only the assigned user can estimate the Due date.'
+      .col-lg-3
+        %label{for: "complete_date"} Complete Date        
+        = ff.input_field :complete_date, class: 'form-control date-picker', placeholder: "Complete date", required: false
+    
+      .col-lg-3
+        = ff.input :sales_rep_id , label: "Assign to" , collection: (SalesRep.all),:input_html =>{ class: 'form-control'}
+      .col-lg-1
+        %br
         %button.rmvFields.btn.btn-danger.pull-right.hidden.glyphicon.glyphicon-remove-circle{type: "button" ,title: "Delete this Follow Up"}
+             
+      .col-lg-11
+        = ff.input :memo, as: :text ,:input_html => {class: 'form-control', :rows => 3,  } ,label: false, placeholder: "FollowUp Memo", required: false
+        = ff.hidden_field :_destroy , :value => false
         
-      
+  %hr
    
     
 
