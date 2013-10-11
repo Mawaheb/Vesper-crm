@@ -104,10 +104,16 @@
       var num             = $('.followup').length ;
       var select_client   = $('#meeting_client_id');
 
+      var checked_chkbox  = checkboxes.children('input:checked').map(function(){ return this.value; });
+      
+      console.log(checked_chkbox);
+
       $('.alert').hide();
 
+      
+
       contacts_fields.hide();
-      add_btn.hide();
+      //add_btn.hide();
       //select_client.trigger('change');
 
     // This was added to capture the Enter key press on the add contact field, and triger the submit button,
@@ -218,8 +224,16 @@
                 loading.addClass("hide");
                 add_btn.show();
                 $.each(data.contacts, function () {
-                var name = this.nf + " " + this.nl ;
-                $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'">'+name+'</option><br />').appendTo(checkboxes);               
+                  var name = this.nf + " " + this.nl ;
+                  //if this.Id in prev_selected then this.checked = true ; 
+                  var chk_box = $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'" >'+name+'</option><br />');
+
+                  if ($.inArray(chk_box.val() , checked_chkbox) != -1)
+                  {
+                    chk_box.attr('checked', 'checked');
+                               
+                  }
+                  chk_box.appendTo(checkboxes); 
                 })
               }          
             })
