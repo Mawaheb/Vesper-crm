@@ -40,12 +40,11 @@ $(document).ready(function (){
     contacts_fields.slideUp();
   });
 
-  $('#addFollowup').click(function(){        
+  $('#addFollowup').click(function(){
+
     var cloned = $('fieldset:first').clone(true);
-    //cloned.find("input[id$='_destroy']").val("false");
 
     cloned.find('input,select,textarea').each(function() {
-      //var num = $('.followup').length;
       var i = $(this).attr("id").replace(/\d+/, num);
       var n = $(this).attr("name").replace(/\d+/, num);
       $(this).val(""); // to clean the cloned fields, Needed only for Edit view, should get fixed.
@@ -63,7 +62,7 @@ $(document).ready(function (){
     })
     num++ ;    
     // cloned.find('.rmvFields').removeClass('hidden');
-   
+    cloned.appendTo('.followups_div').hide();
     cloned.slideDown();
   });
 
