@@ -62,8 +62,8 @@ $(document).ready(function (){
       }
     })
     num++ ;    
-    cloned.find('.rmvFields').removeClass('hidden');
-    cloned.appendTo('.followups_div').hide();
+    // cloned.find('.rmvFields').removeClass('hidden');
+   
     cloned.slideDown();
   });
 
