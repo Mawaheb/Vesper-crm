@@ -9,7 +9,9 @@ class Meeting
   has_and_belongs_to_many :sales_reps
   has_many :follow_ups, dependent: :restrict
 
-  accepts_nested_attributes_for :follow_ups, allow_destroy: true
+  accepts_nested_attributes_for :follow_ups, reject_if: :all_blank , allow_destroy: true
+  # reject_if: :all_blank, when used, the follow_up fields are deleted when empty,
+  # and can't dynamically add more .
 
   validates_presence_of :client_id
   validates_presence_of :sales_rep_ids

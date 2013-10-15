@@ -1,18 +1,21 @@
 $(document).ready(function (){
   // Caching the Variables .
-  var loading         = $('#container');
+  var loading         = $('#loading_container');
   var checkboxes      = $('#checkboxes');
   var add_btn         = $('#addContact'); 
   var contacts_fields = $('#fields');
   var submit          = $('#submit');
   var num             = $('.followup').length ;
   var select_client   = $('#meeting_client_id');
-
+  var followup_fieldset= $('.followup');
   var checked_chkbox  = checkboxes.children('input:checked').map(function(){ return this.value; });
   
 
   $('.alert').hide();
       
+  // followup_fieldset.children().on("change", function(){
+  //   $(this).parent().find("input[id$='_destroy']").val("false");
+  // });
 
   contacts_fields.hide();
   //add_btn.hide();
@@ -39,6 +42,7 @@ $(document).ready(function (){
 
   $('#addFollowup').click(function(){        
     var cloned = $('fieldset:first').clone(true);
+    //cloned.find("input[id$='_destroy']").val("false");
 
     cloned.find('input,select,textarea').each(function() {
       //var num = $('.followup').length;
@@ -78,8 +82,7 @@ $(document).ready(function (){
           url: '/meetings/delete_followup/' ,
           data: jsonObject,
           dataType: 'script'
-        }); 
-
+        });
       });
     }
   });

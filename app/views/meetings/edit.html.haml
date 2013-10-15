@@ -1,37 +1,10 @@
 %h1 
   Edit Meeting  
-  %small "#{@meeting.client.name}"
+  %small Client Name: "#{@meeting.client.name}"
 
 = render 'form'
 
-= link_to 'Show', @meeting
 = link_to 'Back', meetings_path
 
--if @followup_is_empty
-  :javascript
-    $(document).ready(function(){      
-      var flupDiv     = $('.followups_div');
-      var addFlupBtn  = $('#edit_addBtn');
-      var addPlsBtn   = $('#addFollowup');
 
-      flupDiv.hide();
-      flupDiv.find('.rmvFields').removeClass('hidden');
-      addPlsBtn.hide();
-
-      addFlupBtn.click(function(){
-        flupDiv.slideDown(function(){
-          addPlsBtn.show();
-        });
-        
-        $(this).hide();
-
-
-      });
-    });
-- else
-  :javascript
-    $(document).ready(function(){
-      
-      $('.followup').find('.rmvFields').removeClass('hidden');
-    });
 

@@ -14,9 +14,10 @@ class MeetingsController < ApplicationController
 
   def new
     @sales_reps = SalesRep.all
-    @client = Client.new
+    @client     = Client.new
     @meeting    = Meeting.new
     @meeting.follow_ups.build
+    # @followup_is_empty = true 
   end
 
 
@@ -32,9 +33,11 @@ class MeetingsController < ApplicationController
     @meeting.contacts   << contacts
     @client = params[:meeting][:client_id]
     
+
     if @meeting.save
       redirect_to edit_meeting_path(@meeting) , notice: 'Meeting was successfully created.'
     else
+      @meeting.follow_ups.build
       respond_to do |format|
         format.html { render action: "new" }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
@@ -45,8 +48,9 @@ class MeetingsController < ApplicationController
 
 
   def edit
+
     @sales_reps = SalesRep.all
-    @meeting = Meeting.find(params[:id])
+    @meeting  = Meeting.find(params[:id])
     @contacts = Contact.where(client_id: @meeting.client_id)
     @client   = Client.find_by(id: @meeting.client_id)
   
@@ -59,8 +63,8 @@ class MeetingsController < ApplicationController
   end
 
   def update
-    @meeting = Meeting.find(params[:id])
 
+    @meeting = Meeting.find(params[:id])
     sales_ids   = params[:sales_reps_ids]
     sales_rps   = SalesRep.any_in(id: sales_ids)
     @meeting.sales_reps = []
@@ -73,9 +77,7 @@ class MeetingsController < ApplicationController
 
     @client = params[:meeting][:client_id]
 
-    # if @meeting.follow_ups.blank?
-    #   params[:meeting].delete :follow_ups_attributes
-    # end
+    
 
     if @meeting.update_attributes(params[:meeting])
       redirect_to edit_meeting_path(@meeting), notice: 'Meeting was successfully updated.'
