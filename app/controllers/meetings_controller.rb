@@ -95,6 +95,7 @@ class MeetingsController < ApplicationController
       redirect_to meetings_url
     else    
       redirect_to meetings_url, notice: "#{@meeting.errors.full_messages.join('')}"
+      
     end
   end
 

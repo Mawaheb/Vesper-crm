@@ -60,6 +60,7 @@
         .panel-body
           .row        
             %h4 Assign Sales Reps:
+            %br
             - for sr in SalesRep.all
               = check_box_tag "sales_reps_ids[]" ,sr.id , @meeting.sales_reps.include?(sr)
               = sr.name
