@@ -1,29 +1,33 @@
 %h1 Listing sales_reps
 %table.table.table-striped{:cellpadding => "8"}
-  %tr
-    %th Name
-    %th Title
-    %th Phone Number
-    %th Email
-    %th Sex
-    %th Has follow-ups?
-    %th
-    %th
-    %th
-  - @sales_reps.each do |sales_rep|
+  %thead
     %tr
-      %td= sales_rep.name
-      %td= sales_rep.title
-      %td= sales_rep.phone_num
-      %td= sales_rep.email
-      %td= sales_rep.sex
-      - if sales_rep.follow_ups.any?
-        %td Yes
-      - else
-        %td No
-      %td= link_to 'Show', sales_rep
-      %td= link_to 'Edit', edit_sales_rep_path(sales_rep)
-      %td= link_to 'Destroy', sales_rep, method: :delete, data: { confirm: 'Are you sure?' }
+      %th Name
+      %th Title
+      %th Phone Number
+      %th Email
+      %th Sex
+      %th Has follow-ups?
+      %th
+      %th
+      %th
+
+  %tbody
+        
+    - @sales_reps.each do |sales_rep|
+      %tr
+        %td= sales_rep.name
+        %td= sales_rep.title
+        %td= sales_rep.phone_num
+        %td= sales_rep.email
+        %td= sales_rep.sex
+        - if sales_rep.follow_ups.any?
+          %td Yes
+        - else
+          %td No
+        %td= link_to 'Show', sales_rep
+        %td= link_to 'Edit', edit_sales_rep_path(sales_rep)
+        %td= link_to 'Destroy', sales_rep, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 -# = link_to 'New Sales rep', 
 -#           new_sales_rep_path, {class:"btn btn-primary btn-lg", 
