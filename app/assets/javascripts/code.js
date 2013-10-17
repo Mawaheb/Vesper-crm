@@ -12,6 +12,7 @@ $(document).ready(function (){
   
 // TODO Handle the add button when the document is complete !
   $('.alert').hide();
+  
 
 // Client Contact Code:
 /***************************************************************************************/
@@ -47,8 +48,8 @@ $(document).ready(function (){
      }).done(function( data ){
 
           var name =  " " + data.nf + " " + data.nl;          
-          var ckbox = $('<input name="contact_ids[]" type="checkbox" value="'+data._id+'" >'+name+'</option><br />')
-                        .attr('checked', 'checked'); 
+          var ckbox = $('<input name="contact_ids[]" type="checkbox" value="'+data._id+'" >'+name+'</option><br />');
+              ckbox.attr('checked', 'checked'); 
           checkboxes.append(ckbox);                   
           contacts_fields.slideUp();
           contacts_fields.find('input[type=text]').val('');
@@ -132,7 +133,7 @@ $(document).ready(function (){
             loading.addClass("hide");
             add_btn.show();
             $.each(data.contacts, function () {
-              var name = this.nf + " " + this.nl ;
+              var name = " " + this.nf + " " + this.nl ;
               //if this.Id in prev_selected then this.checked = true ; 
               var chk_box = $('<input name="contact_ids[]" type="checkbox" value="'+this._id+'" >'+name+'</option><br />');
 
@@ -150,7 +151,8 @@ $(document).ready(function (){
       checkboxes.text("Please select a client");
       add_btn.hide();
     }
+    
     return false;
   })
-      
+  select_client.trigger('change');
 });
