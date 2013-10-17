@@ -96,7 +96,7 @@ $(document).ready(function (){
     {
       var fieldset = $(this).closest('fieldset'); 
       fieldset.slideUp("normal",function(){
-        fieldset.find("input[id$='_destroy']").val("true"); // the hidden _destroy field. 
+        // fieldset.find("input[id$='_destroy']").val("true"); // the hidden _destroy field. 
       
         var followup = fieldset.next().val();
         var jsonObject = { followup_id:  followup  }
@@ -104,8 +104,11 @@ $(document).ready(function (){
           type: "POST",
           url: '/meetings/delete_followup/' ,
           data: jsonObject,
-          dataType: 'script'
-        });
+          // dataType: 'script'
+        }).done(function(){
+            fieldset.remove();
+            console.log("done");
+          });
       });
     }
   });
