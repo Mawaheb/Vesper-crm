@@ -20,11 +20,11 @@
 
 $(document).ready(function() {
    $("#new_client").on("ajax:success", function(event, data) {    
-     alert("Client: " +data.n " Was created successfully!");
+     alert("Client: " + data.n + " Was created successfully!");
      $("#new_client").modal('hide');
      $("#meeting_client_id").append('<option value='+data._id+'>'+data.n+'</option>');
-  }).bind("ajax:error", function(e, xhr, status, error) {
-    alert(xhr.responseText);
-    //$("#new_post").append("<p>ERROR</p>");
+    }).bind("ajax:error", function(e, xhr, status, error) {
+      alert(xhr.responseText);
+      //$("#new_post").append("<p>ERROR</p>");
   });
 });

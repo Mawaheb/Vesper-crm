@@ -110,13 +110,13 @@ class ClientsController < ApplicationController
     fn = (params[:contact][:fn])
     ln = (params[:contact][:ln])
     client = Client.find(cl);
-    contact = Contact.new(first_name: fn, last_name: ln)
-    client.contacts << contact
-    @msg = { "client" => client.name , "fn" => fn , "ln" => ln}
+    @contact = Contact.new(first_name: fn, last_name: ln)
+    client.contacts << @contact
+    # @msg = { "client" => client.name , "fn" => fn , "ln" => ln }
     respond_to do |format|
-      format.html
-      format.json { render json: @msg }
-      format.js
+      # format.html
+      format.json { render json: @contact }
+      # format.js
     end  
   end
 

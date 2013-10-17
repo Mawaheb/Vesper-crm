@@ -1,25 +1,21 @@
 $(document).ready(function (){
   // Caching the Variables .
-  var loading         = $('#loading_container');
-  var checkboxes      = $('#checkboxes');
-  var add_btn         = $('#addContact'); 
-  var contacts_fields = $('#fields');
-  var submit          = $('#submit');
-  var num             = $('.followup').length ;
-  var select_client   = $('#meeting_client_id');
-  var followup_fieldset= $('.followup');
-  var checked_chkbox  = checkboxes.children('input:checked').map(function(){ return this.value; });
+  var loading           = $('#loading_container');
+  var checkboxes        = $('#checkboxes');
+  var add_btn           = $('#addContact'); 
+  var contacts_fields   = $('#fields');
+  var submit            = $('#submit');
+  var num               = $('.followup').length ;
+  var select_client     = $('#meeting_client_id');
+  var followup_fieldset = $('.followup');
+  var checked_chkbox    = checkboxes.children('input:checked').map(function(){ return this.value; });
   
-
+// TODO Handle the add button when the document is complete !
   $('.alert').hide();
-      
-  // followup_fieldset.children().on("change", function(){
-  //   $(this).parent().find("input[id$='_destroy']").val("false");
-  // });
 
+// Client Contact Code:
+/***************************************************************************************/
   contacts_fields.hide();
-  //add_btn.hide();
-  //select_client.trigger('change');
 
   // This was added to capture the Enter key press on the add contact field, and triger the submit button,
   // without it, the meeting form is submited instead.  
@@ -35,10 +31,37 @@ $(document).ready(function (){
     contacts_fields.slideDown();        
   });
 
+  // This button will handle adding new contact submesion.
+  submit.click(function() {
+    var client_id   = $('#meeting_client_id').val();
+    var first_name  = $('#first_name').val();
+    var last_name   = $('#last_name').val();
+    var dataString  =  client_id + first_name + " " + last_name  
+    var jsonObject  = { contact: { fn: first_name , ln: last_name }, c_id: client_id }
+
+    $.ajax({
+      type: "PUT",
+      url: '/clients/add_contacts/' + client_id ,
+      data:   jsonObject  ,
+      // dataType: 'script' ,
+     }).done(function( data ){
+
+          var name =  " " + data.nf + " " + data.nl;          
+          var ckbox = $('<input name="contact_ids[]" type="checkbox" value="'+data._id+'" >'+name+'</option><br />')
+                        .attr('checked', 'checked'); 
+          checkboxes.append(ckbox);                   
+          contacts_fields.slideUp();
+          contacts_fields.find('input[type=text]').val('');
+        });
+  });
+
   // This button will hide the new Contact fileds (cancel).
   $('#cancel').click(function() {
     contacts_fields.slideUp();
   });
+
+/*-----------------------------------------------------------------------------------*/
+
 
   $('#addFollowup').click(function(){
 
@@ -86,25 +109,7 @@ $(document).ready(function (){
     }
   });
 
-  // This button will handle adding new contact submesion.
-  submit.click(function() {
-    var client_id    = $('#meeting_client_id').val();
-    var first_name  = $('#first_name').val();
-    var last_name   = $('#last_name').val();
-    var dataString  =   client_id + first_name + " " + last_name  
-    var jsonObject = { contact: { fn: first_name , ln: last_name }, c_id: client_id }
 
-    $.ajax({
-      type: "PUT",
-      url: '/clients/add_contacts/' + client_id ,
-      data:   jsonObject  ,
-      dataType: 'script' ,
-     })
-        //.done(function( msg ){
-        //  alert( "Data Saved: " + msg.client );
-          // contacts_fields.slideUp();
-        // });
-  });
 
   select_client.on("change",function(){
     loading.removeClass("hide"); // The Ajax loader gif .
