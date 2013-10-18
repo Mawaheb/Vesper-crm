@@ -103,12 +103,17 @@ class MeetingsController < ApplicationController
     # @meeting = params[:id]
     
     followup_id = params[:followup_id]
-
+    @msg = "done"
+    @error= "error"
+  respond_to do |format|
     if FollowUp.find_by(id: followup_id).destroy
-      console.log("done");
+      
+      format.json { render json: @msg }
+     
     else
-      console.log("none");
+      format.json { render json: @error}
     end  
+  end  
   end
 
 end

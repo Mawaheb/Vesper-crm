@@ -104,16 +104,17 @@ $(document).ready(function (){
           type: "POST",
           url: '/meetings/delete_followup/' ,
           data: jsonObject,
+          complete: function(){
+            fieldset.next().remove();
+            fieldset.find("input[id$='_destroy']").val("true");         
+          }
           // dataType: 'script'
-        }).done(function(){
-            fieldset.remove();
-            console.log("done");
-          });
+        });
       });
     }
   });
 
-
+  
 
   select_client.on("change",function(){
     loading.removeClass("hide"); // The Ajax loader gif .
