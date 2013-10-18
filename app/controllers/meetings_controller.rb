@@ -52,7 +52,8 @@ class MeetingsController < ApplicationController
     @sales_reps = SalesRep.all
     @meeting  = Meeting.find(params[:id])
     @contacts = Contact.where(client_id: @meeting.client_id)
-    @client   = Client.find_by(id: @meeting.client_id)
+    # @client   = Client.find_by(id: @meeting.client_id)
+    @client     = Client.new
   
 
     if @meeting.follow_ups.blank?
@@ -105,15 +106,13 @@ class MeetingsController < ApplicationController
     followup_id = params[:followup_id]
     @msg = "done"
     @error= "error"
-  respond_to do |format|
-    if FollowUp.find_by(id: followup_id).destroy
-      
-      format.json { render json: @msg }
-     
-    else
-      format.json { render json: @error}
+    respond_to do |format|
+      if FollowUp.find_by(id: followup_id).destroy
+        format.json { render json: @msg }
+      else
+        format.json { render json: @error}
+      end  
     end  
-  end  
   end
 
 end
