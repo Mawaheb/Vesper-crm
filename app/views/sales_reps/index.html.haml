@@ -7,7 +7,7 @@
       %th Phone Number
       %th Email
       %th Sex
-      %th Has follow-ups?
+      %th follow-ups
       %th
       %th
       %th
@@ -22,9 +22,12 @@
         %td= sales_rep.email
         %td= sales_rep.sex
         - if sales_rep.follow_ups.any?
-          %td Yes
+          %td{align: "left"}
+            %span.badge 
+              =h "#{sales_rep.follow_ups.count}"
         - else
-          %td No
+          %td{align: "left"} -
+
         %td= link_to 'Show', sales_rep
         %td= link_to 'Edit', edit_sales_rep_path(sales_rep)
         %td= link_to 'Destroy', sales_rep, method: :delete, data: { confirm: 'Are you sure?' }

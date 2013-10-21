@@ -30,17 +30,29 @@
 
 %b Sex:
 = @sales_rep.sex
+%hr
 
+-# .collapsible
+-#   %h3 Heading
+  
 
 - if @sales_rep.follow_ups.empty?
-  %h4 There are no follow-ups assigned.
+  %h3 There are no follow-ups assigned.
+- else
+  %h3 FollowUps:
+  %br
 
-= simple_form_for @sales_rep do |f|
-  - @sales_rep.follow_ups.each do |follow_up|
-    = f.simple_fields_for :follow_ups, follow_up do |ff|
-      = render 'meetings/followup_fields', :ff => ff
+  = simple_form_for @sales_rep do |f|
+    - @sales_rep.follow_ups.each do |follow_up|
+      .collapsible
 
-  = f.button :submit
+        .glyphicon.glyphicon-chevron-right.padding
+
+        %br
+      = f.simple_fields_for :follow_ups, follow_up do |ff|
+        = render 'meetings/followup_fields', :ff => ff
+    %br
+    = f.button :submit
     
 
 
@@ -49,26 +61,48 @@
 \#{link_to 'Back', sales_reps_path}
 
 :javascript
-    $(document).ready(function (){
-      var rmv_btn = $('.rmvFields');
-      rmv_btn.removeClass("hidden");
+    // $(document).ready(function (){ // Commented out because it cause the code to run twice
+    // this happens beause of Turbolinks Gem for more details :
+    // https://github.com/kossnocorp/jquery.turbolinks#troubleshooting
 
-      // This button removes the followup fields.
-      rmv_btn.on("click",function() {
-        if(confirm("Are you sure you want to delete this followup?"))
-        {
-          var fieldset = $(this).closest('fieldset'); 
-          fieldset.slideUp("normal",function(){
-            fieldset.find("input[id$='_destroy']").val("true"); // the hidden _destroy field. 
-            var followup = fieldset.next().val();
-            var jsonObject = { followup_id:  followup  }
-            $.ajax({
-              type: "POST",
-              url: '/meetings/delete_followup/' ,
-              data: jsonObject,
-              dataType: 'script'
-            }); 
-          })
+      var rmv_btn   = $('.rmvFields');
+      collapsibles  = $('.collapsible');
+      fieldsets     = $('fieldset');
+
+      fieldsets.hide();
+      //rmv_btn.removeClass("hidden");
+
+      collapsibles.on("click", function(){
+        //alert('Hi!');
+        if ($(this).next().is(":visible")){
+          $(this).find('.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
         }
+        else
+        {
+          $(this).find('.glyphicon').removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+        }
+
+        $(this).next().slideToggle();
+        //debugger;
       });
-    });
+
+      
+      // This button removes the followup fields.
+      //rmv_btn.on("click",function() {
+      //  if(confirm("Are you sure you want to delete this followup?"))
+      //  {
+      //    var fieldset = $(this).closest('fieldset'); 
+      //    fieldset.slideUp("normal",function(){
+      //      fieldset.find("input[id$='_destroy']").val("true"); // the hidden _destroy field. 
+      //      var followup = fieldset.next().val();
+      //      var jsonObject = { followup_id:  followup  }
+      //      $.ajax({
+      //        type: "POST",
+      //        url: '/meetings/delete_followup/' ,
+      //        data: jsonObject,
+      //        dataType: 'script'
+      //      }); 
+      //    })
+      //  }
+      //});
+    //});
