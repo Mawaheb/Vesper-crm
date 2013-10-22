@@ -41,15 +41,37 @@
 - else
   %h3 FollowUps:
   %br
+  %br
+  %button.btn.btn-link.expandAll  Expand all 
+  |
+  %button.btn.btn-link.collapseAll Collapse all
+  
+
+  
 
   = simple_form_for @sales_rep do |f|
-    - @sales_rep.follow_ups.each do |follow_up|
-      .collapsible
-
-        .glyphicon.glyphicon-chevron-right.padding
+    - for follow_up in @sales_rep.follow_ups
+      
+      .row.collapsible.padding
+        .col-lg-1
+          .glyphicon.glyphicon-chevron-right
+        .col-lg-2
+          %h4 Type: 
+          =h  "#{follow_up.type}"
+        .col-lg-2
+          %h4 Due Date: 
+          =h "#{follow_up.due_date}"
+        .col-lg-3
+          %h4 Complete Date:
+          =h "#{follow_up.complete_date}"
+        .col-lg-4
+          %h4 Client:
+          =h "#{get_client_name(follow_up.meeting_id)}"
+            
 
         %br
       = f.simple_fields_for :follow_ups, follow_up do |ff|
+
         = render 'meetings/followup_fields', :ff => ff
     %br
     = f.button :submit
@@ -68,12 +90,12 @@
       var rmv_btn   = $('.rmvFields');
       collapsibles  = $('.collapsible');
       fieldsets     = $('fieldset');
-
+      expandAll     = $('.expandAll');
+      collapseAll   = $('.collapseAll');
+      arrowsIcons   = $('.glyphicon').not('button')
       fieldsets.hide();
-      //rmv_btn.removeClass("hidden");
 
       collapsibles.on("click", function(){
-        //alert('Hi!');
         if ($(this).next().is(":visible")){
           $(this).find('.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
         }
@@ -83,26 +105,17 @@
         }
 
         $(this).next().slideToggle();
-        //debugger;
+      });
+
+      expandAll.on("click",function(){
+        arrowsIcons.removeClass('glyphicon-chevron-right').addClass('glyphicon-chevron-down');
+        fieldsets.slideDown();
+      });
+
+      collapseAll.on("click",function(){
+        arrowsIcons.removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-right');
+        fieldsets.slideUp();
       });
 
       
-      // This button removes the followup fields.
-      //rmv_btn.on("click",function() {
-      //  if(confirm("Are you sure you want to delete this followup?"))
-      //  {
-      //    var fieldset = $(this).closest('fieldset'); 
-      //    fieldset.slideUp("normal",function(){
-      //      fieldset.find("input[id$='_destroy']").val("true"); // the hidden _destroy field. 
-      //      var followup = fieldset.next().val();
-      //      var jsonObject = { followup_id:  followup  }
-      //      $.ajax({
-      //        type: "POST",
-      //        url: '/meetings/delete_followup/' ,
-      //        data: jsonObject,
-      //        dataType: 'script'
-      //      }); 
-      //    })
-      //  }
-      //});
-    //});
+     

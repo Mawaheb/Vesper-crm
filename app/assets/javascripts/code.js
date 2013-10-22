@@ -97,7 +97,9 @@ $(document).ready(function (){
       var fieldset = $(this).closest('fieldset'); 
       fieldset.slideUp("normal",function(){
         // fieldset.find("input[id$='_destroy']").val("true"); // the hidden _destroy field. 
-      
+        /* collapsible is the div used as clickable header to show/hide
+          the follow ups in salesReps show View */
+        fieldset.prev('.collapsible').slideUp(); 
         var followup = fieldset.next().val();
         var jsonObject = { followup_id:  followup  }
         $.ajax({
