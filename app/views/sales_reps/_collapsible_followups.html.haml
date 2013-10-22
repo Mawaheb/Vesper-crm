@@ -1,0 +1,16 @@
+.row.collapsible.padding
+  .col-lg-1
+    .glyphicon.glyphicon-chevron-right
+  .col-lg-2
+    %h4 Type: 
+    =h  "#{follow_up.type}"
+  .col-lg-2
+    %h4 Due Date: 
+    =h "#{follow_up.due_date}"
+  .col-lg-3
+    %h4 Complete Date:
+    =h "#{follow_up.complete_date}"
+  .col-lg-4
+    %h4 Client:
+    =h "#{get_client_name(follow_up.meeting_id)}"
+  %br
