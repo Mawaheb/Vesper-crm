@@ -16,7 +16,6 @@ gem "mongoid", "~> 3.0.0"
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -39,12 +38,11 @@ group :test do
   gem 'factory_girl_rails'
 end
 
-gem 'jquery-rails'
-gem 'localtunnel'
+
 gem 'therubyracer'
 gem 'jquery-timepicker-addon-rails'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
+
+gem 'active_model_serializers'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
