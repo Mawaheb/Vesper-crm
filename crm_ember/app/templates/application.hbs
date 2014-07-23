@@ -1,3 +1,15 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar">
+      <a class="navbar-brand" href="#">Vesper-CRM</a>
+      <ul class="nav navbar-nav">
+        <li>{{#link-to 'application'}}Home{{/link-to}}</li>
+        <li><a href='#'>Meetings</a></li>
+        <li><a href='#'>Customers</a></li>     
+        <li><a href='#'>Sales-reps</a></li>
+        <li>{{#link-to 'about'}}About{{/link-to}}</li>
+      </ul>
+  </div>
+</nav>
 
+<h2 id='title'>Welcome to Vesper-crm</h2>
 {{outlet}}
