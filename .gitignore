@@ -16,6 +16,7 @@ doc/
 /.bundle
 /log/*
 /tmp/*
+/crm_ember
 .idea
 .settings
 spec/tmp/*
