@@ -1,19 +1,21 @@
 CrmSolution::Application.routes.draw do
-  resources :sales_reps
+  # resources :sales_reps
 
-  resources :meetings  , except: :show
-  get 'meetings/:id', to: 'meetings#edit'
+  # resources :meetings  , except: :show
+  # get 'meetings/:id', to: 'meetings#edit'
 
-  resources :clients do
-    collection do
-      put 'assign_sales_rep'
-    end
+  # resources :clients do
+  #   collection do
+  #     put 'assign_sales_rep'
+  #   end
+  # end
+  # root :to => 'meetings#index'
+
+  # match ':controller(/:action(/:id(.format)))'
+
+  namespace :api do
+    resources :clients
   end
-  root :to => 'meetings#index'
-
-  match ':controller(/:action(/:id(.format)))'
-
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

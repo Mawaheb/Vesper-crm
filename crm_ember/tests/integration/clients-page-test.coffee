@@ -3,10 +3,10 @@
 App = null
 server = null
 
-module 'Integeration - Customers page', 
+module 'Integeration - clients page', 
   setup: -> 
     App = startApp()
-    customers = [
+    clients = [
       {
         id: 1,
         name: 'Mark Twain'
@@ -22,37 +22,37 @@ module 'Integeration - Customers page',
     ]
 
     server = new Pretender ->
-      @get "/api/customers", (request) ->
-        [200, {"Content-Type": "application/json" }, JSON.stringify(customers: customers)]
+      @get "/api/clients", (request) ->
+        [200, {"Content-Type": "application/json" }, JSON.stringify(clients: clients)]
 
-      @get "/api/customers/:id", (request) ->
-        customer = customers.find((customer) ->
-          customer  if customer.id is parseInt(request.params.id, 10)
+      @get "/api/clients/:id", (request) ->
+        client = clients.find((client) ->
+          client  if client.id is parseInt(request.params.id, 10)
         )
-        [200, {"Content-Type": "application/json"}, JSON.stringify(customer: customer)]
+        [200, {"Content-Type": "application/json"}, JSON.stringify(client: client)]
     
   teardown: -> 
     Ember.run(App, 'destroy')
     server.shutdown()
 
-test 'Should allow navigation to the Customers page from the home page', ->
+test 'Should allow navigation to the clients page from the home page', ->
   visit('/').then ->
-    click('a:contains("Customers")').then ->
-      equal(find('h3').text(), 'Customers')
+    click('a:contains("Clients")').then ->
+      equal(find('h3').text(), 'Clients')
 
-test 'Should list all Customers', ->
-  visit('/customers').then ->
+test 'Should list all clients', ->
+  visit('/clients').then ->
     equal(find('a:contains("Mark Twain")').length, 1)
     equal(find('a:contains("Can Atilla")').length, 1)
     equal(find('a:contains("Charbel Rouhana")').length, 1)
 
 
-test 'Should be able to navigate to a Customer page', ->
-  visit('/customers').then ->
+test 'Should be able to navigate to a client page', ->
+  visit('/clients').then ->
     click('a:contains("Mark Twain")').then ->
       equal(find('h4').text(), 'Mark Twain')
 
 
 test 'Should be able to visit a speaker page', ->
-  visit('/customers/1').then ->
+  visit('/clients/1').then ->
     equal(find('h4').text(), 'Mark Twain')
