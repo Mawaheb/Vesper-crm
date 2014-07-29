@@ -6,6 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Client.create(name: 'Mark Twain')
-Client.create(name: 'Can Atilla')
-Client.create(name: 'Charbel Rouhana')
+mark    = Client.create!(name: 'Mark Twain')
+can     = Client.create!(name: 'Can Atilla')
+charbel = Client.create!(name: 'Charbel Rouhana')
+
+mark.contacts.create!(first_name: 'Tom', last_name: 'Sawyer')
+mark.contacts.create!(first_name: 'Huck', last_name: 'Fin')
+
+can.contacts.create!(first_name: 'Tom', last_name: 'Dale')
+
+charbel.contacts.create!(first_name: 'Yehuda',last_name: 'Katz')
+charbel.contacts.create!(first_name: 'Steff', last_name: 'pennar')
+charbel.contacts.create!(first_name: 'Robert', last_name: 'Jackson')
