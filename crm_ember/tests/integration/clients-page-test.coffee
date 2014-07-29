@@ -60,5 +60,5 @@ test 'Should be able to visit a speaker page', ->
 
 test "Should list client's Contacts", ->
   visit('/clients/1').then ->
-    equal(find('h2').text(), 'Tom Sawyer')
-    equal(find('h2').text(), 'Huck Fin')
+    equal(find('li:contains("Tom Sawyer")').length, 1)
+    equal(find('li:contains("Huck Fin")').length, 1)

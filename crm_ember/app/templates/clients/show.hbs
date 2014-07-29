@@ -1,5 +1,7 @@
 <h4>{{name}}</h4>
-
-{{#each contact}}
-  <h2> {{contact.name}} </h2>
+<h3>Contacts</h3>
+{{#each contact in contacts}}
+  <ul>
+    <li> {{contact.name}} </li>
+  </ul>
 {{/each}}
