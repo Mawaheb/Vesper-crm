@@ -38,7 +38,7 @@ module 'Integeration - clients page',
 test 'Should allow navigation to the clients page from the home page', ->
   visit('/').then ->
     click('a:contains("Clients")').then ->
-      equal(find('h3').text(), 'Clients')
+      equal(find('a:contains("clients")').length, 1)
 
 test 'Should list all clients', ->
   visit('/clients').then ->
