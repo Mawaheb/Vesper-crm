@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-ClientsIndexController = Ember.ArrayController.extend
+ClientsController = Ember.ArrayController.extend
   sortProperties:['name']
   
-`export default ClientsIndexController`
+`export default ClientsController`
