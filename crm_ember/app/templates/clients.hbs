@@ -4,7 +4,7 @@
       <a href="#" class="list-group-item active"> Clients  </a>
       {{#each client in controller}}
         <li class="list-group-item">
-          {{#link-to 'clients.show' client }} {{ client.name }} {{/link-to}}
+          {{#link-to 'clients.client' client }} {{ client.name }} {{/link-to}}
         </li>
       {{/each}}
     </ul>

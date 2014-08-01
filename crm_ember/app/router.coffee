@@ -8,7 +8,8 @@ Router.map () ->
   @route 'about'
 
   @resource 'clients', ->
-    @resource 'clients.show', path: '/:id'
+    @resource 'clients.client', path: '/:id', ->
+      @route 'edit'
 
   # @resource "sales-reps", ->
   #   @route 'show', path: ':srep_id'

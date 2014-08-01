@@ -1,0 +1,38 @@
+{{!-- TODO Clean up the styles Move them away --}}
+<h2 style="display:inline">{{name}}</h2>
+<h3 style="display:inline">{{link-to 'edit' 'clients.client.edit' model }}</h3>
+<hr>
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd>{{model.name}}</dd>  
+</dl> 
+
+<dl class="dl-horizontal">
+  <dt>Phone:</dt>
+  <dd>{{model.phone}}</dd>
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>URL:</dt>
+  <dd>{{model.url}}</dd>  
+</dl>
+
+<dl class="dl-horizontal">
+  <dt>Status:</dt>
+  <dd>{{view Ember.Select content=model.STATUSES value=model.status viewName="status"}}</dd>    
+</dl>
+{{#if isDirty }}
+  <button class="btn btn-default" {{action 'saveChanges'}}>Save changes</button>
+  unsaved changes
+{{/if}}
+
+{{#if isSaving }}
+  Saving...
+{{/if}}
+<h3>Contacts</h3>
+{{#each contact in contacts}}
+  <ul>
+    <li> {{contact.name}} </li>
+  </ul>
+{{/each}}
+{{outlet}}

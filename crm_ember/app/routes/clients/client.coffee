@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-ClientsShowRoute = Ember.Route.extend
+ClientsClientRoute = Ember.Route.extend
   model: (params) -> @store.find 'client', params.id
   
-`export default ClientsShowRoute`
+`export default ClientsClientRoute`
