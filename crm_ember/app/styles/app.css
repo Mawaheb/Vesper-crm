@@ -1,6 +1,8 @@
-html, body {
+html,body {
   margin: 20px;
 }
+
+
 
 dd {
   display: inline-block;
@@ -9,4 +11,9 @@ dd {
 
 dt{
   width: 90px !important;
+}
+
+a.delete {
+  color: #777777;
+  float: right;
 }

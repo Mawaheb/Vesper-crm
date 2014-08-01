@@ -21,14 +21,26 @@
   <dt>Status:</dt>
   <dd>{{view Ember.Select content=model.STATUSES value=model.status viewName="status"}}</dd>    
 </dl>
-{{#if isDirty }}
-  <button class="btn btn-default" {{action 'saveChanges'}}>Save changes</button>
-  unsaved changes
-{{/if}}
 
-{{#if isSaving }}
-  Saving...
-{{/if}}
+<div class='row'>
+  <div class="col-md-1">
+  </div>
+
+  <div class="col-md-3">
+    {{#if isDirty }}
+      <button class="btn btn-default" {{action 'saveChanges'}}>Save changes</button>
+      unsaved changes
+    {{/if}}
+
+    {{#if isSaving }}
+      Saving...
+    {{/if}}
+  </div>
+  <div class="col-md-2">    
+    <a  href="#" {{action delete on="click"}}>Delete</a>
+  </div>
+</div>
+
 <h3>Contacts</h3>
 {{#each contact in contacts}}
   <ul>
