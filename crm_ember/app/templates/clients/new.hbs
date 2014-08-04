@@ -1,0 +1,21 @@
+<h1>New Client</h1>
+<form>
+  <fieldset>
+    <dl class="dl-horizontal">
+      <dt>Name:</dt>
+      <dd>{{view Ember.TextField value=fields.name}}</dd>      
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Phone:</dt>
+      <dd>{{view Ember.TextField value=fields.phone}}</dd>      
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>URL:</dt>
+      <dd>{{view Ember.TextField value=fields.url}}</dd>      
+    </dl>
+  </fieldset>
+  <fieldset class="actions">
+    <button class="btn btn-default" {{action 'createClient'}} >Create Client</button>
+    <button class="btn btn-danger"  {{action 'cancel'}}>Cancel</button>
+  </fieldset>
+</form>

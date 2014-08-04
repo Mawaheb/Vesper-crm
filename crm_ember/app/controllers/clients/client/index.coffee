@@ -12,6 +12,6 @@ ClientsShowController = Ember.ObjectController.extend
           unless window.confirm("This Clinet has some Contacts, Are you sure you want to delete?")
             return false        
         @get('model').destroyRecord().then =>
-          @transitionToRoute 'clients'
+          @transitionToRoute 'clients.index'
 
 `export default ClientsShowController`

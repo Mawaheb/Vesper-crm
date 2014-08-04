@@ -8,6 +8,7 @@ Router.map () ->
   @route 'about'
 
   @resource 'clients', ->
+    @route 'new'
     @resource 'clients.client', path: '/:id', ->
       @route 'edit'
 
