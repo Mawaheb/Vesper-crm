@@ -4,13 +4,13 @@ ClientEditController = Ember.ObjectController.extend
   actions:
     saveChanges: ->
       @get('model').save().then =>
-        @transitionToRoute 'clients.client'
+        @transitionToRoute 'client'
       
         
 
     cancel: ->
       @get('model').rollback()
-      @transitionToRoute 'clients.client'
+      @transitionToRoute 'client'
 
 
 `export default ClientEditController`
