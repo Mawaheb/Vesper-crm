@@ -1,3 +1,16 @@
 <h3>Sales Reps</h3>
-
-{{outlet}}
+<div class="row">
+  <div class="col-md-2">
+    <ul class="list-group">
+      <a href='#' class="list-group-item active">Sales-Reps</a>
+      {{#each salesRep in controller}}
+        <li class="list-group-item">
+          {{#link-to 'sales-rep' salesRep}} {{salesRep.name}} {{/link-to}}  
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-md-10">
+    {{outlet}}
+  </div>
+</div>

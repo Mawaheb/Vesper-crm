@@ -1,10 +1,16 @@
 `import DS from 'ember-data'`
 
 SalesRep = DS.Model.extend
-  name: DS.attr('string')
+  firstName:  DS.attr('string')
+  lastName:   DS.attr('string')
 
-  FIXTURES: [
-    {id: 1, name: "Steeve Jobs"},
-    {id: 2, name: "Stefan Penar"}
-  ]
+  name:(->
+    @get('firstName') + ' ' + @get('lastName')
+  ).property('firstName', 'lastName')
+
+
+  # FIXTURES: [
+  #   {id: 1, name: "Steeve Jobs"},
+  #   {id: 2, name: "Stefan Penar"}
+  # ]
 `export default SalesRep`
