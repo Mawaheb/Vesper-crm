@@ -12,7 +12,7 @@ Router.map () ->
     @resource 'client', path: '/:client_id', ->
       @route 'edit'
 
-  @resource "sales-reps"   
+  @resource "sales-reps"
   # @resource "sales-reps", ->
   #   @route 'show', path: ':srep_id'
 
