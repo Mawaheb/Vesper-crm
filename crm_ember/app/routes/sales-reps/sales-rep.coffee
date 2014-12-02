@@ -1,5 +1,6 @@
-Unstaged changes after reset:
-D	crm_ember/app/routes/sales-rep/edit.coffee
-D	crm_ember/app/routes/sales-rep/sales-rep.coffee
-M	crm_ember/app/routes/sales-reps/edit.coffee
-M	crm_ember/app/routes/sales-reps/sales-rep.coffee
+`import Ember from 'ember'`
+
+SalesRepRoute = Ember.Route.extend
+  model: (params) -> @store.find('sales-rep', params.sales_rep_id)
+
+`export default SalesRepRoute`
