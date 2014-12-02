@@ -2,7 +2,7 @@ class Api::SalesRepsController < ApplicationController
   before_filter :fetch_sr, :except => [:index, :create]
 
   def fetch_sr
-    salesRep = SalesRep.find(params[:id])
+    @salesRep = SalesRep.find(params[:id])
   end
 
   def index
@@ -10,7 +10,7 @@ class Api::SalesRepsController < ApplicationController
   end
 
   def show
-    render json: salesRep
+    render json: @saleSrep
   end
 
   def create
@@ -23,18 +23,18 @@ class Api::SalesRepsController < ApplicationController
   end
 
   def update
-    if salesRep.update_attributes(params[:sales_rep])
+    if @salesRep.update_attributes(params[:sales_rep])
       head :no_content
     else
-      render json: salesRep.errors, status: :unprocessable_entity
+      render json: @saleSrep.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if salesRep.destroy
+    if @saleSrep.destroy
       head :no_content, status: :ok
     else
-      render json: salesRep.errors, status: :unprocessable_entity
+      render json: @saleSrep.errors, status: :unprocessable_entity
     end
   end
 
