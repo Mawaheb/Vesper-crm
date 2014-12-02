@@ -13,10 +13,9 @@ Router.map () ->
       @route 'edit'
 
   @resource "sales-reps", ->
+    @route 'new'
     @resource 'sales-rep', path: '/:sales_rep_id', ->
       @route 'edit'
-  # @resource "sales-reps", ->
-  #   @route 'show', path: ':srep_id'
 
 
 
