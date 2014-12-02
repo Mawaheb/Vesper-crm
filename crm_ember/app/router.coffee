@@ -13,7 +13,7 @@ Router.map () ->
       @route 'edit'
 
   @resource "sales-reps", ->
-    @resource 'sales-rep', path: '/:salesrep_id', ->
+    @resource 'sales-rep', path: '/:sales_rep_id', ->
       @route 'edit'
   # @resource "sales-reps", ->
   #   @route 'show', path: ':srep_id'
