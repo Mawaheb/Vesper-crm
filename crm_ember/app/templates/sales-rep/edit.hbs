@@ -1,5 +1,34 @@
 <h2 style="display:inline">{{model.name}}</h2>
 <hr>
 <form>
-  {{input value=name}}
+  <fieldset>
+    <dl class="dl-horizontal">
+      <dt>First Name:</dt>
+      <dd>{{input value=firstName}}</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+      <dt>Last Name:</dt>
+      <dd>{{input value=lastName}}</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+      <dt>Title:</dt>
+      <dd>{{input value=title}}</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+      <dt>Phone num:</dt>
+      <dd>{{input value=phoneNume}}</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+      <dt>Email:</dt>
+      <dd>{{input value=email}}</dd>
+    </dl>    
+  </fieldset>
+  <fieldset class="actions">
+    <button class="btn btn-default" {{action 'saveChanges'}}>Save Changes</button>
+    <button class="btn btn-danger"  {{action 'cancel'}}>Cancel</button>
+  </fieldset>  
 </form>
