@@ -31,10 +31,10 @@ class Api::SalesRepsController < ApplicationController
   end
 
   def destroy
-    if @saleSrep.destroy
+    if @salesRep.destroy
       head :no_content, status: :ok
     else
-      render json: @saleSrep.errors, status: :unprocessable_entity
+      render json: @salesRep.errors, status: :unprocessable_entity
     end
   end
 
