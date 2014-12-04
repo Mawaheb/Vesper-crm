@@ -7,8 +7,8 @@ SalesRep = DS.Model.extend
   phoneNum:   DS.attr('string')
   email:      DS.attr('string')
   sex:        DS.attr('string')
-  SEXES:      [0, 1, 2]
-
+  
+  SEXES: [0, 1, 2]
   name:(->
     @get('firstName') + ' ' + @get('lastName')
   ).property('firstName', 'lastName')

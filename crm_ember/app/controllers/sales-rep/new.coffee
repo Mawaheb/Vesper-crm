@@ -1,9 +1,10 @@
 `import Ember from 'ember'`
 SalesRepsNewController = Ember.ObjectController.extend
-  content: {}
+  # content: {}
   actions:
     saveChanges: ->
-      newSalesRep = @store.createRecord('sales-rep', @get('model'))
+      # newSalesRep = @store.createRecord('sales-rep', @get('model'))
+      newSalesRep = @get('model')
       newSalesRep.save().then =>
         @transitionToRoute('sales-rep', newSalesRep)
 
