@@ -25,6 +25,11 @@
     <dl class="dl-horizontal">
       <dt>Email:</dt>
       <dd>{{input value=email}}</dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+      <dt>Sex:</dt>
+      <dd>{{view Ember.Select content=model.SEXES value=model.sex viewName="sex"}}</dd>
     </dl>    
   </fieldset>
   <fieldset class="actions">
