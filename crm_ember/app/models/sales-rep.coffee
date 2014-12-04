@@ -7,9 +7,11 @@ SalesRep = DS.Model.extend
   phoneNum:   DS.attr('string')
   email:      DS.attr('string')
   sex:        DS.attr('string')
-  
+
   SEXES: [0, 1, 2]
   name:(->
+    if ( (@get('firstName') && @get('lastName')) == undefined )
+      return 'New Sales-Rep'
     @get('firstName') + ' ' + @get('lastName')
   ).property('firstName', 'lastName')
 
