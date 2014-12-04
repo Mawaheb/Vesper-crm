@@ -7,4 +7,7 @@ SalesRepsNewController = Ember.ObjectController.extend
       newSalesRep.save().then =>
         @transitionToRoute('sales-rep', newSalesRep)
 
+    cancel: ->
+      @transitionToRoute 'sales-reps.index'
+
 `export default SalesRepsNewController`
