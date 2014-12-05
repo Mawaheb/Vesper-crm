@@ -6,7 +6,11 @@ SalesRep = DS.Model.extend
   title:      DS.attr('string')
   phoneNum:   DS.attr('string')
   email:      DS.attr('string')
-  sex:        DS.attr('string')
+  sex:        DS.attr('number', {defaultValue: 0})
+
+  isSexUnkown: Ember.computed.equal('sex', 0)
+  isSexMale:   Ember.computed.equal('sex', 1)
+  isSexFemale: Ember.computed.equal('sex', 2)
 
   SEXES: [0, 1, 2]
   name:(->

@@ -31,13 +31,13 @@
       <dt>Sex:</dt>
       <dd>
         <div class="btn-group" role="group">
-          <button type="button" {{bind-attr class=":btn :btn-default isSexUnkown:active"}}class="btn btn-default" {{action 'setSex' 0}}>
+          <button type="button" {{bind-attr class=":btn :btn-default isSexUnkown:active"}} {{action 'setSex' 0}}>
             ?
           </button>
-          <button type="button" class="btn btn-default" {{action 'setSex' 1}}>
+          <button type="button" {{bind-attr class=":btn :btn-default isSexMale:active"}} {{action 'setSex' 1}}>
             Male
           </button>
-          <button type="button" class="btn btn-default" {{action 'setSex' 2}}>
+          <button type="button" {{bind-attr class=":btn :btn-default isSexFemale:active"}} {{action 'setSex' 2}}>
             Female
           </button>
         </div>
