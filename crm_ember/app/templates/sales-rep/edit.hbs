@@ -29,7 +29,19 @@
 
     <dl class="dl-horizontal">
       <dt>Sex:</dt>
-      <dd>{{view Ember.Select content=model.SEXES value=model.sex viewName="sex"}}</dd>
+      <dd>
+        <div class="btn-group" role="group">
+          <button type="button" {{bind-attr class=":btn :btn-default isSexUnkown:active"}}class="btn btn-default" {{action 'setSex' 0}}>
+            ?
+          </button>
+          <button type="button" class="btn btn-default" {{action 'setSex' 1}}>
+            Male
+          </button>
+          <button type="button" class="btn btn-default" {{action 'setSex' 2}}>
+            Female
+          </button>
+        </div>
+      </dd>
     </dl>    
   </fieldset>
   <fieldset class="actions">

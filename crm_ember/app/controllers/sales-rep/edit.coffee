@@ -1,6 +1,10 @@
 `import Ember from 'ember'`
 SalesRepEditController = Ember.ObjectController.extend
+  isSexUnkown: Ember.computed.equal('sex', 0)
   actions:
+    setSex: (sex)->
+      @get('model').set('sex', sex)
+
     saveChanges: ->
       @get('model').save().then =>
         @transitionToRoute 'sales-rep'
