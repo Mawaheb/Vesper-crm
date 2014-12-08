@@ -25,5 +25,21 @@
   <dt>Email:</dt>
   <dd>{{model.email}}</dd>
 </dl>
+    <dl class="dl-horizontal">
+      <dt>Sex:</dt>
+      <dd>
+        <div class="btn-group" role="group">
+          <button type="button" {{bind-attr class=":btn :btn-default isSexUnkown:active"}}  >
+            ?
+          </button>
+          <button type="button" {{bind-attr class=":btn :btn-default isSexMale:active"}} >
+            Male
+          </button>
+          <button type="button" {{bind-attr class=":btn :btn-default isSexFemale:active"}} >
+            Female
+          </button>
+        </div>
+      </dd>
+    </dl>  
 <hr>
 <button class="btn btn-danger pull-right" {{action 'delete'}}>Delete</button>
