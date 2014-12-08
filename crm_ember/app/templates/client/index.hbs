@@ -42,9 +42,11 @@
 </div>
 
 <h3>Contacts</h3>
-{{#each contact in contacts}}
-  <ul>
+<ul>
+  {{#each contact in contacts}}
     <li> {{contact.name}} </li>
-  </ul>
-{{/each}}
+  {{else}}
+    <p>There are no contacts for this client.</p> 
+  {{/each}}
+</ul>
 {{outlet}}
