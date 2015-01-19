@@ -1,1 +1,29 @@
-<h1>New Contact template</h1>
+<h1>New Contact</h1>
+<form>
+  <fieldset>
+    <dl class="dl-horizontal">
+      <dt>First name:</dt>
+      <dd>{{input value=firstName}}</dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Last name:</dt>
+      <dd>{{input value=lastName}}</dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Title:</dt>
+      <dd>{{input value=title}}</dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Phone num:</dt>
+      <dd>{{input value=phoneNum}}</dd>
+    </dl>
+    <dl class="dl-horizontal">
+      <dt>Email:</dt>
+      <dd>{{input value=Email}}</dd>
+    </dl>
+  </fieldset>
+  <fieldset class="actions">
+    <button class="btn btn-primary" {{action 'createContact'}} >Create Contact</button>
+    <button class="btn btn-danger"  {{action 'cancel'}}>Cancel</button>
+  </fieldset>
+</form>
