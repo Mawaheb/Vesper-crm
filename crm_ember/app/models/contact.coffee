@@ -1,12 +1,15 @@
 `import DS from 'ember-data'`
 
-contact = DS.Model.extend
+Contact = DS.Model.extend
   client: DS.belongsTo('client'),
   firstName: DS.attr('string'),
-  lastName:  DS.attr('string')
+  lastName:  DS.attr('string'),
+  title:     DS.attr('string'),    
+  phoneNum:  DS.attr('string'), 
+  Email:     DS.attr('string')
 
   name: (->
     [@get('firstName'), @get('lastName')].join(' ')
-    ).property('firstName','lastName')
+  ).property('firstName','lastName')
 
-`export default contact`
+`export default Contact`
