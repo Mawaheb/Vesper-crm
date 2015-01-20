@@ -10,11 +10,11 @@ Router.map () ->
   @resource 'clients', ->
     @route 'new'
     @resource 'client', path: '/:client_id', ->
-      @route 'edit'
       @resource 'contacts', ->
         @resource 'contact', path: '/:contact_id', ->
           @route 'edit'
         @route 'new'
+    @route 'edit', path: '/:client_id/edit'
 
   @resource "sales-reps", ->
     @route 'new'
