@@ -7,7 +7,7 @@ ContactsNewController = Ember.ObjectController.extend
       # console.log("This contact's Client is :" + @get('model').get('client'))
       contact = @get('model')
       contact.save().then =>
-        @transitionToRoute('contacts')
+        @transitionToRoute('client')
     cancel: ->
       @transitionToRoute 'contacts'
 `export default ContactsNewController`

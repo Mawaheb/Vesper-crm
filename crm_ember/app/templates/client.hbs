@@ -36,20 +36,23 @@
       Saving...
     {{/if}}
   </div>
-  <hr>
   <button class="btn btn-danger pull-right" {{action 'delete'}}>Delete</button>
+  <hr>
 </div>
 
 <h3 style="display:inline">Contacts</h3>
 {{link-to 'Add' 'contacts.new' class="btn btn-success"}}
 {{outlet}}
 <ul>
+{{!-- TODO: Should checking contact.isDirty be moved elsewhere? --}}
   {{#each contact in contacts}}
-    <li>  
-      {{#link-to 'contact' contact.id}} 
-        {{contact.name}}
-      {{/link-to}}
-    </li>
+    {{#unless contact.isDirty}}
+      <li>  
+        {{#link-to 'contact' contact.id}} 
+          {{contact.name}}
+        {{/link-to}}
+      </li>
+    {{/unless}}
   {{else}}
     <p>There are no contacts for this client.</p> 
   {{/each}}
