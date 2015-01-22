@@ -1,4 +1,33 @@
-<h1>Singular contact template (Show)</h1>
-<ul>
-  {{model.name}}
-</ul>
+<h4>{{model.name}}</h1>
+<div class="row">
+  <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt>First name:</dt>
+      <dd>{{model.firstName}}</dd>
+    </dl>
+  </div>
+  <div class="col-md-8">
+    <dl class="dl-horizontal">
+      <dt>Last name:</dt>
+      <dd>{{model.lastName}}</dd>
+    </dl>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <dl class="dl-horizontal">
+      <dt>Phone num:</dt>
+      <dd>{{model.phoneNum}}</dd>
+    </dl>
+  </div>
+  <div class="col-md-8">
+    <dl class="dl-horizontal">
+      <dt>Email:</dt>
+      <dd>
+        {{#if model.email}}
+          <a href="mailto:#">{{model.email}}</a>
+        {{/if}}
+      </dd>
+    </dl>
+  </div>  
+</div>

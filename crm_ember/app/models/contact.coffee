@@ -6,7 +6,7 @@ Contact = DS.Model.extend
   lastName:  DS.attr('string'),
   title:     DS.attr('string'),    
   phoneNum:  DS.attr('string'), 
-  Email:     DS.attr('string')
+  email:     DS.attr('string')
 
   name: (->
     [@get('firstName'), @get('lastName')].join(' ')
