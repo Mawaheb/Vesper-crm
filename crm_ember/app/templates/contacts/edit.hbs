@@ -1,0 +1,44 @@
+<form>
+  <div class="row">
+    <div class="col-xs-6">      
+      <div class="form-group">
+        <label for="contactFname">First Name</label>
+        {{input class="form-control" id="contactFname" value=firstName}}
+      </div>    
+    </div>
+    <div class="col-xs-6">      
+      <div class="form-group">
+        <label for="contactLname">Last Name</label>
+        {{input class="form-control" id="contactLname" value=lastName}}
+      </div>    
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">      
+      <div class="form-group">
+        <label for="contactPhn">Phone num</label>
+        {{input class="form-control" id="contactPhn" value=phoneNum}}
+      </div>    
+    </div>
+    <div class="col-xs-6">      
+      <div class="form-group">
+        <label for="contactEmail">Email</label>
+        {{input class="form-control" id="contactEmail" value=email}}
+      </div>    
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label for="contactTitle">Title</label>
+        {{input class="form-control" id="contactTitle" value=title}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 offset1">
+      <button class="btn btn-primary" {{action 'save'}}>Save</button>
+      <button class="btn btn-danger" {{action 'cancel'}}>cancel</button>
+    </div>
+  </div>
+</form>

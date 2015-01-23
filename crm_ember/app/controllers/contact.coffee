@@ -6,5 +6,7 @@ ContactController = Ember.ObjectController.extend
     delete: ->
       @get('model').destroyRecord().then =>
         @transitionToRoute 'contacts'
-
+        
+    edit: ->
+      @transitionToRoute('contacts.edit', @get('model'))
 `export default ContactController`

@@ -12,7 +12,7 @@ Router.map () ->
     @resource 'client', path: '/:client_id', ->
       @resource 'contacts', ->
         @resource 'contact', path: '/:contact_id', ->
-          @route 'edit'
+        @route 'edit', path: '/:contact_id/edit'
         @route 'new'
     @route 'edit', path: '/:client_id/edit'
 
