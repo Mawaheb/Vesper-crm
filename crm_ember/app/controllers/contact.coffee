@@ -9,4 +9,7 @@ ContactController = Ember.ObjectController.extend
         
     edit: ->
       @transitionToRoute('contacts.edit', @get('model'))
+
+    cancel: ->
+      @transitionToRoute 'contacts'
 `export default ContactController`
