@@ -1,5 +1,42 @@
 <h1>New Contact</h1>
 <form>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="fName">First Name:</label>
+      {{input class="form-control" id="fName" value=firstName}}
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="lName">Last Name:</label>
+      {{input class="form-control" id="lName" value=lastName}}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="title">Title</label>
+      {{input class="form-control" id="title" value=title}}
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="fName">Email</label>
+      {{input class="form-control" id="email" value=email}}
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="form-group">
+      <label for="phone">Phone num:</label>
+      {{input class="form-control" id="phone" value=phoneNum}}
+    </div>
+  </div>
+</div>
+{{!--   <div></div>
   <fieldset>
     <dl class="dl-horizontal">
       <dt>First name:</dt>
@@ -22,7 +59,7 @@
       <dd>{{input value=email}}</dd>
     </dl>
   </fieldset>
-  <fieldset class="actions">
+ --}}  <fieldset class="actions">
     <button class="btn btn-primary" {{action 'createContact'}} >Create Contact</button>
     <button class="btn btn-danger"  {{action 'cancel'}}>Cancel</button>
   </fieldset>
