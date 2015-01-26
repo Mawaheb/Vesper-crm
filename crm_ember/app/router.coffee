@@ -1,7 +1,8 @@
 `import Ember from 'ember'`
+`import config from './config/environment';`
 
 Router = Ember.Router.extend 
-  location: CrmEmberENV.locationType
+  location: config.locationType
 
 
 Router.map () ->
@@ -21,6 +22,8 @@ Router.map () ->
     @resource 'sales-rep', path: '/:sales_rep_id', ->
       @route 'edit'
 
+  @resource "meetings", ->
+  
 
 
 `export default Router`
