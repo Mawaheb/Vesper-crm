@@ -10,6 +10,16 @@ class Api::ContactsController < ApplicationController
     end
   end
 
+
+  def update
+    if @contact.update_attributes(params[:contact])
+      head :no_content
+    else
+      render json: @contact.errors, status: :unprocessable_entity
+    end
+  end
+  
+
   def destroy
     if @contact.destroy
       head :no_content, status: :ok
