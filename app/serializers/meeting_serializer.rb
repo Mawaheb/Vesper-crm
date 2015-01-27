@@ -3,6 +3,7 @@ class MeetingSerializer < ActiveModel::Serializer
   has_one  :client
   has_many :contacts
   has_many :sales_reps
+  has_many :follow_ups
 
   attributes :id,
              :memo,

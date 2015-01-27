@@ -10,6 +10,6 @@ Meeting = DS.Model.extend
   startDate:  DS.attr('date')
   duration:   DS.attr()
 
-  # hasFollowUps: Ember.computed.notEmpty('followUps')
+  hasFollowUps: Ember.computed.notEmpty('followUps')
   # TODO, Add followUps.
 `export default Meeting`

@@ -13,7 +13,7 @@
           tr
             td = format-date meeting.startDate
             td = meeting.duration
-            td = 
+            td = meeting.hasFollowUps 
             td = meeting.client.name
             td = meeting.salesReps
   else
