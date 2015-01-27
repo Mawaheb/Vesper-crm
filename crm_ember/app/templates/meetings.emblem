@@ -1,0 +1,20 @@
+.well
+  if controller.model.length
+    table.table
+      thead
+        tr
+          th Date
+          th Duration
+          th Has followUps
+          th Client Name
+          th Sales Reps
+      tbody
+        each meeting in controller
+          tr
+            td = meeting.startDate
+            td = meeting.duration
+            td = 
+            td = meeting.client
+            td = meeting.salesReps
+  else
+   p there are no meetings.

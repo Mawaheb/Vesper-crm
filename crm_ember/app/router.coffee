@@ -22,7 +22,7 @@ Router.map () ->
     @resource 'sales-rep', path: '/:sales_rep_id', ->
       @route 'edit'
 
-  @resource "meetings", ->
+  @resource "meetings"
   
 
 
