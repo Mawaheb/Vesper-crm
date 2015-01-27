@@ -11,7 +11,7 @@
       tbody
         each meeting in controller
           tr
-            td = meeting.startDate
+            td = format-date meeting.startDate
             td = meeting.duration
             td = 
             td = meeting.client
