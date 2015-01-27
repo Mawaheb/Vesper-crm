@@ -15,6 +15,6 @@
             td = meeting.duration
             td = meeting.hasFollowUps 
             td = meeting.client.name
-            td = meeting.salesReps
+            td = meeting.salesRepsNames
   else
    p there are no meetings.

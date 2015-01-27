@@ -11,5 +11,14 @@ Meeting = DS.Model.extend
   duration:   DS.attr()
 
   hasFollowUps: Ember.computed.notEmpty('followUps')
-  # TODO, Add followUps.
+
+  salesRepsNames:(->
+    return '' unless @get('salesReps')
+    names = []
+    @get('salesReps').forEach (sr) ->
+      names.push(sr.get('name'))
+    names
+    # TODO, Prettify the output!
+  ).property('salesReps')
+  
 `export default Meeting`
