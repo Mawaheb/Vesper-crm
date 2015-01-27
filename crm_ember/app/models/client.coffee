@@ -2,6 +2,7 @@
 
 client = DS.Model.extend
   contacts: DS.hasMany('contact')
+  meetings: DS.hasMany('meeting')
   name:     DS.attr('string')
   phone:    DS.attr('string')
   url:      DS.attr('string')

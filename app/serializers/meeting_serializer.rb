@@ -1,5 +1,6 @@
 class MeetingSerializer < ActiveModel::Serializer
   embed :ids, include: true
+  has_one  :client
   has_many :contacts
   has_many :sales_reps
 

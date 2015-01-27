@@ -14,7 +14,7 @@
             td = format-date meeting.startDate
             td = meeting.duration
             td = 
-            td = meeting.client
+            td = meeting.client.name
             td = meeting.salesReps
   else
    p there are no meetings.
