@@ -4,8 +4,7 @@
       .row
         .col-md-4
           label Meeting Date
-          Ember.TextField value=startDate class="string form-control"
-
+          = bs-datetimepicker date=mydate format='YYYY-MM-DD HH:mm' value=startDate
         .col-md-3
           label Duration
           Ember.Select value=duration class="form-control"
