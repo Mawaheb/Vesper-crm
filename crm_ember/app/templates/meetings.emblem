@@ -1,3 +1,5 @@
+/ button.btn.btn-success New Meeting
+link-to 'meetings.new' | New Meeting
 .well
   if controller.model.length
     table.table

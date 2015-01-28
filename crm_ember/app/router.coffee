@@ -23,7 +23,7 @@ Router.map () ->
       @route 'edit'
 
   @resource "meetings", ->
-    @route 'new'
+  @route 'meetings.new', path: 'meetings/new'
   
 
 
