@@ -1,0 +1,27 @@
+.row
+  .col-md-9
+    .well
+      .row
+        .col-md-4
+          label Meeting Date
+          Ember.TextField value=startDate class="string form-control"
+
+        .col-md-3
+          label Duration
+          Ember.Select value=duration class="form-control"
+
+        .col-md-5
+          label Select Client
+          Ember.Select value=client class="form-control"
+      .row
+        .col-lg-12
+          label Memo
+          Ember.TextArea value=memo class="form-control" rows="5"
+
+  .col-md-3
+    .panel.panel-default
+      .panel-heading Assign Sales Reps:
+      .panel-body
+
+      .panel-heading Assign Contacts:
+      .panel-body
