@@ -19,7 +19,7 @@
           Ember.TextArea value=memo class="form-control" rows="5"
 
   .col-md-3
-    .panel.panel-default
+    .panel.panel-primary
       .panel-heading Assign Sales Reps:
       .panel-body
 
