@@ -7,11 +7,11 @@
           = bs-datetimepicker date=mydate format='YYYY-MM-DD HH:mm' value=startDate
         .col-md-3
           label Duration
-          Ember.Select value=duration class="form-control"
+          view 'select' value=duration content=durations class="form-control"
 
         .col-md-5
           label Select Client
-          Ember.Select value=client class="form-control"
+          view 'select' value=client content=clients optionLabelPath="content.name" optionValuePath="content.id" selection=client prompt='Please select a client..' class="form-control"
       .row
         .col-lg-12
           label Memo
@@ -21,6 +21,17 @@
     .panel.panel-primary
       .panel-heading Assign Sales Reps:
       .panel-body
+        ul
+          each test
+            li name: #{name}
 
       .panel-heading Assign Contacts:
       .panel-body
+        ul
+          each contactsArr
+            li name: #{name}
+        
+
+
+
+button.btn.btn-danger{action 'test'} Test
