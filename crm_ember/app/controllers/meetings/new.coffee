@@ -14,15 +14,16 @@ MeetingsNewController = Ember.ObjectController.extend
     @get('contactsArr').pushObjects(arr)
   ).observes('client')
 
-  selectSR: undefined
-  watchSelectSR:( ->
-    alert(@get('name'))
-  ).observes('selectSR')
+  # selectSR: undefined
+  # watchSelectSR:( ->
+  #   alert(@get('name'))
+  # ).observes('selectSR')
 
   actions:
-    test: ->
-      @get('test').pushObject({name:3})
-      console.log(@get('contactsArr'))
+    test:(value, checked, id) ->
+      alert('clicked ID: ' + id)
+      # @get('test').pushObject({name:3})
+      # console.log(@get('contactsArr'))
       # names = []
       # @get('clients').forEach (c) =>
       #   o = Ember.Object.create({name: c.get('name'), id: c.get('id')})
