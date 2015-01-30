@@ -21,15 +21,18 @@
     .panel.panel-primary
       .panel-heading Assign Sales Reps:
       .panel-body
-        ul
-          each test
-            li name: #{name}
+        each sReps
+          input type='checkbox' checked=selectSR
+          label #{name}
+          %br
 
       .panel-heading Assign Contacts:
       .panel-body
-        ul
-          each contactsArr
-            li name: #{name}
+        each contactsArr
+          input type="checkbox" 
+          label #{name}
+          %br  
+          
         
 
 

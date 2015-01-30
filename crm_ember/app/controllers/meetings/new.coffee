@@ -3,7 +3,6 @@ MeetingsNewController = Ember.ObjectController.extend
   durations: Ember.String.w "00:15 00:30 00:45 01:00 01:15 01:30 01:45 02:00 02:15 02:30 02:45 03:00"
   client: null
   contactsArr: []
-  test: [{name:1}, {name:2}]
 
   fetchContacts:(->
     @get('contactsArr').clear() #resetting contactsArr array
@@ -14,6 +13,11 @@ MeetingsNewController = Ember.ObjectController.extend
       arr.pushObject({name: c.get('name'), id: c.get('id')})
     @get('contactsArr').pushObjects(arr)
   ).observes('client')
+
+  selectSR: undefined
+  watchSelectSR:( ->
+    alert(@get('name'))
+  ).observes('selectSR')
 
   actions:
     test: ->
