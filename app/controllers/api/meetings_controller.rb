@@ -6,7 +6,10 @@ class Api::MeetingsController < ApplicationController
   end
 
   def create
-    @meeting = Meeting.new(params[:meeting])
+    @meeting    = Meeting.new(params[:meeting])
+    sales_ids   = params[:sales_rep_ids]
+    sales_rps   = SalesRep.any_in(id: sales_ids)
+    @meeting.sales_reps << sales_rps
     if @meeting.save!
       render json: @meeting, status: :created
     else

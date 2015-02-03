@@ -1,7 +1,10 @@
 `import Ember from 'ember'`
 
 MeetingsNewRoute = Ember.Route.extend
-  model: -> @store.createRecord 'meeting'
+  model: -> 
+    model = @store.createRecord 'meeting'
+    model.set('salesRepIDs', [])
+    model
 
   setupController: (controller, model) ->
     controller.set 'model',     model

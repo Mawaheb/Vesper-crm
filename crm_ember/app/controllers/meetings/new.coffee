@@ -18,12 +18,12 @@ MeetingsNewController = Ember.ObjectController.extend
 
   actions:
     assignSReps:(sr) ->
-      sReps = @get('model').get('salesReps')
-
-      if sReps.contains(sr)
-        sReps.removeObject(sr)
+      sReps = @get('model').get('salesRepIDs')
+      srId = sr.get('id')
+      if sReps.contains(srId)
+        sReps.removeObject(srId)
       else
-        sReps.addObject(sr)
+        sReps.addObject(srId)
 
 
     assignContacts:(contact)->
@@ -38,7 +38,7 @@ MeetingsNewController = Ember.ObjectController.extend
       # console.log(@get('salesReps.content'))
       meeting = @get('model')
       meeting.set('client', @get('client'))
-      meeting.get('salesReps').pushObjects(@get('salesReps.content'))
+      # meeting.get('salesReps').pushObjects(@get('salesReps.content'))
       meeting.save().then =>
         @transitionToRoute 'meetings'
 

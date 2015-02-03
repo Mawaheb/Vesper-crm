@@ -14,7 +14,8 @@ class Meeting
   # and can't dynamically add more .
 
   validates_presence_of :client_id
-  validates_presence_of :sales_rep_ids
+  # validates_presence_of :sales_rep_ids # to avoid many-to-many association problem in ember.
+
   # may be validates the presence of contacts?
   # or the user might intintially leave it blank to decide later?
 

@@ -2,13 +2,13 @@
 
 Meeting = DS.Model.extend
   client:     DS.belongsTo('client')
-  contacts:   DS.hasMany('contact', {async: false})
-  salesReps:  DS.hasMany('sales-rep', {async: true})
+  contacts:   DS.hasMany('contact')
+  salesReps:  DS.hasMany('sales-rep', {async: true, embedded: 'always'} )
   followUps:  DS.hasMany('follow-up')
-
   memo:       DS.attr('string')
   startDate:  DS.attr('date')
   duration:   DS.attr()
+  salesRepIDs: DS.attr()
 
   hasFollowUps: Ember.computed.notEmpty('followUps')
 
