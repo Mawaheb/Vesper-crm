@@ -8,5 +8,5 @@ class MeetingSerializer < ActiveModel::Serializer
   attributes :id,
              :memo,
              :duration,
-             :start_date,
+             :start_date
 end
