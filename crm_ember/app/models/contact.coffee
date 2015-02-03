@@ -2,6 +2,7 @@
 
 Contact = DS.Model.extend
   client: DS.belongsTo('client'),
+  # meetings:  DS.hasMany('meeting'),
   firstName: DS.attr('string'),
   lastName:  DS.attr('string'),
   title:     DS.attr('string'),    

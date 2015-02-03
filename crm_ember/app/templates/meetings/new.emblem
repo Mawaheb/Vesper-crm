@@ -11,7 +11,7 @@
 
         .col-md-5
           label Select Client
-          view 'select' value=client content=clients optionLabelPath="content.name" optionValuePath="content.id" selection=client prompt='Please select a client..' class="form-control"
+          view 'select' selectingBinding=client content=clients optionLabelPath="content.name" optionValuePath="content.id" selection=client prompt='Please select a client..' class="form-control"
       .row
         .col-lg-12
           label Memo
@@ -22,19 +22,19 @@
       .panel-heading Assign Sales Reps:
       .panel-body
         each sr in sReps
-          check-box action="test" value=sr id=sr.id
+          check-box action="assignSReps" value=sr
           label #{sr.name}
           %br
 
       .panel-heading Assign Contacts:
       .panel-body
-        each c in contactsArr
-          check-box action="test" value=c id=c.id 
-          label #{c.name}
+        each contact in contactsArr
+          check-box action="assignContacts" value=contact 
+          label #{contact.name}
           %br  
           
         
 
 
 
-button.btn.btn-danger{action 'test'} Test
+button.btn.btn-success{action 'save'} Save 
