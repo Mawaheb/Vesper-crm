@@ -4,7 +4,7 @@
       .row
         .col-md-4
           label Meeting Date
-          = bs-datetimepicker date=mydate format='YYYY-MM-DD HH:mm' value=startDate
+          = bs-datetimepicker value=startDate date=startDate format='YYYY-MM-DD HH:mm'
         .col-md-3
           label Duration
           view 'select' value=duration content=durations class="form-control"

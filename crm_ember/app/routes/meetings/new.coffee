@@ -3,7 +3,6 @@
 MeetingsNewRoute = Ember.Route.extend
   model: -> 
     model = @store.createRecord 'meeting'
-    model.set('salesRepIDs', [])
     model
 
   setupController: (controller, model) ->
