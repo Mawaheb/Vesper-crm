@@ -1,7 +1,7 @@
 `import DS from 'ember-data'`
 
 SalesRep = DS.Model.extend
-  meetings:   DS.hasMany('meeting')
+  meetings:   DS.hasMany('meeting',{async: true})
   firstName:  DS.attr('string')
   lastName:   DS.attr('string')
   title:      DS.attr('string')

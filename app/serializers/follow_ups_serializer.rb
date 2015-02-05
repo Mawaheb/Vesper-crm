@@ -1,5 +1,5 @@
 class FollowUpsSerializer < ActiveModel::Serializer
-  embed :ids, inlude: true
+  embed :ids, include: true
   has_one :meeting
   
   attributes  :id,

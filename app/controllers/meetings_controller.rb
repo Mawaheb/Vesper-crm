@@ -1,6 +1,9 @@
 class MeetingsController < ApplicationController
   def index
     @meetings = Meeting.all  
+    respond_to do |f|
+      f.json { render json: @meetings}
+    end
   end
 
 

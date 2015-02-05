@@ -2,15 +2,18 @@ class Api::MeetingsController < ApplicationController
   before_filter :fetch_meeting, :except => [:index, :create]
 
   def index
-    render json: Meeting.all
+    @meetings = Meeting.all  
+    respond_to do |f|
+      f.json { render json: @meetings}
+    end
   end
 
   def create
-    # sales_ids   = params[:sales_rep_ids]
+    sales_ids   = params[:sales_rep_ids]
     # params.delete :sales_rep_ids
     @meeting    = Meeting.new(params[:meeting])
-    # sales_rps   = SalesRep.any_in(id: sales_ids)
-    # @meeting.sales_reps << sales_rps
+    sales_rps   = SalesRep.any_in(id: sales_ids)
+    @meeting.sales_reps << sales_rps
     if @meeting.save!
       render json: @meeting, status: :created
     else
