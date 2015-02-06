@@ -2,10 +2,7 @@ class Api::MeetingsController < ApplicationController
   before_filter :fetch_meeting, :except => [:index, :create]
 
   def index
-    @meetings = Meeting.all  
-    respond_to do |f|
-      f.json { render json: @meetings}
-    end
+    render json: Meeting.all
   end
 
   def show  

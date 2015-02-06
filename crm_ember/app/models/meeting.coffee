@@ -7,7 +7,7 @@ Meeting = DS.Model.extend
   # followUps:  DS.hasMany('follow-up')
   memo:       DS.attr('string')
   startDate:  DS.attr()
-  duration:   DS.attr()
+  duration:   DS.attr('string')
 
   hasFollowUps: Ember.computed.notEmpty('followUps')
 

@@ -1,16 +1,17 @@
 `import Ember from 'ember'`
 MeetingsNewController = Ember.ObjectController.extend
   durations: Ember.String.w "00:15 00:30 00:45 01:00 01:15 01:30 01:45 02:00 02:15 02:30 02:45 03:00"
-  client: null
-  contactsArr: []
+  client: Ember.computed.alias('model.client')
+  contactsArr: new Array()
   selectedSalesReps: []
   # selectedSalesReps: Ember.computed.alias('model.salesReps')
   duration: Ember.computed.alias('model.duration')
 
-  fetchContacts:(->
-    @get('contactsArr').clear() #resetting contactsArr array
-    contacts = @get('client').get('contacts')
-    @set('contactsArr', contacts)
+  fetchContacts:(->    client = @get('client')
+    if client 
+      @get('contactsArr').clear() #resetting contactsArr array
+      contacts = client.get('contacts')
+      @set('contactsArr', contacts)
   ).observes('client')
 
   actions:
