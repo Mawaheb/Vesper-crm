@@ -5,6 +5,7 @@ MeetingsNewController = Ember.ObjectController.extend
   contactsArr: []
   selectedSalesReps: []
   # selectedSalesReps: Ember.computed.alias('model.salesReps')
+  duration: Ember.computed.alias('model.duration')
 
   fetchContacts:(->
     @get('contactsArr').clear() #resetting contactsArr array

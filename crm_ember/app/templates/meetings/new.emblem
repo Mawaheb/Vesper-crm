@@ -11,7 +11,7 @@
 
         .col-md-5
           label Select Client
-          view 'select' selectingBinding=client content=clients optionLabelPath="content.name" optionValuePath="content.id" selection=client prompt='Please select a client..' class="form-control"
+          view 'select' selectionBinding="client" content=clients optionLabelPath="content.name" optionValuePath="content.id" selection=client prompt='Please select a client..' class="form-control"
       .row
         .col-lg-12
           label Memo

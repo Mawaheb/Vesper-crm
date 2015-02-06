@@ -12,7 +12,7 @@ link-to 'meetings.new' | New Meeting
           th Sales Reps
       tbody
         each meeting in controller
-          tr
+          = link-to 'meeting' meeting tagName="tr"
             td = format-date meeting.startDate
             td = meeting.duration
             td = meeting.hasFollowUps 

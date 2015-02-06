@@ -8,6 +8,10 @@ class Api::MeetingsController < ApplicationController
     end
   end
 
+  def show  
+    render json: @meeting
+  end
+
   def create
     sales_ids   = params[:sales_rep_ids]
     # params.delete :sales_rep_ids
