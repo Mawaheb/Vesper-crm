@@ -7,7 +7,7 @@
           = bs-datetimepicker value=startDate date=startDate format='YYYY-MM-DD HH:mm'
         .col-md-3
           label Duration
-          view 'select' value=duration content=durations class="form-control"
+          view 'select' value=duration content=durations optionLabelPath="content.text" optionValuePath="content.value" class="form-control"
 
         .col-md-5
           label Select Client

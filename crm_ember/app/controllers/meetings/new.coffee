@@ -1,11 +1,11 @@
 `import Ember from 'ember'`
 MeetingsNewController = Ember.ObjectController.extend
-  durations: Ember.String.w "00:15 00:30 00:45 01:00 01:15 01:30 01:45 02:00 02:15 02:30 02:45 03:00"
   client: Ember.computed.alias('model.client')
   contactsArr: new Array()
   selectedSalesReps: []
   # selectedSalesReps: Ember.computed.alias('model.salesReps')
-  duration: Ember.computed.alias('model.duration')
+  duarionts: Ember.computed.alias('model.durations')
+  # duration: Ember.computed.alias('model.duration')
 
   fetchContacts:(->
     client = @get('client')
@@ -45,9 +45,8 @@ MeetingsNewController = Ember.ObjectController.extend
       @transitionToRoute 'meetings'
 
     delete: ->
-      alert(@get('isNewMeeting'))
-      # if confirm("Are you sure you want to delete this Meeting?")
-      #   @get('model').destroyRecord().then =>
-      #     @transitionToRoute 'meetings'
+      if confirm("Are you sure you want to delete this Meeting?")
+        @get('model').destroyRecord().then =>
+          @transitionToRoute 'meetings'
 
 `export default MeetingsNewController`
