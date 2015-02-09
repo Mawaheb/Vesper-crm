@@ -10,6 +10,8 @@ link-to 'meetings.new' | New Meeting
           th Has followUps
           th Client Name
           th Sales Reps
+          th Edit
+          th Delete
       tbody
         each meeting in controller
           = link-to 'meeting' meeting tagName="tr"
@@ -18,5 +20,12 @@ link-to 'meetings.new' | New Meeting
             td = meeting.hasFollowUps 
             td = meeting.client.name
             td = meeting.salesRepsNames
+            td 
+              button.btn.btn-primary.btn-sm
+                span.glyphicon.glyphicon-pencil
+            td
+              button.btn.btn-danger.btn-sm{action 'delete' meeting bubbles=false}
+                span.glyphicon.glyphicon-trash
+              
   else
    p there are no meetings.
