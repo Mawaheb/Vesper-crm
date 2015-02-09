@@ -37,4 +37,6 @@
 
 
 
-button.btn.btn-success{action 'save'} Save 
+button.btn.btn-success{action 'save'} Save
+unless isNewMeeting
+  button.btn.btn-danger{action 'delete'} Delete

@@ -7,12 +7,17 @@ MeetingsNewController = Ember.ObjectController.extend
   # selectedSalesReps: Ember.computed.alias('model.salesReps')
   duration: Ember.computed.alias('model.duration')
 
-  fetchContacts:(->    client = @get('client')
+  fetchContacts:(->
+    client = @get('client')
     if client 
       @get('contactsArr').clear() #resetting contactsArr array
       contacts = client.get('contacts')
       @set('contactsArr', contacts)
   ).observes('client')
+
+  isNewMeeting:(->
+    @get('model.isNew') ? true:false
+  ).property('model.isNew')
 
   actions:
     assignSReps:(sr) ->
@@ -38,5 +43,11 @@ MeetingsNewController = Ember.ObjectController.extend
 
     cancel: ->
       @transitionToRoute 'meetings'
+
+    delete: ->
+      alert(@get('isNewMeeting'))
+      # if confirm("Are you sure you want to delete this Meeting?")
+      #   @get('model').destroyRecord().then =>
+      #     @transitionToRoute 'meetings'
 
 `export default MeetingsNewController`

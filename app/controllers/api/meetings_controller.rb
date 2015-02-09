@@ -22,6 +22,15 @@ class Api::MeetingsController < ApplicationController
     end
   end
 
+  def destroy
+    if @meeting.destroy
+      head :no_content, status: :ok
+    else
+      render json: @meeting.errors, status: :unprocessable_entity
+    end    
+  end
+  
+
   def fetch_meeting
     @meeting = Meeting.find(params[:id])
   end
