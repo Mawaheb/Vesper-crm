@@ -35,8 +35,9 @@
           
         
 
-
-
-button.btn.btn-success{action 'save'} Save
-unless isNewMeeting
-  button.btn.btn-danger{action 'delete'} Delete
+.row
+  .col-md-12
+    button.btn.btn-success{action 'save'} Save
+    button.btn.btn-default{action 'cancel'} Cancel
+    unless isNewMeeting
+      button.btn.btn-danger{action 'delete'} Delete

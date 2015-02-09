@@ -42,6 +42,7 @@ MeetingsNewController = Ember.ObjectController.extend
         @transitionToRoute 'meetings'
 
     cancel: ->
+      @get('model').rollback()
       @transitionToRoute 'meetings'
 
     delete: ->
