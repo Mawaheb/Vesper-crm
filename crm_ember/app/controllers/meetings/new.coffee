@@ -19,13 +19,25 @@ MeetingsNewController = Ember.ObjectController.extend
     @get('model.isNew') ? true:false
   ).property('model.isNew')
 
+  isSelected:((key, value)->
+    model = @get('model')
+    if value is 'undefined'
+      model.g
+    @get('model').get('salesReps').contains(value)
+  ).property('model.salesReps')
+
   actions:
-    assignSReps:(sr) ->
+    assignSReps:(sr, checked) ->
       sales = @get('model').get('salesReps')
-      if sales.contains(sr)
-        sales.removeObject(sr)
-      else
+      if checked
         sales.addObject(sr)
+      else
+        sales.removeObject(sr)
+      # sales = @get('model').get('salesReps')
+      # if sales.contains(sr)
+      #   sales.removeObject(sr)
+      # else
+      #   sales.addObject(sr)
 
     assignContacts:(contact)->
       cntcs = @get('model').get('contacts')
@@ -36,10 +48,11 @@ MeetingsNewController = Ember.ObjectController.extend
         cntcs.addObject(contact)
 
     save: ->
-      meeting = @get('model')
-      meeting.set('client', @get('client'))
-      meeting.save().then =>
-        @transitionToRoute 'meetings'
+      alert(@get('model').get('salesReps'))
+      # meeting = @get('model')
+      # meeting.set('client', @get('client'))
+      # meeting.save().then =>
+      #   @transitionToRoute 'meetings'
 
     cancel: ->
       @get('model').rollback()
