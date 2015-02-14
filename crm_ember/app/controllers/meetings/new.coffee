@@ -3,9 +3,7 @@ MeetingsNewController = Ember.ObjectController.extend
   client: Ember.computed.alias('model.client')
   contactsArr: new Array()
   selectedSalesReps: []
-  # selectedSalesReps: Ember.computed.alias('model.salesReps')
   duarionts: Ember.computed.alias('model.durations')
-  # duration: Ember.computed.alias('model.duration')
 
   fetchContacts:(->
     client = @get('client')
@@ -18,13 +16,6 @@ MeetingsNewController = Ember.ObjectController.extend
   isNewMeeting:(->
     @get('model.isNew') ? true:false
   ).property('model.isNew')
-
-  isSelected:((key, value)->
-    model = @get('model')
-    if value is 'undefined'
-      model.g
-    @get('model').get('salesReps').contains(value)
-  ).property('model.salesReps')
 
   actions:
     assignSReps:(sr, checked) ->
@@ -48,11 +39,10 @@ MeetingsNewController = Ember.ObjectController.extend
         cntcs.addObject(contact)
 
     save: ->
-      alert(@get('model').get('salesReps'))
-      # meeting = @get('model')
-      # meeting.set('client', @get('client'))
-      # meeting.save().then =>
-      #   @transitionToRoute 'meetings'
+      meeting = @get('model')
+      meeting.set('client', @get('client'))
+      meeting.save().then =>
+        @transitionToRoute 'meetings'
 
     cancel: ->
       @get('model').rollback()
