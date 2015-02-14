@@ -22,7 +22,7 @@
       .panel-heading Assign Sales Reps:
       .panel-body
         each sr in sReps
-          view meetings/new meeting=content sr=sr
+          view meetings/new meeting=content relationName='salesReps' obj=sr
             check-box action="assignSReps" value=sr checked=view.isSelected
             label #{sr.name}
             %br
@@ -30,9 +30,10 @@
       .panel-heading Assign Contacts:
       .panel-body
         each contact in contactsArr
-          check-box action="assignContacts" value=contact 
-          label #{contact.name}
-          %br  
+          view meetings/new meeting=content relationName='contacts' obj=contact
+            check-box action="assignContacts" value=contact checked=view.isSelected
+            label #{contact.name}
+            %br  
           
         
 
