@@ -17,6 +17,10 @@
           label Memo
           Ember.TextArea value=memo class="form-control" rows="5"
 
+    .h2 Follow ups:
+    .well      
+      render meetings/follow-ups
+
   .col-md-3
     .panel.panel-primary
       .panel-heading Assign Sales Reps:
@@ -35,7 +39,6 @@
             label #{contact.name}
             %br  
           
-        
 
 .row
   .col-md-12

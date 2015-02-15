@@ -1,0 +1,29 @@
+.row
+  .col-md-3
+    label Type
+    view 'select' class='form-control'
+
+  .col-md-2
+    label Due Date
+    view 'select' class='form-control'
+
+  .col-md-2
+    label Complete Date
+    view 'select' class='form-control'
+
+  .col-md-4 
+    label Assign to
+    view 'select' class='form-control'
+
+  .col-md-1
+    %br
+    button.btn.btn-danger.btn-sm
+      span.glyphicon.glyphicon-remove
+
+.row
+  %br
+  .col-md-11
+    Ember.TextArea placeholder="Follow ups Memo" class="form-control" rows="5"
+
+button.btn.btn-primary.btn-sm
+  span.glyphicon.glyphicon-plus
