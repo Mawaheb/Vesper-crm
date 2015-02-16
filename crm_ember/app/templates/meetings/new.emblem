@@ -18,8 +18,11 @@
           Ember.TextArea value=memo class="form-control" rows="5"
 
     .h2 Follow ups:
+
     .well      
-      render meetings/follow-ups
+      follow-up
+    button.btn.btn-primary.btn-sm click="insertFollowUp target='view.follow-up'"
+      span.glyphicon.glyphicon-plus
 
   .col-md-3
     .panel.panel-primary
