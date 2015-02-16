@@ -17,8 +17,9 @@
 
   .col-md-1
     %br
-    button.btn.btn-danger.btn-sm click="insertFollowUp target=view.followUpView"
+    button.btn.btn-danger.btn-sm{action 'test'}
       span.glyphicon.glyphicon-remove
+    
 
 .row
   %br
