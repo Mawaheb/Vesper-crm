@@ -22,7 +22,7 @@
     .well
       view follow-ups-container viewName='followUpsContainer'
       each followUp in model.followUps
-        follow-up followUp=followUp
+        follow-up followUp=followUp sReps=sReps
       button.btn.btn-primary.btn-sm{action 'addNewFollowUp' target='view'}
         span.glyphicon.glyphicon-plus
 

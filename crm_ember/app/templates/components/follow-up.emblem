@@ -5,15 +5,15 @@
 
   .col-md-2
     label Due Date
-    view 'select' class='form-control'
+    = bs-datetimepicker value=followUp.dueDate date=followUp.dueDate format='YYYY-MM-DD'
 
   .col-md-2
     label Complete Date
-    view 'select' class='form-control'
+    = bs-datetimepicker value=followUp.completeDate date=followUp.completeDate format='YYYY-MM-DD'
 
   .col-md-4 
     label Assign to
-    view 'select' class='form-control'
+    view 'select' selection=followUp.salesRep value=followUp.salesRep content=sReps optionLabelPath="content.name" optionValuePath="content.id" class='form-control' prompt="Please select a salesRep.."
 
   .col-md-1
     %br
