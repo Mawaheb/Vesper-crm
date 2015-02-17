@@ -4,7 +4,7 @@ FollowUpComponent = Ember.Component.extend
   actions:
     test:->
       alert('component test action triggered')
-      # @remove()
-      @create().append()
+      @remove()
+      
 
 `export default FollowUpComponent`

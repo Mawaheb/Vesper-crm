@@ -12,6 +12,8 @@ MeetingsNewView = Ember.View.extend
 
   actions:
     addNewFollowUp: ->
-      alert('addNewFollowUp invoked - MeetingsNewView')
-      FollowUpComponent.create().appendTo($('#followUpsDiv'))
+      containerView = @get('followUpsContainer')
+      newFollowUp = FollowUpComponent.create()
+      containerView.pushObject(newFollowUp)
+
 `export default MeetingsNewView`

@@ -26,4 +26,4 @@
   .col-md-11
     Ember.TextArea placeholder="Follow ups Memo" class="form-control" rows="5"
 
-
+%hr

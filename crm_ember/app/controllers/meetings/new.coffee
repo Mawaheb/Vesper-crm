@@ -52,5 +52,6 @@ MeetingsNewController = Ember.ObjectController.extend
       if confirm("Are you sure you want to delete this Meeting?")
         @get('model').destroyRecord().then =>
           @transitionToRoute 'meetings'
+          
 
 `export default MeetingsNewController`
