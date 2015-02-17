@@ -3,8 +3,9 @@
 Meeting = DS.Model.extend
   client:     DS.belongsTo('client')
   contacts:   DS.hasMany('contact')
-  salesReps:  DS.hasMany('sales-rep',{async: true})
-  followUps:  DS.hasMany('follow-up',)
+  salesReps:  DS.hasMany('sales-rep')
+  followUps:  DS.hasMany('follow-up')
+
   memo:       DS.attr('string')
   startDate:  DS.attr()
   duration:   DS.attr('number')
