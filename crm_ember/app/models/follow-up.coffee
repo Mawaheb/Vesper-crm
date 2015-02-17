@@ -11,4 +11,15 @@ FollowUp = DS.Model.extend
   dueDate:      DS.attr('date')
   completeDate: DS.attr('date')
 
+  types: [
+    {text:'None',           value:'none'},
+    {text:'Phone call',     value:'phone_call'},
+    {text:'Email',          value:'email'},
+    {text:'Client visit',   value:'client_visit'},
+    {text:'Support',        value:'support'},
+    {text:'Documentation',  value:'ocumentation'},
+    {text:'Feature',        value:'feature'},
+    {text:'Bug Fix',        value:'bug_fix'}
+  ]
+
 `export default FollowUp`

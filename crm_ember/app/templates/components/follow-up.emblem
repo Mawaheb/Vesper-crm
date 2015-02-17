@@ -1,7 +1,7 @@
 .row
   .col-md-3
     label Type
-    view 'select' class='form-control'
+    view 'select' value=followUp.type content=followUp.types optionLabelPath="content.text" optionValuePath="content.value" class='form-control'
 
   .col-md-2
     label Due Date
@@ -24,6 +24,6 @@
 .row
   %br
   .col-md-11
-    Ember.TextArea placeholder="Follow ups Memo" class="form-control" rows="5"
+    Ember.TextArea placeholder="Follow ups Memo" class="form-control" rows="5" value=followUp.memo
 
 %hr
