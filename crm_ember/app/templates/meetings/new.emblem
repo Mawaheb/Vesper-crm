@@ -20,12 +20,10 @@
     .h2 Follow ups:
 
     .well
-      #followUpsDiv      
-        /follow-up
-        view follow-ups-container viewName='followUpsContainer'
-    /button.btn.btn-primary.btn-sm click="insertFollowUp target='view.follow-up'"
-    button.btn.btn-primary.btn-sm{action 'addNewFollowUp' target='view'}
-      span.glyphicon.glyphicon-plus
+      view follow-ups-container viewName='followUpsContainer'
+      
+      button.btn.btn-primary.btn-sm{action 'addNewFollowUp' target='view'}
+        span.glyphicon.glyphicon-plus
 
   .col-md-3
     .panel.panel-primary
