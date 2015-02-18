@@ -10,10 +10,4 @@ MeetingsNewView = Ember.View.extend
       children.contains(@get('obj'))
   ).property('meeting.salesReps')
 
-  actions:
-    addNewFollowUp: ->
-      containerView = @get('followUpsContainer')
-      newFollowUp = FollowUpComponent.create()
-      containerView.pushObject(newFollowUp)
-
 `export default MeetingsNewView`

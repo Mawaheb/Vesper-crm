@@ -52,6 +52,10 @@ MeetingsNewController = Ember.ObjectController.extend
       if confirm("Are you sure you want to delete this Meeting?")
         @get('model').destroyRecord().then =>
           @transitionToRoute 'meetings'
-          
+    
+    addNewFollowUp: ->
+      newFollowUp = @store.createRecord('follow-up')
+      meeting = @get('model')
+      meeting.get('followUps').pushObject(newFollowUp)
 
 `export default MeetingsNewController`
