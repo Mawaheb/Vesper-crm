@@ -2,9 +2,10 @@
 FollowUpComponent = Ember.Component.extend
   templateName: 'components/follow-up'
   actions:
-    test:->
-      alert('component test action triggered')
-      @remove()
+    deleteFollowUp:->
+      if confirm("Are you sure you want to delete this FollowUp?")
+        @get('followUp').destroyRecord()
+        @remove()
       
 
 `export default FollowUpComponent`

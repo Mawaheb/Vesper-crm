@@ -17,7 +17,7 @@
 
   .col-md-1
     %br
-    button.btn.btn-danger.btn-sm{action 'test'}
+    button.btn.btn-danger.btn-sm{action 'deleteFollowUp'}
       span.glyphicon.glyphicon-remove
     
 
