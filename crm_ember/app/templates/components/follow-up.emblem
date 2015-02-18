@@ -13,7 +13,7 @@
 
   .col-md-4 
     label Assign to
-    view 'select' selection=followUp.salesRep value=followUp.salesRep content=sReps optionLabelPath="content.name" optionValuePath="content.id" class='form-control' prompt="Please select a salesRep.."
+    view 'select' selection=followUp.salesRep content=sReps optionLabelPath="content.name" optionValuePath="content.id" class='form-control' prompt="Please select a salesRep.."
 
   .col-md-1
     %br
