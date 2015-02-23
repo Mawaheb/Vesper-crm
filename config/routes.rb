@@ -18,6 +18,7 @@ CrmSolution::Application.routes.draw do
     resources :sales_reps
     resources :contacts
     resources :meetings
+    resources :follow_ups
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

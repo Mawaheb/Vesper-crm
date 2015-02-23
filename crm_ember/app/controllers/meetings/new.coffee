@@ -41,7 +41,12 @@ MeetingsNewController = Ember.ObjectController.extend
     save: ->
       meeting = @get('model')
       meeting.set('client', @get('client'))
-      meeting.save().then =>
+      # followUpsPromises = Ember.A()
+
+      meeting.save().then (savedMeeting) ->
+        savedMeeting.get('followUps').forEach (followUp) ->
+          followUp.save()
+
         @transitionToRoute 'meetings'
 
     cancel: ->
