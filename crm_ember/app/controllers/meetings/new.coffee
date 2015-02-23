@@ -42,12 +42,12 @@ MeetingsNewController = Ember.ObjectController.extend
       meeting = @get('model')
       meeting.set('client', @get('client'))
       # followUpsPromises = Ember.A()
-
+      t = @
       meeting.save().then (savedMeeting) ->
         savedMeeting.get('followUps').forEach (followUp) ->
           followUp.save()
 
-        @transitionToRoute 'meetings'
+        t.transitionToRoute 'meetings'
 
     cancel: ->
       @get('model').rollback()

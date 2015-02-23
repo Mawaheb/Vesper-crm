@@ -8,8 +8,8 @@ FollowUp = DS.Model.extend
   memo:         DS.attr('string')
   done:         DS.attr('boolean')
   status:       DS.attr()
-  dueDate:      DS.attr('date')
-  completeDate: DS.attr('date')
+  dueDate:      DS.attr()
+  completeDate: DS.attr()
 
   types: [
     {text:'None',           value:'none'},
