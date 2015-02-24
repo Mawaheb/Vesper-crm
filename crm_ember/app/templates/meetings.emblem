@@ -17,7 +17,12 @@ link-to 'meetings.new' | New Meeting
           = link-to 'meeting' meeting tagName="tr"
             td = format-date meeting.startDate
             td = meeting.duration
-            td = meeting.hasFollowUps 
+            td
+              if meeting.hasFollowUps
+                span.badge
+                  = meeting.followUpsCount
+              else
+                | -
             td = meeting.client.name
             td = meeting.salesRepsNames
             td 

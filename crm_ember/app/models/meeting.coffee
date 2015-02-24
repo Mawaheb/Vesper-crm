@@ -11,6 +11,11 @@ Meeting = DS.Model.extend
   duration:   DS.attr('number')
 
   hasFollowUps: Ember.computed.notEmpty('followUps')
+  followUpsCount:(->
+    followUpsCount = @get('followUps.length')
+    if followUpsCount > 0
+      followUpsCount
+  ).property('followUps')
 
   salesRepsNames:(->
     return '' unless @get('salesReps')
